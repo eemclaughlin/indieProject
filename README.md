@@ -5,3 +5,8 @@ Possible Ideas:
 - Recipe book app where you can put name and details of recipe and book name and page for easy searching.
 - Trading card app where users can keep track of own collection and compare to others.
 - Trading card app for tracking card prices
+
+
+
+
+Time Journal is Located [Here](journal.md)
