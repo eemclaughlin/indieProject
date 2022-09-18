@@ -50,3 +50,5 @@ As a registered user, I want to be able to view a friend's favorite recipes.
 
 ### Request to Borrow a Friend's Cookbook
 As a registered user, I want to be able to request to borrow a friend's cookbook.
+
+#### [Back to main README](../README.md)
