@@ -28,6 +28,7 @@ and to help users find their books easier.
 * [User Stories](DesignDocuments/userStories.md)
 * [Layout/Mockup Information](DesignDocuments/layoutInformation.md)
 * [Project Plan](DesignDocuments/projectPlan.md)
+* [Application Flow](DesignDocuments/applicationFlow.md)
 
 ## Other Stuff
 * [Time Log/Journal](journal.md) for Whole Enterprise Java Class.
