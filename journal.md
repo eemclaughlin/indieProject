@@ -26,5 +26,6 @@
 - Work on design pictures for indie project and add to project (3:30)
 
 ### Week 4 (0:00)
+- Work on project plan and application flow documents (1:00)
 - 
 
