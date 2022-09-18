@@ -16,18 +16,22 @@
 - [ ] Start setting up general structure for program
 
 ### Week 5
+- [ ] Start work on user creation and log in.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 6
+- [ ] Start work on adding recipes
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 7
+- [ ] CSS and HTML layout work
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 8
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 9
+- [ ] API implementation work
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 10
