@@ -27,7 +27,7 @@ and to help users find their books easier.
 ## Design Related Information
 * [User Stories](DesignDocuments/userStories.md)
 * [Layout/Mockup Information](DesignDocuments/layoutInformation.md)
-
+* [Project Plan](DesignDocuments/projectPlan.md)
 
 ## Other Stuff
-* [Time Journal](journal.md) for Whole Enterprise Java Class.
+* [Time Log/Journal](journal.md) for Whole Enterprise Java Class.
