@@ -15,9 +15,10 @@
 - Exercise 2 videos and work (4:30)
 - Attended meeting on Frege for Prof Dev Act (3:00)
 
-### Week 3 (14:30)
+### Week 3 (16:30)
 - Log4j reading and videos and activity 1 (2:00)
 - Junit learning and testing (1:00)
 - Work through AdventOf Code video demo (1:00)
 - Exercise for Week 3 (2:30)
 - Create presentation for Frege Prof Dev Act (8:00)
+- Work on indie project readme and user stories (2:00)
