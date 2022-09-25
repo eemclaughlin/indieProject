@@ -25,10 +25,20 @@
 - Work on indie project readme and user stories (2:00)
 - Work on design pictures for indie project and add to project (3:30)
 
-### Week 4 (6:15)
+### Week 4 (10:30)
 - Work on project plan and application flow documents (1:30)
 - Watch initial videos/readings related to DAO and Hibernate (0:30)
 - Start on Hibernate demo, part 1 (1:15)
 - Hibernate Demo, part 2 (1:00)
-- Hibernate Demo, part 3 (got stuck) (2:00)
+- Hibernate Demo, part 3 (2:00)
+- Hibernate Demo Wrap Up (1:00)
+- Exercise 4 (3:15)
+
+### Week 5 (7:15)
+- Initial Videos and demo part 1 (1:30)
+- Demo part 2 (1:00)
+- Demo part 3 and troubleshoot video (0:30)
+- Extra Videos and Generic Dao (1:00)
+- Many to Many Video (0:15)
+- Exercise 5 - Ongoing (3:30)
 
