@@ -103,4 +103,12 @@ ALTER TABLE RECIPE_TAGS ADD CONSTRAINT RECIPE_TAGS_RECIPES FOREIGN KEY RECIPE_TA
 ALTER TABLE RECIPE_TAGS ADD CONSTRAINT RECIPE_TAGS_TAGS FOREIGN KEY RECIPE_TAGS_TAGS (TagCd)
     REFERENCES TAGS (TagId);
 
+INSERT INTO RecipeTracker.USER (UserId, FirstName, LastName, LoginId, Password) VALUES (1, 'Johnny', 'Cash', 'CashJ', 'CashJ');
+INSERT INTO RecipeTracker.USER (UserId, FirstName, LastName, LoginId, Password) VALUES (2, 'Peggy', 'Curbs', 'CurbsP', 'CurbsP');
+INSERT INTO RecipeTracker.USER (UserId, FirstName, LastName, LoginId, Password) VALUES (3, 'Bob', 'Hamelin', 'HamelB', 'HamelB');
+INSERT INTO RecipeTracker.RECIPES (RecipeId, RecipeName, Description, Notes, UserCd) VALUES (1, 'Carrot Cake', null, null, 1);
+INSERT INTO RecipeTracker.RECIPES (RecipeId, RecipeName, Description, Notes, UserCd) VALUES (2, 'Meatloaf', null, null, 2);
+INSERT INTO RecipeTracker.RECIPES (RecipeId, RecipeName, Description, Notes, UserCd) VALUES (3, 'Tacos', null, null, 3);
+INSERT INTO RecipeTracker.RECIPES (RecipeId, RecipeName, Description, Notes, UserCd) VALUES (4, 'Creme Brulee', null, null, 1);
+
 -- End of file.

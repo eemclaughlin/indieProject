@@ -33,7 +33,7 @@ public class User {
     @Column(name = "Password")
     private String password;
     // Connection to the RECIPE table/class.  One user can have several recipes.
-    @OneToMany(mappedBy = "USER", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Recipe> recipes = new HashSet<>();
 
     /**
