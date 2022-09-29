@@ -13,8 +13,8 @@
 ### Week 4
 - [x] Continue work on project plan
 - [x] Finish up Project Part 1 and submit.
-- [ ] Plan layout and design of database
-- [ ] Create the database and tables
+- [x] Plan layout and design of database
+- [x] Create the database and tables
 - [ ] Start setting up general structure for program
 - [ ] Set up initial Hibernate work.
 

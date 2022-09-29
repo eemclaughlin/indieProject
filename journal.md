@@ -34,11 +34,15 @@
 - Hibernate Demo Wrap Up (1:00)
 - Exercise 4 (3:15)
 
-### Week 5 (7:15)
+### Week 5 (11:30)
 - Initial Videos and demo part 1 (1:30)
 - Demo part 2 (1:00)
 - Demo part 3 and troubleshoot video (0:30)
 - Extra Videos and Generic Dao (1:00)
 - Many to Many Video (0:15)
 - Exercise 5 - Ongoing (3:30)
+- Finalize Frege Presentation, Record It, Add info to my student page (2:15)
+- Add presentation to YouTube and create links in student project and on Slack. (0:15)
+- Work on database design and design documents (2:00)
+- 
 
