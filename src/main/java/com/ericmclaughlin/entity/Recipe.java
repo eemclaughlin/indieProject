@@ -9,7 +9,7 @@ import javax.persistence.*;
  * @version v1.0 - 09-29-22
  */
 @Entity(name = "Recipe")
-@Table(name = "RECIPES")
+@Table(name = "recipes")
 public class Recipe {
 
     // Variables and associations to database for Hibernate.
@@ -17,20 +17,19 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    @Column(name = "RecipeId")
+    @Column(name = "recipe_id")
     private int recipeId;
 
-    @Column(name = "RecipeName")
+    @Column(name = "recipe_name")
     private String recipeName;
 
-    @Column(name = "Description")
     private String description;
 
-    @Column(name = "Notes")
     private String notes;
 
     // Connection to the user table to associate a user with a recipe(s)
     @ManyToOne
+    @JoinColumn(name = "user_cd", foreignKey = @ForeignKey(name = "recipes_user"))
     private User user;
 
     /**

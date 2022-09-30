@@ -3,8 +3,6 @@ package com.ericmclaughlin.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +12,7 @@ import java.util.Set;
  * @version v1.0 - 09-29-22
  */
 @Entity(name = "User")
-@Table(name = "USER")
+@Table(name = "user")
 public class User {
 
     // Variables and hibernate column associations.
@@ -22,17 +20,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    @Column(name = "UserId")
+    @Column(name = "user_id")
     private int userId;
-    @Column(name = "FirstName")
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name = "LastName")
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name = "LoginId")
+    @Column(name = "login_id")
     private String userName;
-    @Column(name = "Password")
+
     private String password;
     // Connection to the RECIPE table/class.  One user can have several recipes.
+    // Mapped by refers to instance variable on the ManyToOne on child class (Recipe in this case).
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Recipe> recipes = new HashSet<>();
 

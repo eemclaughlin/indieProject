@@ -1,9 +1,9 @@
 # Database Design
 
 ### Current Database ERD
-v1.0
+v1.5
 
-![Database ERD](LayoutPictures/Database%20ERD%20v1.0.png)
+![Database ERD](LayoutPictures/DatabaseERDv1.5.png)
 
 ### Notes
 * Database Name: RecipeTracker
@@ -14,4 +14,6 @@ v1.0
 * Cookbooks may also change since it will use an API and I don't know how that works yet.
 
 #### Previous Database ERDs
-None Currently.
+v1.0
+
+![Database ERD](LayoutPictures/Database%20ERD%20v1.0.png)

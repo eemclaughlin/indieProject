@@ -18,13 +18,13 @@
             <th>Name</th>
             <th>Login Id</th>
             <th>Password</th>
-            <th>Recipe</th>
+            <th>Recipes</th>
         </thead>
         <tbody>
         <c:forEach var="user" items="${users}">
             <tr>
                 <td>${user.firstName} ${user.lastName}</td>
-                <td>${user.loginId}</td>
+                <td>${user.userName}</td>
                 <td>${user.password}</td>
                 <td>
                     <c:forEach var="recipe" items="${user.recipes}">

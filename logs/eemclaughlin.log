@@ -1,3 +1,1 @@
-[DEBUG] 2022-09-29 14:56:22.728 [http-nio-8080-exec-6] UserDao - Searching For:  []
-[DEBUG] 2022-09-29 14:57:00.432 [http-nio-8080-exec-8] UserDao - Searching For: Cash []
-[DEBUG] 2022-09-29 15:00:43.246 [http-nio-8080-exec-5] UserDao - Searching For: Cash []
+[DEBUG] 2022-09-30 08:42:17.032 [http-nio-8080-exec-5] UserDao - Searching For: Cash []

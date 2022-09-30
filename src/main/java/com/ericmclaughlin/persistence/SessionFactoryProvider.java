@@ -6,6 +6,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+
 /**
  * This file provides a SessionFactory for use with DAOs using Hibernate
  *
@@ -19,8 +20,10 @@ public class SessionFactoryProvider {
     /**
      * private constructor prevents instantiating this class anywhere else
      */
-    private SessionFactoryProvider() {}
 
+    private SessionFactoryProvider() {
+
+    }
     /**
      * Create session factory.
      */
@@ -43,5 +46,6 @@ public class SessionFactoryProvider {
             createSessionFactory();
         }
         return sessionFactory;
+
     }
 }
