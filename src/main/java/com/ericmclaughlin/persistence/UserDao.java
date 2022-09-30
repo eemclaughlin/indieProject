@@ -36,7 +36,7 @@ public class UserDao {
      * @param lastName Last name of user(s)
      * @return a single user
      */
-    public User getByLastname(String lastName) {
+    public List<User> getByLastname(String lastName) {
 
         logger.debug("Searching For: {} []", lastName, lastName);
 
@@ -49,7 +49,7 @@ public class UserDao {
         query.where(builder.like(propertyPath, "%" + lastName + "%"));
         List<User> users = session.createQuery(query).getResultList();
         session.close();
-        return (User) users;
+        return users;
     }
 
     /**
