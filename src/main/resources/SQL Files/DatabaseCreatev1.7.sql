@@ -1,25 +1,25 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-09-30 13:48:35.734
+-- Last modification date: 2022-10-01 22:32:15.241
 
 -- tables
--- Table: COOKBOOKS
-CREATE TABLE COOKBOOKS (
-    CookbookId int NOT NULL AUTO_INCREMENT,
-    Title varchar(100) NOT NULL,
-    Description text NULL,
-    Isdn varchar(25) NULL,
-    Notes text NULL,
-    CONSTRAINT COOKBOOKS_pk PRIMARY KEY (CookbookId)
-) COMMENT 'Information about each cookbook.  Soon to be an API';
-
 -- Table: cookbook_recipe
 CREATE TABLE cookbook_recipe (
-    cook_recipeid int NOT NULL AUTO_INCREMENT,
+    cook_recipe_id int NOT NULL AUTO_INCREMENT,
     cookbook_cd int NOT NULL,
     recipe_cd int NOT NULL,
     page_number int NULL,
-    CONSTRAINT cookbook_recipe_pk PRIMARY KEY (cook_recipeid)
+    CONSTRAINT cookbook_recipe_pk PRIMARY KEY (cook_recipe_id)
 ) COMMENT 'Junction table for each recipe to reference the needed cookbook.';
+
+-- Table: cookbooks
+CREATE TABLE cookbooks (
+    cookbook_id int NOT NULL AUTO_INCREMENT,
+    title varchar(100) NOT NULL,
+    description text NULL,
+    isdn varchar(25) NULL,
+    notes text NULL,
+    CONSTRAINT cookbooks_pk PRIMARY KEY (cookbook_id)
+) COMMENT 'Information about each cookbook.  Soon to be an API';
 
 -- Table: recipe_tags
 CREATE TABLE recipe_tags (
@@ -57,25 +57,25 @@ CREATE TABLE user (
 ) COMMENT 'Information about each user.';
 
 -- foreign keys
--- Reference: COOKBOOK_RECIPE_COOKBOOKS (table: cookbook_recipe)
-ALTER TABLE cookbook_recipe ADD CONSTRAINT COOKBOOK_RECIPE_COOKBOOKS FOREIGN KEY COOKBOOK_RECIPE_COOKBOOKS (cookbook_cd)
-    REFERENCES COOKBOOKS (CookbookId);
+-- Reference: cookbook_recipe_cookbooks (table: cookbook_recipe)
+ALTER TABLE cookbook_recipe ADD CONSTRAINT cookbook_recipe_cookbooks FOREIGN KEY cookbook_recipe_cookbooks (cookbook_cd)
+    REFERENCES cookbooks (cookbook_id);
 
--- Reference: COOKBOOK_RECIPE_RECIPES (table: cookbook_recipe)
-ALTER TABLE cookbook_recipe ADD CONSTRAINT COOKBOOK_RECIPE_RECIPES FOREIGN KEY COOKBOOK_RECIPE_RECIPES (recipe_cd)
+-- Reference: cookbook_recipe_recipes (table: cookbook_recipe)
+ALTER TABLE cookbook_recipe ADD CONSTRAINT cookbook_recipe_recipes FOREIGN KEY cookbook_recipe_recipes (recipe_cd)
     REFERENCES recipes (recipe_id);
 
--- Reference: RECIPES_USER (table: recipes)
-ALTER TABLE recipes ADD CONSTRAINT RECIPES_USER FOREIGN KEY RECIPES_USER (user_cd)
-    REFERENCES user (user_id);
-
--- Reference: RECIPE_TAGS_RECIPES (table: recipe_tags)
-ALTER TABLE recipe_tags ADD CONSTRAINT RECIPE_TAGS_RECIPES FOREIGN KEY RECIPE_TAGS_RECIPES (recipe_cd)
+-- Reference: recipe_tags_recipes (table: recipe_tags)
+ALTER TABLE recipe_tags ADD CONSTRAINT recipe_tags_recipes FOREIGN KEY recipe_tags_recipes (recipe_cd)
     REFERENCES recipes (recipe_id);
 
--- Reference: RECIPE_TAGS_TAGS (table: recipe_tags)
-ALTER TABLE recipe_tags ADD CONSTRAINT RECIPE_TAGS_TAGS FOREIGN KEY RECIPE_TAGS_TAGS (tag_cd)
+-- Reference: recipe_tags_tags (table: recipe_tags)
+ALTER TABLE recipe_tags ADD CONSTRAINT recipe_tags_tags FOREIGN KEY recipe_tags_tags (tag_cd)
     REFERENCES tags (tag_id);
+
+-- Reference: recipes_user (table: recipes)
+ALTER TABLE recipes ADD CONSTRAINT recipes_user FOREIGN KEY recipes_user (user_cd)
+    REFERENCES user (user_id);
 
 -- End of file.
 
