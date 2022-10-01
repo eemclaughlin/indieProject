@@ -34,7 +34,7 @@
 - Hibernate Demo Wrap Up (1:00)
 - Exercise 4 (3:15)
 
-### Week 5 (20:45)
+### Week 5 (25:45)
 - Initial Videos and demo part 1 (1:30)
 - Demo part 2 (1:00)
 - Demo part 3 and troubleshoot video (0:30)
@@ -48,4 +48,8 @@
   - Set up of hibernate and log4j (4:00)
   - Get web interface sort of working for testing (2:00)
   - Troubleshoot database hibernate issue (2:30)
+- Continue work on Week 5 Exercise (5:00)
+
+### Week 6 (0:00)
+- 
 

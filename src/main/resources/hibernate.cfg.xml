@@ -4,11 +4,15 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/RecipeTracker</property>
+        <!-- Local vs AWS -->
+        <!-- Change commented fields then go to Maven and run package to get new war. -->
+        <!-- <property name="connection.url">jdbc:mysql://localhost:3306/RecipeTracker</property> -->
+        <property name="connection.url">jdbc:mysql://awseb-e-zjjvjrbmmw-stack-awsebrdsdatabase-mrmdne8boqmu.cqi7sdjtvumo.us-east-2.rds.amazonaws.com:3306/RecipeTracker</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 
         <property name="connection.username">root</property>
-        <property name="connection.password">student</property>
+        <!-- <property name="connection.password">student</property> -->
+        <property name="connection.password">student12345</property>
 
         <property name="hibernate.c3p0.min_size">5</property>
         <property name="hibernate.c3p0.max_size">20</property>
