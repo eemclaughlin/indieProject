@@ -48,8 +48,7 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-Project Specific Files
-# Log Files
+## Project Specific Files
 src/test/resources/database.properties
 src/test/resources/hibernate.cfg.xml
 src/main/resources/hibernate.cfg.xml
