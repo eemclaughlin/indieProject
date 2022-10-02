@@ -15,19 +15,25 @@
 - [x] Finish up Project Part 1 and submit.
 - [x] Plan layout and design of database
 - [x] Create the database and tables
-- [ ] Start setting up general structure for program
-- [ ] Set up initial Hibernate work.
+- [x] Start setting up general structure for program
+- [x] Set up initial Hibernate work.
 
 ### Week 5
-- [ ] Start work on user creation and logging in.
+- [x] Create a genericDao
+- [x] Get test jsp/controller working using genericDao
+- [x] Remove non-genericDao classes
+- [x] Implement recipe class and get that to display on jsp.
+- [x] Add files to gitignore related to database creds.
+- [x] Migrate over to AWS.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 6
-- [ ] Start on user homepage/list of all recipes
+- [ ] Continue added entity classes and test data
+- [ ] Add testDao classes for new entities.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 7
-- [ ] Continue work on main homepage
+- [ ] Continue work with integrating database parts together.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 8

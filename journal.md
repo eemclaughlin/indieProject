@@ -50,8 +50,15 @@
   - Troubleshoot database hibernate issue (2:30)
 - Continue work on Week 5 Exercise (5:00)
 
-### Week 6 (2:00)
+### Week 6 (4:30)
 - Watch videos and set up indie project on AWS (1:00)
 - Update database layout and implement changes. (0:45)
 - Bring in genericDao and start with testing stuff (0:15)
+- genericDao related work (2:30)
+  - Set up a recipedao test using genericdao
+  - Creat a RecipeSearch Controller that uses genericdao
+  - Convert usersearch controller to genericDao.
+  - Removed non-genericdaos
+  - Also, added database files to gitignore.
+- 
 
