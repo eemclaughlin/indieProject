@@ -1,14 +1,14 @@
 package com.ericmclaughlin.controller;
 
-import com.ericmclaughlin.entity.User;
+import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.persistence.GenericDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.annotation.*;
 import java.io.IOException;
 
 /**
@@ -17,9 +17,9 @@ import java.io.IOException;
  * @version 1.0 - 09-29-22
  */
 @WebServlet(
-        urlPatterns = {"/searchUser"}
+        urlPatterns = {"/searchRecipe"}
 )
-public class SearchUser extends HttpServlet {
+public class SearchRecipe extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -28,15 +28,15 @@ public class SearchUser extends HttpServlet {
 
         // Line no longer needed as we switched off of userData and onto UserDao.
         // UserData userData = new UserData();
-        GenericDao userDao = new GenericDao(User.class);
+        GenericDao recipeDao = new GenericDao(Recipe.class);
         if (req.getParameter("submit").equals("search")) {
-            req.setAttribute("users", userDao.getByPropertyLike("lastName", req.getParameter("searchTerm")));
+            req.setAttribute("recipes", recipeDao.getByPropertyLike("recipeName", req.getParameter("searchTermRecipe")));
         } else {
-            req.setAttribute("users", userDao.getAll());
+            req.setAttribute("recipes", recipeDao.getAll());
         }
 
         // Return list of results as attributes to the results page.
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/results.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/resultsRecipe.jsp");
         dispatcher.forward(req, resp);
     }
 }
