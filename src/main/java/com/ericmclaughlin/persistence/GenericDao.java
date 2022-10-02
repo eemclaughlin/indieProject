@@ -38,35 +38,25 @@ public class GenericDao<T> {
         return SessionFactoryProvider.getSessionFactory().openSession();
     }
 
+    // METHODS FOR THE VARIOUS CRUD CALLS.
     /**
-     * Gets an entity by id
-     * @param id Entity id to search by
-     * @return an entity
+     * Insert an entity
+     * CREATE.r.u.d
+     * @param entity  Entity to be inserted
      */
-    public <T>T getById(int id) {
-        // <T>T is the generic all encompassing type.
-        // Session object for using the session provider.
-        Session session = getSession();
-        // entity is generic variable for whatever we get and Cast it (T)
-        T entity = (T)session.get(type, id);
-        session.close();
-        return entity;
-    }
-
-    /**
-     * Delete an entity
-     * @param entity Entity to be deleted
-     */
-    public void delete(T entity) {
+    public int insert(T entity) {
+        int id = 0;
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(entity);
+        id = (int)session.save(entity);
         transaction.commit();
         session.close();
+        return id;
     }
 
     /**
      * Gets all entities.
+     * c.READ.u.d
      * @return All entities
      */
     public List<T> getAll() {
@@ -82,33 +72,24 @@ public class GenericDao<T> {
     }
 
     /**
-     * Update an entity
-     * @param entity  Entity to be updated
+     * Gets an entity by id
+     * c.READ.u.d
+     * @param id Entity id to search by
+     * @return an entity
      */
-    public void saveOrUpdate(T entity) {
+    public <T>T getById(int id) {
+        // <T>T is the generic all encompassing type.
+        // Session object for using the session provider.
         Session session = getSession();
-        Transaction transaction = session.beginTransaction();
-        session.saveOrUpdate(entity);
-        transaction.commit();
+        // entity is generic variable for whatever we get and Cast it (T)
+        T entity = (T)session.get(type, id);
         session.close();
-    }
-
-    /**
-     * Insert an entity
-     * @param entity  Entity to be inserted
-     */
-    public int insert(T entity) {
-        int id = 0;
-        Session session = getSession();
-        Transaction transaction = session.beginTransaction();
-        id = (int)session.save(entity);
-        transaction.commit();
-        session.close();
-        return id;
+        return entity;
     }
 
     /**
      * Gets entities by one of its properties
+     * c.READ.u.d
      * @param propertyName Given property
      * @param value Given value of referenced property
      * @return list
@@ -125,6 +106,7 @@ public class GenericDao<T> {
 
     /**
      * Gets entities by a property
+     * c.READ.u.d
      * @param propertyName Given property name
      * @param value Given value of referenced property
      * @return list
@@ -138,5 +120,31 @@ public class GenericDao<T> {
         query.select(root).where(builder.like(root.get(propertyName), value));
 
         return session.createQuery(query).getResultList();
+    }
+
+    /**
+     * Update an entity
+     * c.r.UPDATE.d
+     * @param entity  Entity to be updated
+     */
+    public void saveOrUpdate(T entity) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        session.saveOrUpdate(entity);
+        transaction.commit();
+        session.close();
+    }
+
+    /**
+     * Delete an entity
+     * c.r.u.DELETE
+     * @param entity Entity to be deleted
+     */
+    public void delete(T entity) {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(entity);
+        transaction.commit();
+        session.close();
     }
 }

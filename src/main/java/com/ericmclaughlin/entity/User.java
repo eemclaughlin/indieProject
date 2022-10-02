@@ -57,6 +57,26 @@ public class User {
         this.password = password;
     }
 
+    /**
+     * Add recipe associated with user.
+     * @param recipe the given recipe
+     */
+    public void addRecipe(Recipe recipe) {
+        // Add set of recipes to recipe.
+        recipes.add(recipe);
+        // On that recipe, set a user.
+        recipe.setUser(this);
+    }
+
+    /**
+     * Remove book.
+     * @param book the book
+     */
+    public void removeBook(Recipe recipe) {
+        recipes.remove(recipe);
+        recipe.setUser(null);;
+    }
+
     // **** GETTERS AND SETTERS AND TOSTRING ****
     /**
      * Gets user id.
