@@ -27,10 +27,18 @@ public class Recipe {
 
     private String notes;
 
+    @Column(name = "page_number")
+    private int pageNumber;
+
     // Connection to the user table to associate a user with a recipe(s)
     @ManyToOne
     @JoinColumn(name = "user_cd", foreignKey = @ForeignKey(name = "recipes_user"))
     private User user;
+
+    // Connection to the user table to associate a user with a recipe(s)
+    @ManyToOne
+    @JoinColumn(name = "cookbook_cd", foreignKey = @ForeignKey(name = "recipes_cookbooks"))
+    private Cookbook cookbooks;
 
     /**
      * No argument constructor
@@ -45,13 +53,17 @@ public class Recipe {
      * @param recipeName  the recipe name
      * @param description the description
      * @param notes       the notes
+     * @param pageNumber  the page number
      * @param user        the user
+     * @param cookbooks   the cookbooks
      */
-    public Recipe(String recipeName, String description, String notes, User user) {
+    public Recipe(String recipeName, String description, String notes, int pageNumber, User user, Cookbook cookbooks) {
         this.recipeName = recipeName;
         this.description = description;
         this.notes = notes;
+        this.pageNumber = pageNumber;
         this.user = user;
+        this.cookbooks = cookbooks;
     }
 
     // **** GETTERS AND SETTERS AND TOSTRING ****
@@ -120,6 +132,22 @@ public class Recipe {
     }
 
     /**
+     * Gets page number.
+     * @return the page number
+     */
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    /**
+     * Sets page number.
+     * @param pageNumber the page number
+     */
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    /**
      * Gets user.
      * @return the user
      */
@@ -135,6 +163,22 @@ public class Recipe {
         this.user = user;
     }
 
+    /**
+     * Gets cookbooks.
+     * @return the cookbooks
+     */
+    public Cookbook getCookbooks() {
+        return cookbooks;
+    }
+
+    /**
+     * Sets cookbooks.
+     * @param cookbooks the cookbooks
+     */
+    public void setCookbooks(Cookbook cookbooks) {
+        this.cookbooks = cookbooks;
+    }
+
     @Override
     public String toString() {
         return "Recipe{" +
@@ -142,7 +186,9 @@ public class Recipe {
                 ", recipeName='" + recipeName + '\'' +
                 ", description='" + description + '\'' +
                 ", notes='" + notes + '\'' +
+                ", pageNumber='" + pageNumber + '\'' +
                 ", user=" + user +
+                ", cookbooks=" + cookbooks +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.ericmclaughlin.persistence;
 
+import com.ericmclaughlin.entity.Cookbook;
 import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
 import com.ericmclaughlin.testutil.Database;
@@ -21,6 +22,7 @@ public class RecipeDaoTest {
      * Instance of the generic dao.
      */
     GenericDao genericDao;
+    GenericDao genericDaoCookbook;
 
     /**
      * Run set up tasks before each test:
@@ -34,6 +36,7 @@ public class RecipeDaoTest {
 
         // Instantiate the GenericDao and pass in what we are working with.
         genericDao = new GenericDao(Recipe.class);
+        genericDaoCookbook = new GenericDao(Cookbook.class);
     }
 
     /**
@@ -44,20 +47,26 @@ public class RecipeDaoTest {
     void insertSuccess() {
         // Create new author.
         User newUser = new User("Bill", "Nye", "NyeB", "NyeB");
+        // Create new cookbook.
+        //Cookbook newCookbook = new Cookbook("Greatest Cookbook", "Test", "123-123-123", "Test");
+        Cookbook retrievedCookbook = (Cookbook)genericDaoCookbook.getById(1);
 
         // Create a new recipe and insert user reference.
         // Recipe needs to know about the user and user needs to know about the recipe.
         String recipeName = "Rice Pudding";
         String description = "Pudding made with whole milk and rice";
         String notes = "Delicious!";
-        Recipe recipe = new Recipe(recipeName, description, notes, newUser);
+        int pageNumber = 523;
 
-        // !!! Book needs to know about author and author needs to know about user.
+        Recipe recipe = new Recipe(recipeName, description, notes, pageNumber, newUser, retrievedCookbook);
+
+        // !!! Recipe needs to know about user and user needs to know about recipe.
         newUser.addRecipe(recipe);
+        retrievedCookbook.addRecipe(recipe);
 
-        // Do the insert.
-        int id = genericDao.insert(newUser);
-        assertNotEquals(0,id);
+        // Do the insert for user.  (Cookbook is already there)
+        int userId = genericDao.insert(newUser);
+        assertNotEquals(0, userId);
 
         // Get recipe by name and then verify that we got 1 entry back.
         List<Recipe> insertedRecipe = genericDao.getByPropertyEqual("recipeName", "Rice Pudding");

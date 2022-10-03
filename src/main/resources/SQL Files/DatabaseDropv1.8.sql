@@ -1,13 +1,7 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-10-01 22:32:15.241
+-- Last modification date: 2022-10-02 23:46:20.861
 
 -- foreign keys
-ALTER TABLE cookbook_recipe
-    DROP FOREIGN KEY cookbook_recipe_cookbooks;
-
-ALTER TABLE cookbook_recipe
-    DROP FOREIGN KEY cookbook_recipe_recipes;
-
 ALTER TABLE recipe_tags
     DROP FOREIGN KEY recipe_tags_recipes;
 
@@ -15,11 +9,18 @@ ALTER TABLE recipe_tags
     DROP FOREIGN KEY recipe_tags_tags;
 
 ALTER TABLE recipes
+    DROP FOREIGN KEY recipes_cookbooks;
+
+ALTER TABLE recipes
     DROP FOREIGN KEY recipes_user;
 
--- tables
-DROP TABLE cookbook_recipe;
+ALTER TABLE user_cookbooks
+    DROP FOREIGN KEY user_cookbooks_cookbooks;
 
+ALTER TABLE user_cookbooks
+    DROP FOREIGN KEY user_cookbooks_user;
+
+-- tables
 DROP TABLE cookbooks;
 
 DROP TABLE recipe_tags;
@@ -29,6 +30,8 @@ DROP TABLE recipes;
 DROP TABLE tags;
 
 DROP TABLE user;
+
+DROP TABLE user_cookbooks;
 
 -- End of file.
 

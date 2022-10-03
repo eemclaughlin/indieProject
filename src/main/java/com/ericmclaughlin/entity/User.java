@@ -69,8 +69,8 @@ public class User {
     }
 
     /**
-     * Remove book.
-     * @param book the book
+     * Remove recipe.
+     * @param recipe the recipe
      */
     public void removeBook(Recipe recipe) {
         recipes.remove(recipe);
