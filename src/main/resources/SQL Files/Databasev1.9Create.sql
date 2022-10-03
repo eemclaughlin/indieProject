@@ -1,6 +1,3 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-10-02 23:46:20.861
-
 -- tables
 -- Table: cookbooks
 CREATE TABLE cookbooks (
@@ -14,9 +11,10 @@ CREATE TABLE cookbooks (
 
 -- Table: recipe_tags
 CREATE TABLE recipe_tags (
+    id int NOT NULL AUTO_INCREMENT,
     tag_cd int NOT NULL,
     recipe_cd int NOT NULL,
-    CONSTRAINT recipe_tags_pk PRIMARY KEY (tag_cd,recipe_cd)
+    CONSTRAINT recipe_tags_pk PRIMARY KEY (id)
 ) COMMENT 'Junction table to join tags to recipes';
 
 -- Table: recipes
@@ -51,9 +49,10 @@ CREATE TABLE user (
 
 -- Table: user_cookbooks
 CREATE TABLE user_cookbooks (
+    id int NOT NULL AUTO_INCREMENT,
     user_cd int NOT NULL,
     cookbook_cd int NOT NULL,
-    CONSTRAINT user_cookbooks_pk PRIMARY KEY (user_cd,cookbook_cd)
+    CONSTRAINT user_cookbooks_pk PRIMARY KEY (id)
 ) COMMENT 'Junction table between users and cookbooks';
 
 -- foreign keys

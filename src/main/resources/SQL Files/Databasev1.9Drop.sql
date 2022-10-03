@@ -1,6 +1,3 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-10-02 23:46:20.861
-
 -- foreign keys
 ALTER TABLE recipe_tags
     DROP FOREIGN KEY recipe_tags_recipes;

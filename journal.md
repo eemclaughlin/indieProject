@@ -50,7 +50,7 @@
   - Troubleshoot database hibernate issue (2:30)
 - Continue work on Week 5 Exercise (5:00)
 
-### Week 6 (4:30)
+### Week 6 (11:00)
 - Watch videos and set up indie project on AWS (1:00)
 - Update database layout and implement changes. (0:45)
 - Bring in genericDao and start with testing stuff (0:15)
@@ -60,5 +60,9 @@
   - Convert usersearch controller to genericDao.
   - Removed non-genericdaos
   - Also, added database files to gitignore.
-- 
+- Fixed issue with database layout and created a cookbook class (2:00)
+  - Got test working and test jsp working again.
+- Another change to database to accomodate Many to Many (0:30)
+- Update database on AWS and send latest War up (0:15)
+- Created a Tag class and setup a many to many relationship (3:15)
 

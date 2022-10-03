@@ -3,7 +3,7 @@
 ### Current Database ERD
 v1.8
 
-![Database ERD](LayoutPictures/DatabaseERDv1.8.png)
+![Database ERD](LayoutPictures/DatabaseERDv1.9.png)
 
 ### Notes
 * Database Name: RecipeTracker
@@ -14,6 +14,7 @@ v1.8
 * Cookbooks may also change since it will use an API and I don't know how that works yet.
 
 #### Previous Database ERDs
+v1.8 [Database ERD](LayoutPictures/DatabaseERDv1.8.png)
 v1.7 (note picture says 1.6 but it is 1.7) [Database ERD](LayoutPictures/DatabaseERDv1.7.png)
 
 v1.5 [Database ERD](LayoutPictures/DatabaseERDv1.5.png)

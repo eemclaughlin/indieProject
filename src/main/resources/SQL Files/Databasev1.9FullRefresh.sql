@@ -1,6 +1,3 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-10-02 23:46:20.861
-
 -- foreign keys
 ALTER TABLE recipe_tags
     DROP FOREIGN KEY recipe_tags_recipes;
@@ -46,9 +43,10 @@ CREATE TABLE cookbooks (
 
 -- Table: recipe_tags
 CREATE TABLE recipe_tags (
+    id int NOT NULL AUTO_INCREMENT,
     tag_cd int NOT NULL,
     recipe_cd int NOT NULL,
-    CONSTRAINT recipe_tags_pk PRIMARY KEY (tag_cd,recipe_cd)
+    CONSTRAINT recipe_tags_pk PRIMARY KEY (id)
 ) COMMENT 'Junction table to join tags to recipes';
 
 -- Table: recipes
@@ -83,9 +81,10 @@ CREATE TABLE user (
 
 -- Table: user_cookbooks
 CREATE TABLE user_cookbooks (
+    id int NOT NULL AUTO_INCREMENT,
     user_cd int NOT NULL,
     cookbook_cd int NOT NULL,
-    CONSTRAINT user_cookbooks_pk PRIMARY KEY (user_cd,cookbook_cd)
+    CONSTRAINT user_cookbooks_pk PRIMARY KEY (id)
 ) COMMENT 'Junction table between users and cookbooks';
 
 -- foreign keys
@@ -117,12 +116,15 @@ ALTER TABLE user_cookbooks ADD CONSTRAINT user_cookbooks_user FOREIGN KEY user_c
 INSERT INTO RecipeTracker.user (user_id, first_name, last_name, login_id, password) VALUES (1, 'Johnny', 'Cash', 'CashJ', 'CashJ');
 INSERT INTO RecipeTracker.user (user_id, first_name, last_name, login_id, password) VALUES (2, 'Peggy', 'Curbs', 'CurbsP', 'CurbsP');
 INSERT INTO RecipeTracker.user (user_id, first_name, last_name, login_id, password) VALUES (3, 'Bob', 'Hamelin', 'HamelB', 'HamelB');
+INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (1, 'Rice', 'Rice');
+INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (2, 'Whole Milk', 'Whole Milk');
+INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (3, 'Carrots', 'Carrots');
+INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (4, 'Beef', 'Beef');
 INSERT INTO RecipeTracker.cookbooks (cookbook_id, title) VALUE (1, 'The Best Cookbook');
 INSERT INTO RecipeTracker.cookbooks (cookbook_id, title) VALUE (2, 'The Next Best Cookbook');
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (1, 'Carrot Cake', null, null, 300, 1, 1);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (2, 'Meatloaf', null, null, 25, 2, 2);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (3, 'Tacos', null, null, 36, 3, 2);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (4, 'Creme Brulee', null, null, 281, 1, 1);
-
 -- End of file.
 

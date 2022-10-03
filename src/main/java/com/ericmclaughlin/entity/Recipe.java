@@ -2,6 +2,9 @@ package com.ericmclaughlin.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * This represents a single recipe in the recipe tracker application.
@@ -40,6 +43,12 @@ public class Recipe {
     @JoinColumn(name = "cookbook_cd", foreignKey = @ForeignKey(name = "recipes_cookbooks"))
     private Cookbook cookbooks;
 
+    // Many to Many Connection to tags via a junction table recipe_tags.
+    // recipe refers to recipe on the RecipeTag class.
+    @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER)
+    private Set<RecipeTag> tags = new HashSet<RecipeTag>();
+
+
     /**
      * No argument constructor
      * Instantiates a new Recipe.
@@ -48,7 +57,7 @@ public class Recipe {
     }
 
     /**
-     * Constructor with the relevant arguments
+     * Constructor with the relevant arguments (no tags)
      * Instantiates a new Recipe.
      * @param recipeName  the recipe name
      * @param description the description
@@ -64,6 +73,29 @@ public class Recipe {
         this.pageNumber = pageNumber;
         this.user = user;
         this.cookbooks = cookbooks;
+    }
+
+    // Pass in a tag, instantiate a new RecipeTag, pass in current recipe and new tag.
+    // Add recipeTag to set of tags and then get tags and add to recipes.
+    public void addTag(Tag tag) {
+        RecipeTag recipeTag = new RecipeTag(this, tag);
+        tags.add(recipeTag);
+        tag.getRecipes().add(recipeTag);
+    }
+    // Iterate through list of tags and remove appropriate one.
+    public void removeTag(Tag tag) {
+        for(Iterator<RecipeTag> iterator = tags.iterator(); iterator.hasNext(); )
+        {
+            RecipeTag recipeTag = iterator.next();
+
+            if(recipeTag.getTag().equals(this) && recipeTag.getRecipe().equals(tag))
+            {
+                iterator.remove();
+                recipeTag.getTag().getRecipes().remove(recipeTag);
+                recipeTag.setTag(null);
+                recipeTag.setRecipe(null);
+            }
+        }
     }
 
     // **** GETTERS AND SETTERS AND TOSTRING ****
@@ -177,6 +209,22 @@ public class Recipe {
      */
     public void setCookbooks(Cookbook cookbooks) {
         this.cookbooks = cookbooks;
+    }
+
+    /**
+     * Gets tags.
+     * @return the tags
+     */
+    public Set<RecipeTag> getTags() {
+        return tags;
+    }
+
+    /**
+     * Sets tags.
+     * @param tags the tags
+     */
+    public void setTags(Set<RecipeTag> tags) {
+        this.tags = tags;
     }
 
     @Override

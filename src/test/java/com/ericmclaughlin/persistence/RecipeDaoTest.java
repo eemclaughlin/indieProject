@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Tests for accessing the database via the genericDao.
+ * Tests for accessing the database via the genericDaoTags.
  * @author eemclaughlin
- * @version 1.0 = 10-02-22
+ * @version 1.2 = 10-02-22
  */
 public class RecipeDaoTest {
     /**
