@@ -50,7 +50,7 @@
   - Troubleshoot database hibernate issue (2:30)
 - Continue work on Week 5 Exercise (5:00)
 
-### Week 6 (11:00)
+### Week 6 (13:15)
 - Watch videos and set up indie project on AWS (1:00)
 - Update database layout and implement changes. (0:45)
 - Bring in genericDao and start with testing stuff (0:15)
@@ -65,6 +65,8 @@
 - Another change to database to accomodate Many to Many (0:30)
 - Update database on AWS and send latest War up (0:15)
 - Created a Tag class and setup a many to many relationship (3:15)
+- Meet with peer for peer review 1 (0:30)
+- Draft up a peer review and review peer's code and files (1:45)
 
 ### Week 7 (4:00)
 - Week 7 regular videos and cognito exercise (1:45)
