@@ -53,5 +53,5 @@ src/test/resources/database.properties
 src/test/resources/hibernate.cfg.xml
 src/main/resources/hibernate.cfg.xml
 src/main/resources/cognito.properties
-src/main/.ebextensions
-src/main/.platform
+src/main/.ebextensions/
+src/main/.platform/
