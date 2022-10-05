@@ -66,7 +66,7 @@
 - Update database on AWS and send latest War up (0:15)
 - Created a Tag class and setup a many to many relationship (3:15)
 
-### Week 7 ()
+### Week 7 (4:00)
 - Week 7 regular videos and cognito exercise (1:45)
-- 
+- Work on implementing HTTPS and Cognito into indieProject (2:15)
 
