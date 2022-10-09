@@ -1,19 +1,21 @@
 # Cookbook Recipe Tracker Individual Project
 
+![Cookbook with a lot of tabs](DesignDocuments/LayoutPictures/CookbookChaos.jpg)
+
 ## Problem Statement
 We have a large collection of cookbooks and are looking for a way to utilize them better.  
 We often run into situations where we want to cook something and remember seeing the 
 perfect recipe but cannot remember which book it is in.  To mitigate this, we have several 
-books that are full of tabs marking the various recipes but it is still difficult to track 
+books that are full of tabs marking the various recipes, but it is still difficult to track 
 what recipe is at each tab.  we have tried to create keys for the tabs but the whole thing 
 turns into a mess before long.
 
-This app is an effor to resolve these issues.  Users will be able to create an account and 
+This app is an effort to resolve these issues.  Users will be able to create an account and 
 then enter info about important recipes into it.  Most notably, users would enter recipe 
 name, a short description, some keywords/tags, the cookbook where the recipe is located, 
 and, most importantly, the page number.
 
-One recipes are entered, users can browse through them on their homepage and see 
+Once recipes are entered, users can browse through them on their homepage and see 
 info/notes about each recipe.  Users will also be able to search using recipe name or 
 keywords.  When a recipe is found, it will then point the user to the appropriate cookbook 
 and page number.
