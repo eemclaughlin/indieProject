@@ -79,4 +79,9 @@
 - Part 3 video and activity - test api (0:45)
 - Search and research and basic testing for indie proj API (3:00)
 - Document findings and create new mds and links for API stuff (0:15)
+- Setup and test which of 3 APIs is best (1:00)
+- Settled on GoogleBooksv1 API and then spend much time testing and troubleshooting get request (4:00)
+  - Worked but getting out only the results I want is a work in progress.
+  - Also query required a bit of url encoding which took some time.
+
 
