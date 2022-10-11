@@ -75,7 +75,7 @@
 - Got cognito working on AWS and tested ability to swap between AWS and local (1:00)
 - Made some changes in prep for checkpoint 2 and implemented some peer suggestions (0:30)
 
-### Week 8 (6:30)
+### Week 8 (11:45)
 - Initial week 8 videos and reading through part 2 (1:45)
 - Part 3 video and activity - test api (0:45)
 - Search and research and basic testing for indie proj API (3:00)
