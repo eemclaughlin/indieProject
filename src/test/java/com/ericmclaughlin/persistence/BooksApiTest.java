@@ -1,32 +1,46 @@
 package com.ericmclaughlin.persistence;
 
-import com.ericmclaughlin.api.ApiIsdnCookbook;
 import com.ericmclaughlin.api.ItemsItem;
 import com.ericmclaughlin.api.VolumeInfo;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
-import javax.ws.rs.client.*;
-import javax.ws.rs.core.MediaType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Test to check that Google Books API is working as expected.
+ * @author eemclaughlin
+ * @version 1.0 10-10-22
+ */
 public class BooksApiTest {
+
+    /**
+     * Gets response data for a book and then checks that it is correct.
+     * @throws Exception the exception
+     */
     @Test
-    public void getBooksSuccess() throws Exception {
-        Client client = ClientBuilder.newClient();
-        // WebTarget target = client.target("https://www.googleapis.com/books/v1/volumes?fields=items/volumeInfo&q=isbn:9780672337956");
-        // WebTarget target = client.target("https://openlibrary.org/isbn/9781260440218.json");
-        String url = "https://www.googleapis.com/books/v1/volumes?fields=items/volumeInfo%28title%2Cauthors,publisher,publishedDate,description,industryIdentifiers,pageCount,categories,maturityRating,imageLinks,language%29&q=isbn:9780672337956";
+    public void getBookDataSuccess() throws Exception {
 
-        WebTarget target = client.target(url);
-        String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+        // Instantiate a new dao to get a book data response.
+        BookApiDao dao = new BookApiDao();
 
-        ObjectMapper mapper = new ObjectMapper();
+        // Expected Response Values.
+        String expectedPublisher = "Sams Publishing";
+        String expectedTitle = "Java in 21 Days, Sams Teach Yourself (Covering Java 9)";
+        String expectedAuthors = "Rogers Cadenhead";
+        int expectedPageCount = 720;
 
-        ApiIsdnCookbook info = mapper.readValue(response, ApiIsdnCookbook.class);
-        // ItemsItem info = mapper.readValue(response, ItemsItem.class);
+        // On dao, getInfo set up to return full response. Then getItems get me VolumeInfo data.
+        // VolumeInfo has my data in a collection so I need to loop through that.
+        // Item type is ItemsItem and where it is coming from is second half of 'for'....
+        for (ItemsItem item : dao.getResponseInfo().getItems()) {
+            assertEquals(expectedPublisher, item.getVolumeInfo().getPublisher());
+            assertEquals(expectedTitle, item.getVolumeInfo().getTitle());
 
-        String expectedValue = "Sam's Publishing";
-        //assertEquals(expectedValue, info.getItems());
-        // assertEquals(expectedValue, response);
+            // For each author in array at second half of "for"...
+            for(String author : item.getVolumeInfo().getAuthors()) {
+                assertEquals(expectedAuthors, author);
+            }
+
+            assertEquals(expectedPageCount, item.getVolumeInfo().getPageCount());
         }
+    }
 }
