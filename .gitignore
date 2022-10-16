@@ -55,3 +55,4 @@ src/main/resources/hibernate.cfg.xml
 src/main/resources/cognito.properties
 src/main/.ebextensions/
 src/main/.platform/
+logs
