@@ -25,35 +25,45 @@
 - [x] Implement recipe class and get that to display on jsp.
 - [x] Add files to gitignore related to database creds.
 - [x] Migrate over to AWS.
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [x] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 6
-- [ ] Continue added entity classes and test data
-- [ ] Add testDao classes for new entities.
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [x] Continue added entity classes and test data
+- [x] Integrate Cognito into project locally
+- [x] Get cognito working on the AWS.
+- [x] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 7
-- [ ] Continue work with integrating database parts together.
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [x] Determine API and test retrieving data.
+- [x] Work on filtering return data to only what is needed.
+- [x] Integrate API classes into project.
+- [x] Set up a test for checking API is working.
+- [x] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 8
-- [ ] Start work on adding recipes
+- [x] Finalize database design and implement locally
+- [ ] Implement final database in AWS.
+- [ ] Build out login page to login, verify, and dump to homepage.
+- [ ] Build out homepage to display list of recipes on arrival
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 9
+- [ ] Work on add recipe page.
 - [ ] API implementation work and creat the Add Cookbook/ View cookbooks page
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 10
 - [ ] Continue work with API and cookbooks
+- [ ] Work on editing recipes page.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 11
 - [ ] Work related to editing entries and deleting entries
+- [ ] Integrate error handling.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 12
-- [ ] Catch up week
+- [ ] Work on proper layout and design of pages.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 13

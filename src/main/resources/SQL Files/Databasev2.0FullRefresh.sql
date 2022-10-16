@@ -1,11 +1,50 @@
+-- foreign keys
+ALTER TABLE recipe_tags
+    DROP FOREIGN KEY recipe_tags_recipes;
+
+ALTER TABLE recipe_tags
+    DROP FOREIGN KEY recipe_tags_tags;
+
+ALTER TABLE recipes
+    DROP FOREIGN KEY recipes_cookbooks;
+
+ALTER TABLE recipes
+    DROP FOREIGN KEY recipes_user;
+
+ALTER TABLE user_cookbooks
+    DROP FOREIGN KEY user_cookbooks_cookbooks;
+
+ALTER TABLE user_cookbooks
+    DROP FOREIGN KEY user_cookbooks_user;
+
+-- tables
+DROP TABLE cookbooks;
+
+DROP TABLE recipe_tags;
+
+DROP TABLE recipes;
+
+DROP TABLE tags;
+
+DROP TABLE user;
+
+DROP TABLE user_cookbooks;
+
 -- tables
 -- Table: cookbooks
 CREATE TABLE cookbooks (
     cookbook_id int NOT NULL AUTO_INCREMENT,
     title varchar(100) NOT NULL,
+    author varchar(50) NULL,
+    publisher varchar(100) NULL,
+    published_date date NULL,
     description text NULL,
-    isdn varchar(25) NULL,
-    notes text NULL,
+    isbn_ten varchar(20) NULL,
+    isbn_thirteen varchar(20) NULL,
+    page_count int NULL,
+    language varchar(5) NULL,
+    small_image_link varchar(200) NULL,
+    med_image_link varchar(200) NULL,
     CONSTRAINT cookbooks_pk PRIMARY KEY (cookbook_id)
 ) COMMENT 'Information about each cookbook.  Soon to be an API';
 
@@ -42,8 +81,8 @@ CREATE TABLE user (
     user_id int NOT NULL AUTO_INCREMENT,
     first_name varchar(20) NOT NULL,
     last_name varchar(30) NOT NULL,
-    login_id varchar(20) NOT NULL,
-    password varchar(25) NOT NULL,
+    email varchar(50) NULL,
+    login_name varchar(20) NOT NULL,
     CONSTRAINT user_pk PRIMARY KEY (user_id)
 ) COMMENT 'Information about each user.';
 
@@ -79,6 +118,25 @@ ALTER TABLE user_cookbooks ADD CONSTRAINT user_cookbooks_cookbooks FOREIGN KEY u
 -- Reference: user_cookbooks_user (table: user_cookbooks)
 ALTER TABLE user_cookbooks ADD CONSTRAINT user_cookbooks_user FOREIGN KEY user_cookbooks_user (user_cd)
     REFERENCES user (user_id);
+
+-- DATA REFRESH STUFF
+INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (1, 'Johnny', 'Cash', 'jcash@yahoo.com', 'CashJ');
+INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (2, 'Peggy', 'Curbs', 'pcurbs@gmail.com', 'CurbsP');
+INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (3, 'Bob', 'Hamelin', 'bobh@outlook.com', 'HamelB');
+INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (1, 'Rice', 'Rice');
+INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (2, 'Whole Milk', 'Whole Milk');
+INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (3, 'Carrots', 'Carrots');
+INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (4, 'Beef', 'Beef');
+INSERT INTO RecipeTracker.cookbooks (cookbook_id, title) VALUE (1, 'The Best Cookbook');
+INSERT INTO RecipeTracker.cookbooks (cookbook_id, title) VALUE (2, 'The Next Best Cookbook');
+INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (1, 'Carrot Cake', null, null, 300, 1, 1);
+INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (2, 'Meatloaf', null, null, 25, 2, 2);
+INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (3, 'Tacos', null, null, 36, 3, 2);
+INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (4, 'Creme Brulee', null, null, 281, 1, 1);
+
+
+
+
 
 -- End of file.
 

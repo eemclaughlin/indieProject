@@ -75,7 +75,7 @@
 - Got cognito working on AWS and tested ability to swap between AWS and local (1:00)
 - Made some changes in prep for checkpoint 2 and implemented some peer suggestions (0:30)
 
-### Week 8 (11:45)
+### Week 8 (14:30)
 - Initial week 8 videos and reading through part 2 (1:45)
 - Part 3 video and activity - test api (0:45)
 - Search and research and basic testing for indie proj API (3:00)
@@ -85,6 +85,13 @@
   - Worked but getting out only the results I want is a work in progress.
   - Also query required a bit of url encoding which took some time.
 - Watched final extra video on APIs and got my api testing working after that (1:30)
+- Watch peer presentation and report on it (0:30)
+- Finalize database and integrate locally and test (1:00)
+- Some planning on login page and what happens next. Review login stuff. (1:00)
+- Update project plan, database documents, and journal (0:15)
+
+### Week 9
+
 
 
 

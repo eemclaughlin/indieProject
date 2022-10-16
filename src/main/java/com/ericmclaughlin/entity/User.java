@@ -26,10 +26,10 @@ public class User {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "login_id")
+    private String email;
+    @Column(name = "login_name")
     private String userName;
 
-    private String password;
     // Connection to the RECIPE table/class.  One user can have several recipes.
     // Mapped by refers to instance variable on the ManyToOne on child class (Recipe in this case).
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
@@ -47,14 +47,15 @@ public class User {
      * Instantiates a new User.
      * @param firstName the first name
      * @param lastName  the last name
+     * @param email  the email
      * @param userName  the user name
-     * @param password  the password
+     *
      */
-    public User(String firstName, String lastName, String userName, String password) {
+    public User(String firstName, String lastName, String email, String userName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.userName = userName;
-        this.password = password;
     }
 
     /**
@@ -127,6 +128,22 @@ public class User {
     }
 
     /**
+     * Gets email.
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets email.
+     * @param email the email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
      * Gets user name.
      * @return the user name
      */
@@ -140,22 +157,6 @@ public class User {
      */
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    /**
-     * Gets password.
-     * @return the password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Sets password.
-     * @param password the password
-     */
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     /**
@@ -180,8 +181,8 @@ public class User {
                 "userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
                 ", recipes=" + recipes +
                 '}';
     }

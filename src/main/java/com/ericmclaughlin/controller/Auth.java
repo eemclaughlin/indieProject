@@ -127,7 +127,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         logger.debug("Id token: " + tokenResponse.getIdToken());
 
         return tokenResponse;
-
     }
 
     /**
@@ -175,6 +174,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         // Verify the token
         DecodedJWT jwt = verifier.verify(tokenResponse.getIdToken());
         String userName = jwt.getClaim("cognito:username").asString();
+        // TODO Add first and last name getClaim info here.
         logger.debug("here's the username: " + userName);
 
         logger.debug("here are all the available claims: " + jwt.getClaims());
