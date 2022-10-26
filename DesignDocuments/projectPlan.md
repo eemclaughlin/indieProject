@@ -43,7 +43,7 @@
 ### Week 8
 - [x] Finalize database design and implement locally
 - [ ] Implement final database in AWS.
-- [ ] Build out login page to login, verify, and dump to homepage.
+- [x] Build out login page to login, verify, and dump to homepage.
 - [ ] Build out homepage to display list of recipes on arrival
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 

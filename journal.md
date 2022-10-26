@@ -91,12 +91,14 @@
 - Update project plan, database documents, and journal (0:15)
 - Watch a peer presentation and leave feedback (0:45)
 
-### Week 9 (4:45)
+### Week 9 (8:45)
 - Initial videos and review of readings (0:15)
 - New package setup and testing (0:30)
 - Restful API video and exercise (2:00)
 - Work on getting cognito user data and then verify user is in the database (1:30)
 - Start working on getting homepage to come up appropriately after login (1:30)
+- Get session established after login and login info pulled up (1:30)
+- Get session on 'homepage' and use session data to get user id and user id to filter database results (1:30)
 
 
 

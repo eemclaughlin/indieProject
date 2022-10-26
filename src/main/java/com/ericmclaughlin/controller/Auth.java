@@ -24,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -82,6 +83,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String authCode = req.getParameter("code");
+        HttpSession session = req.getSession();
         // String userName = null;
         Map<String, String> userInfo;
 
@@ -95,6 +97,13 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 userInfo = validate(tokenResponse);
 
                 insertUserIntoDatabase(userInfo);
+
+                // Load up session with login info.
+                System.out.println(userInfo.get("userName"));
+                session.setAttribute("userName", userInfo.get("userName"));
+                session.setAttribute("firstName", userInfo.get("firstName"));
+                session.setAttribute("lastName", userInfo.get("lastName"));
+                session.setAttribute("email", userInfo.get("email"));
 
                 // req.setAttribute("userName", userName);
                 req.setAttribute("userName", userInfo.get("userName"));
