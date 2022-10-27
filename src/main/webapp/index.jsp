@@ -33,8 +33,10 @@
                 </tbody>
             </table>
         </div>
+        <%
+            response.sendRedirect(request.getContextPath() + "/userHomepage");
+        %>
 
-         <jsp:forward page = "indexTwo.jsp" />
 
     </c:otherwise>
 </c:choose>

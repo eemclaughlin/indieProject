@@ -91,7 +91,7 @@
 - Update project plan, database documents, and journal (0:15)
 - Watch a peer presentation and leave feedback (0:45)
 
-### Week 9 (8:45)
+### Week 9 (10:45)
 - Initial videos and review of readings (0:15)
 - New package setup and testing (0:30)
 - Restful API video and exercise (2:00)
@@ -99,6 +99,7 @@
 - Start working on getting homepage to come up appropriately after login (1:30)
 - Get session established after login and login info pulled up (1:30)
 - Get session on 'homepage' and use session data to get user id and user id to filter database results (1:30)
+- Work more on homepage and get it to pull data for specific user on arrival (2:00)
 
 
 
