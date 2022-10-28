@@ -1,6 +1,5 @@
 package com.ericmclaughlin.controller;
 
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -44,7 +43,9 @@ import java.security.spec.RSAPublicKeySpec;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
+/**
+ * The type Auth.
+ */
 @WebServlet(
         urlPatterns = {"/auth"}
 )
@@ -52,7 +53,6 @@ import java.util.stream.Collectors;
 /**
  * Inspired by: https://stackoverflow.com/questions/52144721/how-to-get-access-token-using-client-credentials-using-java-code
  */
-
 public class Auth extends HttpServlet implements PropertiesLoader {
     Properties properties;
     String CLIENT_ID;
@@ -87,25 +87,24 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         // String userName = null;
         Map<String, String> userInfo;
 
+        // If authcode is null then error, otherwise
+        // Get relevant login data and add to the session.
         if (authCode == null) {
             //TODO forward to an error page or back to the login
         } else {
             HttpRequest authRequest = buildAuthRequest(authCode);
             try {
                 TokenResponse tokenResponse = getToken(authRequest);
-                // userName = validate(tokenResponse);
                 userInfo = validate(tokenResponse);
 
+                // Call on method to add user to database.
                 insertUserIntoDatabase(userInfo);
 
                 // Load up session with login info.
-                System.out.println(userInfo.get("userName"));
                 session.setAttribute("userName", userInfo.get("userName"));
                 session.setAttribute("firstName", userInfo.get("firstName"));
                 session.setAttribute("lastName", userInfo.get("lastName"));
                 session.setAttribute("email", userInfo.get("email"));
-
-                // req.setAttribute("userName", userName);
                 req.setAttribute("userName", userInfo.get("userName"));
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
@@ -115,11 +114,15 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 //TODO forward to an error page
             }
         }
+        // Return to index.jsp and, if all is well, to user homepage.
         RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req, resp);
-
     }
 
+    /**
+     * Check if user is in the database.  If they are not, add them.
+     * If they are already there, check for changed data and update.
+     */
     private void insertUserIntoDatabase(Map<String, String> userInfo) {
         GenericDao dao = new GenericDao(User.class);
         List<User> findUser = dao.getByPropertyEqual("userName", userInfo.get("userName"));
@@ -205,15 +208,14 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         String firstName = jwt.getClaim("given_name").asString();
         String lastName = jwt.getClaim("family_name").asString();
         String email = jwt.getClaim("email").asString();
-        // TODO Add first and last name getClaim info here.
-        logger.debug("here's the username: " + userName);
+
+        // Output the retrieved items
+        logger.debug("Here's the username: " + userName);
         logger.debug("here's the concat name: " + firstName + " " + lastName);
         logger.debug("here's the email: " + email);
-
         logger.debug("here are all the available claims: " + jwt.getClaims());
 
-        // TODO decide what you want to do with the info!
-        // Array to hold user info.
+        // Array to hold user info and then user info is added to the array.
         Map<String, String> userInfo = new HashMap<>();
         userInfo.put("userName", userName);
         userInfo.put("firstName", firstName);
@@ -221,12 +223,9 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         userInfo.put("email", email);
 
         return userInfo;
-        // for now, I'm just returning username for display back to the browser
-        //return userName;
     }
 
     /** Create the auth url and use it to build the request.
-     *
      * @param authCode auth code received from Cognito as part of the login process
      * @return the constructed oauth request
      */
@@ -298,7 +297,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         } catch (Exception e) {
             logger.error("Error loading properties" + e.getMessage(), e);
         }
-
     }
 }
 

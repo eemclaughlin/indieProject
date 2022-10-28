@@ -30,6 +30,12 @@
                 <td>${recipe.user.firstName} ${recipe.user.lastName}<br/></td>
             </tr>
         </c:forEach>
+
+        <div>
+            <p>Links</p>
+            <a href="indexTwo.jsp">Search Page</a>
+            <a href="logout">LogOut</a>
+        </div>
         </tbody>
     </table>
 </div>
