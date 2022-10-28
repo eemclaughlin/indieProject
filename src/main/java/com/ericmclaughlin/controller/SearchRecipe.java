@@ -22,9 +22,7 @@ import java.util.List;
  * @author eemclaughlin
  * @version 1.0 - 09-29-22
  */
-@WebServlet(
-        urlPatterns = {"/searchRecipe"}
-)
+@WebServlet(urlPatterns = {"/searchRecipe"})
 public class SearchRecipe extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,30 +35,32 @@ public class SearchRecipe extends HttpServlet {
         GenericDao recipeDao = new GenericDao(Recipe.class);
         GenericDao userDao = new GenericDao(User.class);
 
-        // Establish the session and retrieve user name.
+        // Establish the session and retrieve username.
         HttpSession session = req.getSession();
         String storedUsername = (String)session.getAttribute("userName");
+
+        //TODO Remove sys out print
         System.out.println(storedUsername);
 
+        // TODO Delete all this code. Saved to session on Auth page instead.
         // Get Id of user by username
-        List<User> userIds = new ArrayList<User>();
-        userIds= userDao.getByPropertyEqual("userName", storedUsername);
+        //List<User> userIds = new ArrayList<User>();
+        //userIds= userDao.getByPropertyEqual("userName", storedUsername);
         // TODO Remove sys out print
-        for(User userId:userIds) System.out.println(userId.getUserId());
+        //for(User userId:userIds) System.out.println(userId.getUserId());
+        //int finalUserId = (int)userIds.get(0).getUserId();
 
-        int finalUserId = (int)userIds.get(0).getUserId();
+        // Call on session for the saved user id for use to filter by user.
+        int finalUserId = (int)session.getAttribute("userId");
         // TODO Remove sys out print
-        System.out.println(finalUserId);
-
-
+        System.out.println("This is on the search recipe page " + finalUserId);
 
         if (req.getParameter("submit").equals("search")) {
             req.setAttribute("recipes", recipeDao.getByPropertyLike("recipeName", req.getParameter("searchTermRecipe")));
         } else {
-            // TODO value needs to be changed to finalUserId.
+            // TODO value needs to be changed to say finalUserId.
             //req.setAttribute("recipes", recipeDao.getAll());
             req.setAttribute("recipes", recipeDao.getByPropertyEqual("user", 1));
-
         }
 
         // Return list of results as attributes to the results page.

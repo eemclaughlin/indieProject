@@ -20,9 +20,7 @@ import java.util.List;
  * @author eemclaughlin
  * @version 1.0 - 09-29-22
  */
-@WebServlet(
-        urlPatterns = {"/userHomepage"}
-)
+@WebServlet(urlPatterns = {"/userHomepage"})
 public class ListRecipes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

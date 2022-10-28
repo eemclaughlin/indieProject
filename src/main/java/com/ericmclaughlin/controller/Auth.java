@@ -87,8 +87,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         // String userName = null;
         Map<String, String> userInfo;
 
-        // If authcode is null then error, otherwise
-        // Get relevant login data and add to the session.
+        // If authcode is null then error,
+        // Else get relevant login data and add to the session.
         if (authCode == null) {
             //TODO forward to an error page or back to the login
         } else {
@@ -105,7 +105,29 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 session.setAttribute("firstName", userInfo.get("firstName"));
                 session.setAttribute("lastName", userInfo.get("lastName"));
                 session.setAttribute("email", userInfo.get("email"));
+
+                // TODO See if this is needed.
                 req.setAttribute("userName", userInfo.get("userName"));
+
+                // TODO Move this to its own method for getting the users id.
+                // Call on user dao
+                GenericDao userDao = new GenericDao(User.class);
+                // Get user name and store it for easy use.
+                String storedUsername = userInfo.get("userName");
+                // Create a list to store the results from database.
+                List<User> userIds = new ArrayList<User>();
+                // Get users with the given username.
+                userIds= userDao.getByPropertyEqual("userName", storedUsername);
+                // TODO Remove sys out print
+                for(User userId:userIds) System.out.println("This is from Auth Page " + userId.getUserId());
+                // Get the id from the first entry in the list.
+                int finalUserId = (int)userIds.get(0).getUserId();
+                // TODO Remove sys out print
+                System.out.println("This is from the Auth page " + finalUserId);
+                // Add to session for use on other pages.
+                session.setAttribute("userId", finalUserId);
+
+
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
                 //TODO forward to an error page
@@ -124,10 +146,18 @@ public class Auth extends HttpServlet implements PropertiesLoader {
      * If they are already there, check for changed data and update.
      */
     private void insertUserIntoDatabase(Map<String, String> userInfo) {
+
+        // Call on User class via dao.
         GenericDao dao = new GenericDao(User.class);
+
+        // Create a list and populate it from the database using the user provided username.
         List<User> findUser = dao.getByPropertyEqual("userName", userInfo.get("userName"));
         logger.debug("InsertDatabaseMethod: " + userInfo.get("userName"));
+
+        // If the populated list is empty, create a new user and insert it into database,
+        // Otherwise, note that user is already in database.
         if(findUser.isEmpty()) {
+            // Create a new user and insert user into database.
             User newUser = new User(userInfo.get("firstName"), userInfo.get("lastName"), userInfo.get("email"), userInfo.get("userName"));
             dao.insert(newUser);
             logger.debug("New user added to database with username " + userInfo.get("userName"));
@@ -175,7 +205,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         String keyId = tokenHeader.getKid();
         String alg = tokenHeader.getAlg();
 
-        // todo pick proper key from the two - it just so happens that the first one works for my case
+        // TODO pick proper key from the two - it just so happens that the first one works for my case
         // Use Key's N and E
         BigInteger modulus = new BigInteger(1, org.apache.commons.codec.binary.Base64.decodeBase64(jwks.getKeys().get(0).getN()));
         BigInteger exponent = new BigInteger(1, org.apache.commons.codec.binary.Base64.decodeBase64(jwks.getKeys().get(0).getE()));
