@@ -34,6 +34,7 @@
         <div>
             <p>Links</p>
             <a href="indexTwo.jsp">Search Page</a>
+            <a href="addRecipe">Add a New Recipe</a>
             <a href="logout">LogOut</a>
         </div>
         </tbody>
