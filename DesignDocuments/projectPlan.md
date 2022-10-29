@@ -50,16 +50,18 @@
 ### Week 9
 - [x] Create on add recipe jsp.
 - [x] Create on addRecipe.java
-- [ ] Create form/jsp to search through api
+- [ ] Create form/jsp to search for cookbooks via api
 - [ ] Create jsp to display search results of api
 - [ ] Add way to choose cookbook from list to add to database.
 - [ ] Create way to view cookbooks.
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [x] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 10
 - [ ] Continue work with API and cookbooks
 - [ ] Work on editing recipes page.
+- [ ] Add way to edit cookbook data
 - [ ] Add way to remove cookbooks from database.
+- [ ] Implement/finalize suggested changes from Paula.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 11
@@ -71,15 +73,14 @@
 
 ### Week 12
 - [ ] Start working on proper layout and design of jsp pages.
+- [ ] Build up unit-testing to get more coverage
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 13
-- [ ] CSS and HTML layout and design work/refinement
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [ ] Continue to refine layout, CSS and HTML.
 
 ### Week 14
 - [ ] Finilize project
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 15
 - [ ] Finalize project and prep for demonstrations.
