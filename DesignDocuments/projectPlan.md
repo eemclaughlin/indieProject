@@ -42,28 +42,35 @@
 
 ### Week 8
 - [x] Finalize database design and implement locally
-- [ ] Implement final database in AWS.
+- [x] Implement final database in AWS.
 - [x] Build out login page to login, verify, and dump to homepage.
-- [ ] Build out homepage to display list of recipes on arrival
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [x] Build out homepage to display list of recipes on arrival
+- [x] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 9
-- [ ] Work on add recipe page.
-- [ ] API implementation work and creat the Add Cookbook/ View cookbooks page
+- [x] Create on add recipe jsp.
+- [x] Create on addRecipe.java
+- [ ] Create form/jsp to search through api
+- [ ] Create jsp to display search results of api
+- [ ] Add way to choose cookbook from list to add to database.
+- [ ] Create way to view cookbooks.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 10
 - [ ] Continue work with API and cookbooks
 - [ ] Work on editing recipes page.
+- [ ] Add way to remove cookbooks from database.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 11
 - [ ] Work related to editing entries and deleting entries
 - [ ] Integrate error handling.
+- [ ] Begin cleaning up each page and eliminate unnecessary stuff.
+- [ ] Add javadoc and comments on all pages.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 12
-- [ ] Work on proper layout and design of pages.
+- [ ] Start working on proper layout and design of jsp pages.
 - [ ] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 13

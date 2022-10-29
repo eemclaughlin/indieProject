@@ -1,12 +1,8 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: student
+  User: eemclaughlin
   Date: 10/29/22
-  Time: 9:17 AM
-  To change this template use File | Settings | File Templates.
+  Page with form for users to fill out to add a recipe to database.
 --%>
-
-
 <%@include file="taglib.jsp"%>
 <c:set var="title" value="Add a Recipe" />
 <%@include file="head.jsp"%>
