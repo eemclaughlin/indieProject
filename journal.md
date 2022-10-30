@@ -91,7 +91,7 @@
 - Update project plan, database documents, and journal (0:15)
 - Watch a peer presentation and leave feedback (0:45)
 
-### Week 9 (18:00)
+### Week 9 (20:00)
 - Initial videos and review of readings (0:15)
 - New package setup and testing (0:30)
 - Restful API video and exercise (2:00)
@@ -106,6 +106,9 @@
 - Implement Logout jsp and java and test (1:00)
 - Setup a add recipe java class and also implement a get by id into Auth class (1:15)
 - Worked on AddRecipe.JSP and got that working and talking to database. (1:30)
+- Some refinement work and also update Project Plan for next several weeks (0:30)
+- Watch and give feedback on 2 presentations (0:45)
+- Do a mid-term self-evaluation and turn in (little late) (0:45)
 
 
 

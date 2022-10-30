@@ -36,3 +36,7 @@ and to help users find their books easier.
 
 ## Other Stuff
 * [Time Log/Journal](journal.md) for Whole Enterprise Java Class.
+
+## Self-Evaluations
+* [Mid Term Evaluation](DesignDocuments/Self-Evaluations/selfEvaluationMidTerm-22-10-30.md)
+* [Final Evaluation (Pending)]()
