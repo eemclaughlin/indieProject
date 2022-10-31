@@ -22,6 +22,8 @@ public class BooksApiTest {
         // Instantiate a new dao to get a book data response.
         BookApiDao dao = new BookApiDao();
 
+        String submittedIsbn = "9780672337956";
+
         // Expected Response Values.
         String expectedPublisher = "Sams Publishing";
         String expectedTitle = "Java in 21 Days, Sams Teach Yourself (Covering Java 9)";
@@ -31,7 +33,7 @@ public class BooksApiTest {
         // On dao, getInfo set up to return full response. Then getItems get me VolumeInfo data.
         // VolumeInfo has my data in a collection so I need to loop through that.
         // Item type is ItemsItem and where it is coming from is second half of 'for'....
-        for (ItemsItem item : dao.getResponseInfo().getItems()) {
+        for (ItemsItem item : dao.getResponseInfo(submittedIsbn).getItems()) {
             assertEquals(expectedPublisher, item.getVolumeInfo().getPublisher());
             assertEquals(expectedTitle, item.getVolumeInfo().getTitle());
 

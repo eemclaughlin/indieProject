@@ -32,15 +32,27 @@ public class BookApiDao {
      * Gets get response info from Google Books API.
      * @return the info
      */
-    ApiIsdnCookbook getResponseInfo() {
+    public ApiIsdnCookbook getResponseInfo(String submittedIsbn) {
         // Generic client builder being build.
         Client client = ClientBuilder.newClient();
 
         // TODO Read in the URI from a properties file.
+        String urlSearchInfo = "https://www.googleapis.com/books/v1/volumes?fields=items/volumeInfo%28title%2Cauthors%2Cpublisher%2CpublishedDate%2Cdescription%2CindustryIdentifiers%2CpageCount%2Ccategories%2CmaturityRating%2CimageLinks%2Clanguage%29&q=isbn:";
+
+        // TODO REmove these test bits.
+        String urlTestIsbn = "9780672337956";
+        String urlCompleteTest = urlSearchInfo + urlTestIsbn;
+        // TODO Delete Sys out print
+        System.out.println(urlCompleteTest);
+
+        // Put together the url string and the isbn for the final search.
+        String urlComplete = urlSearchInfo + submittedIsbn;
 
         // Pass in the established url.
-        String url = "https://www.googleapis.com/books/v1/volumes?fields=items/volumeInfo%28title%2Cauthors%2Cpublisher%2CpublishedDate%2Cdescription%2CindustryIdentifiers%2CpageCount%2Ccategories%2CmaturityRating%2CimageLinks%2Clanguage%29&q=isbn:9780672337956";
-        WebTarget target = client.target(url);
+        // TODO Remove these manual target lines.
+        //String url = "https://www.googleapis.com/books/v1/volumes?fields=items/volumeInfo%28title%2Cauthors%2Cpublisher%2CpublishedDate%2Cdescription%2CindustryIdentifiers%2CpageCount%2Ccategories%2CmaturityRating%2CimageLinks%2Clanguage%29&q=isbn:9780672337956";
+        //WebTarget target = client.target(url);
+        WebTarget target = client.target(urlComplete);
 
         // Get the response data.  Make call, grab returned json data and put into string.
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);

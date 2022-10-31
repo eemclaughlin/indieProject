@@ -33,9 +33,10 @@
 
         <div>
             <p>Links</p>
-            <a href="indexTwo.jsp">Search Page</a>
-            <a href="addRecipe">Add a New Recipe</a>
-            <a href="logout">LogOut</a>
+            <a href="indexTwo.jsp">Search Page</a><br>
+            <a href="addRecipe">Add a New Recipe</a><br>
+            <a href="addCookbook.jsp">Add a New Cookbook</a><br>
+            <a href="logout">LogOut</a><br>
         </div>
         </tbody>
     </table>

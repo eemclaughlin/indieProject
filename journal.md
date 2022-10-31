@@ -91,7 +91,7 @@
 - Update project plan, database documents, and journal (0:15)
 - Watch a peer presentation and leave feedback (0:45)
 
-### Week 9 (20:00)
+### Week 9 (22:15)
 - Initial videos and review of readings (0:15)
 - New package setup and testing (0:30)
 - Restful API video and exercise (2:00)
@@ -109,6 +109,12 @@
 - Some refinement work and also update Project Plan for next several weeks (0:30)
 - Watch and give feedback on 2 presentations (0:45)
 - Do a mid-term self-evaluation and turn in (little late) (0:45)
+- Team Project Meeting (2:15)
+
+### Week 10
+- Set up a cookbook jsp and cookbook java and get the two talking (1:30)
+- Get cookbook.java to receive data from API and submit to database (1:30)
+- Work on many to many relationship for UserCookbooks (pending)
 
 
 
