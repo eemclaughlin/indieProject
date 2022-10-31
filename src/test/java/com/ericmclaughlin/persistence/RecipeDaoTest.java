@@ -21,8 +21,9 @@ public class RecipeDaoTest {
     /**
      * Instance of the generic dao.
      */
-    GenericDao genericDao;
+    GenericDao genericDaoRecipe;
     GenericDao genericDaoCookbook;
+    GenericDao genericDaoUser;
 
     /**
      * Run set up tasks before each test:
@@ -35,8 +36,9 @@ public class RecipeDaoTest {
         database.runSQL("cleandb.sql");
 
         // Instantiate the GenericDao and pass in what we are working with.
-        genericDao = new GenericDao(Recipe.class);
+        genericDaoRecipe = new GenericDao(Recipe.class);
         genericDaoCookbook = new GenericDao(Cookbook.class);
+        genericDaoUser = new GenericDao(User.class);
     }
 
     /**
@@ -65,11 +67,11 @@ public class RecipeDaoTest {
         retrievedCookbook.addRecipe(recipe);
 
         // Do the insert for user.  (Cookbook is already there)
-        int userId = genericDao.insert(newUser);
+        int userId = genericDaoRecipe.insert(newUser);
         assertNotEquals(0, userId);
 
         // Get recipe by name and then verify that we got 1 entry back.
-        List<Recipe> insertedRecipe = genericDao.getByPropertyEqual("recipeName", "Rice Pudding");
+        List<Recipe> insertedRecipe = genericDaoRecipe.getByPropertyEqual("recipeName", "Rice Pudding");
         assertEquals(1, insertedRecipe.size());
     }
 
@@ -79,7 +81,7 @@ public class RecipeDaoTest {
      */
     @Test
     void getAllSuccess() {
-        List<Recipe> recipes = genericDao.getAll();
+        List<Recipe> recipes = genericDaoRecipe.getAll();
         assertEquals(4, recipes.size());
     }
 
@@ -89,7 +91,8 @@ public class RecipeDaoTest {
      */
     @Test
     void getByIdSuccess() {
-        Recipe retrievedRecipe = (Recipe)genericDao.getById(1);
+        Recipe retrievedRecipe = (Recipe)genericDaoRecipe.getById(1);
+        assertNotNull(retrievedRecipe);
         assertEquals("Carrot Cake", retrievedRecipe.getRecipeName());
         //TODO: Add other assertions for the other fields, if needed.
     }
@@ -101,7 +104,7 @@ public class RecipeDaoTest {
     @Test
     void getByPropertyEqualSuccess() {
         // Call for a recipe by a exact name
-        List<Recipe> recipes = genericDao.getByPropertyEqual("recipeName", "Tacos");
+        List<Recipe> recipes = genericDaoRecipe.getByPropertyEqual("recipeName", "Tacos");
 
         // Verify we get 1 result back and that the ID matches expected ID.
         assertEquals(1, recipes.size());
@@ -115,7 +118,7 @@ public class RecipeDaoTest {
     @Test
     void getByPropertyLikeSuccess() {
         // Call for recipe(s) by partial match.
-        List<Recipe> recipes = genericDao.getByPropertyLike("recipeName", "m");
+        List<Recipe> recipes = genericDaoRecipe.getByPropertyLike("recipeName", "m");
 
         // Verify we get number of results back based on the partial match.
         assertEquals(2, recipes.size());
@@ -131,14 +134,14 @@ public class RecipeDaoTest {
         String recipeName = "Grandma's Meatloaf";
 
         // Get recipe by the ID.
-        Recipe recipeToUpdate = (Recipe)genericDao.getById(2);
+        Recipe recipeToUpdate = (Recipe) genericDaoRecipe.getById(2);
 
         // Set recipe name to the new name and then insert to database.
         recipeToUpdate.setRecipeName(recipeName);
-        genericDao.saveOrUpdate(recipeToUpdate);
+        genericDaoRecipe.saveOrUpdate(recipeToUpdate);
 
         // Call on recipe and then verify the name has been changed.
-        Recipe recipeAfterUpdate = (Recipe)genericDao.getById(2);
+        Recipe recipeAfterUpdate = (Recipe) genericDaoRecipe.getById(2);
         assertEquals(recipeName, recipeAfterUpdate.getRecipeName());
     }
 
@@ -149,13 +152,13 @@ public class RecipeDaoTest {
     @Test
     void deleteSuccess() {
         // Get a recipe from the database.
-        Recipe retrievedRecipe = (Recipe)genericDao.getById(3);
+        Recipe retrievedRecipe = (Recipe) genericDaoRecipe.getById(3);
 
         // Delete recipe from the database
-        genericDao.delete(retrievedRecipe);
+        genericDaoRecipe.delete(retrievedRecipe);
 
         // Try to get same recipe and verify it comes back null.
-        assertNull(genericDao.getById(3));
+        assertNull(genericDaoRecipe.getById(3));
     }
 }
 

@@ -4,6 +4,7 @@ import com.ericmclaughlin.api.ItemsItem;
 import com.ericmclaughlin.entity.Cookbook;
 import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
+import com.ericmclaughlin.entity.UserCookbooks;
 import com.ericmclaughlin.persistence.BookApiDao;
 import com.ericmclaughlin.persistence.GenericDao;
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class AddCookbook extends HttpServlet {
         // Call on the Daos for Recipes and for Cookbooks.
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
         GenericDao userDao = new GenericDao(User.class);
+        GenericDao userCookbookDao = new GenericDao(UserCookbooks.class);
 
         // Get information entered from the form
         String isbn = req.getParameter("isbn");
@@ -104,6 +106,10 @@ public class AddCookbook extends HttpServlet {
 
         Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate, description, isdnTen, isdnThirteen, pageCount, language, smallImageLink, mediumImageLink);
         cookbookDao.insert(cookbook);
+
+        // TODO THis is where I left off.
+        //UserCookbooks userCookbooks = new UserCookbooks(user, cookbook);
+        //userCookbookDao.insert(userCookbooks);
 
         // Redirect back to user homepage.
         String url = "userHomepage";

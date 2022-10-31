@@ -111,10 +111,10 @@
 - Do a mid-term self-evaluation and turn in (little late) (0:45)
 - Team Project Meeting (2:15)
 
-### Week 10
+### Week 10 (6:30)
 - Set up a cookbook jsp and cookbook java and get the two talking (1:30)
 - Get cookbook.java to receive data from API and submit to database (1:30)
-- Work on many to many relationship for UserCookbooks (pending)
+- Work on many to many relationship and UserCookbooks relationship (some issues) (3:30) 
 
 
 

@@ -45,6 +45,9 @@ public class Cookbook {
     @OneToMany(mappedBy = "cookbooks", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Recipe> recipes = new HashSet<>();
 
+    @OneToMany(mappedBy = "cookbookWithUser", fetch = FetchType.EAGER)
+    private Set<UserCookbooks> user = new HashSet<>();
+
     /**
      * No argument constructor
      * Instantiates a new Cookbook.

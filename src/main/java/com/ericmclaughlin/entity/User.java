@@ -4,12 +4,14 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
  * A class to represent a user/user account to associate with recipes.
+ *
  * @author eemclaughlin
- * @version v1.0 - 09-29-22
+ * @version v1.2 - 10-31-22
  */
 @Entity(name = "User")
 @Table(name = "user")
@@ -34,6 +36,11 @@ public class User {
     // Mapped by refers to instance variable on the ManyToOne on child class (Recipe in this case).
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Recipe> recipes = new HashSet<>();
+
+    // Many to Many Connection to cookbooks via a junction table user_cookbooks.
+    // cookbook refers to cookbook on the UserCookbook class.
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<UserCookbooks> cookbookWithUser = new HashSet<>();
 
     /**
      * No argument constructor
@@ -73,7 +80,7 @@ public class User {
      * Remove recipe.
      * @param recipe the recipe
      */
-    public void removeBook(Recipe recipe) {
+    public void removeRecipe(Recipe recipe) {
         recipes.remove(recipe);
         recipe.setUser(null);;
     }
@@ -144,16 +151,16 @@ public class User {
     }
 
     /**
-     * Gets user name.
-     * @return the user name
+     * Gets username.
+     * @return the username
      */
     public String getUserName() {
         return userName;
     }
 
     /**
-     * Sets user name.
-     * @param userName the user name
+     * Sets username.
+     * @param userName the username
      */
     public void setUserName(String userName) {
         this.userName = userName;
@@ -173,6 +180,22 @@ public class User {
      */
     public void setRecipes(Set<Recipe> recipes) {
         this.recipes = recipes;
+    }
+
+    /**
+     * Gets cookbooks.
+     * @return the cookbooks
+     */
+    public Set<UserCookbooks> getCookbooks() {
+        return cookbookWithUser;
+    }
+
+    /**
+     * Sets cookbooks.
+     * @param cookbooks the cookbooks
+     */
+    public void setCookbooks(Set<UserCookbooks> cookbooks) {
+        this.cookbookWithUser = cookbooks;
     }
 
     @Override

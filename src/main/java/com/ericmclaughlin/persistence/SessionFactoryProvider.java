@@ -20,15 +20,13 @@ public class SessionFactoryProvider {
     /**
      * private constructor prevents instantiating this class anywhere else
      */
-
     private SessionFactoryProvider() {
-
     }
+
     /**
      * Create session factory.
      */
     public static void createSessionFactory() {
-
         StandardServiceRegistry standardRegistry =
                 new StandardServiceRegistryBuilder().configure().build();
         Metadata metaData =
@@ -38,7 +36,6 @@ public class SessionFactoryProvider {
 
     /**
      * Gets session factory.
-     *
      * @return the session factory
      */
     public static SessionFactory getSessionFactory() {
@@ -46,6 +43,5 @@ public class SessionFactoryProvider {
             createSessionFactory();
         }
         return sessionFactory;
-
     }
 }
