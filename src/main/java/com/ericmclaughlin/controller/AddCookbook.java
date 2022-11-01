@@ -107,9 +107,12 @@ public class AddCookbook extends HttpServlet {
         Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate, description, isdnTen, isdnThirteen, pageCount, language, smallImageLink, mediumImageLink);
         cookbookDao.insert(cookbook);
 
+
         // TODO THis is where I left off.
-        //UserCookbooks userCookbooks = new UserCookbooks(user, cookbook);
-        //userCookbookDao.insert(userCookbooks);
+        UserCookbooks userCookbooks = new UserCookbooks(user, cookbook);
+        userCookbookDao.insert(userCookbooks);
+
+        // user.addCookbook(cookbook);
 
         // Redirect back to user homepage.
         String url = "userHomepage";

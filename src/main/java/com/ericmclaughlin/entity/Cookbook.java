@@ -316,6 +316,22 @@ public class Cookbook {
         this.recipes = recipes;
     }
 
+    /**
+     * Gets user.
+     * @return the user
+     */
+    public Set<UserCookbooks> getUser() {
+        return user;
+    }
+
+    /**
+     * Sets user.
+     * @param user the user
+     */
+    public void setUser(Set<UserCookbooks> user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Cookbook{" +

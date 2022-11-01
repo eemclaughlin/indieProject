@@ -15,13 +15,13 @@ public class UserCookbooks implements Serializable {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    @Id
-    @ManyToOne
+    //@Id
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "user_cd", referencedColumnName = "user_id")
     private User user;
 
-    @Id
-    @ManyToOne
+    //@Id
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "cookbook_cd", referencedColumnName = "cookbook_id")
     private Cookbook cookbookWithUser;
 

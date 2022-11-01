@@ -56,7 +56,6 @@ public class User {
      * @param lastName  the last name
      * @param email  the email
      * @param userName  the user name
-     *
      */
     public User(String firstName, String lastName, String email, String userName) {
         this.firstName = firstName;
@@ -83,6 +82,29 @@ public class User {
     public void removeRecipe(Recipe recipe) {
         recipes.remove(recipe);
         recipe.setUser(null);;
+    }
+
+    /**
+     * Add a cookbook associated with a user
+     * @param cookbook the cookbook to add to the user.
+     */
+    public void addCookbook(Cookbook cookbook) {
+        UserCookbooks userCookbooks = new UserCookbooks(this, cookbook);
+        cookbookWithUser.add(userCookbooks);
+        cookbook.getUser().add(userCookbooks);
+    }
+
+    public void removeCookbook(Cookbook cookbook) {
+        for (Iterator<UserCookbooks> iterator = cookbookWithUser.iterator(); iterator.hasNext(); ) {
+            UserCookbooks userCookbooks = iterator.next();
+
+            if (userCookbooks.getCookbook().equals(this) && userCookbooks.getUser().equals(cookbook)) {
+                iterator.remove();
+                userCookbooks.getCookbook().getUser().remove(userCookbooks);
+                userCookbooks.setCookbook(null);
+                userCookbooks.setUser(null);
+            }
+        }
     }
 
     // **** GETTERS AND SETTERS AND TOSTRING ****
