@@ -1,3 +1,4 @@
+delete from user_cookbooks;
 delete from tags;
 delete from recipes;
 delete from cookbooks;

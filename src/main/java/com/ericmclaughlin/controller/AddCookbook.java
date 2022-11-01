@@ -10,6 +10,8 @@ import com.ericmclaughlin.persistence.GenericDao;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -82,6 +84,21 @@ public class AddCookbook extends HttpServlet {
             }
         }
 
+
+        HashMap<String, String> newCookbookParts = new HashMap();
+        newCookbookParts.put("cbTitle", title);
+        newCookbookParts.put("cbAuthor", author);
+        newCookbookParts.put("cbPublisher", publisher);
+        newCookbookParts.put("cbPublishedDate", publishedDate);
+        newCookbookParts.put("cbDescription", description);
+        newCookbookParts.put("cbIsdnTen", isdnTen);
+        newCookbookParts.put("cbIsdnThirteen", isdnThirteen);
+        newCookbookParts.put("cbPageCount", String.valueOf(pageCount));
+
+        req.setAttribute("newCookbookParts", newCookbookParts);
+
+
+
         //TODO Delete Sys out print
         System.out.println("Title " + title);
         System.out.println("author " + author);
@@ -96,7 +113,6 @@ public class AddCookbook extends HttpServlet {
         System.out.println("Med " + mediumImageLink);
 
         // TODO Take API data and add to database.
-
         // Establish session to get user id.
         HttpSession session = req.getSession();
         int finalUserId = (int)session.getAttribute("userId");
@@ -108,15 +124,18 @@ public class AddCookbook extends HttpServlet {
         cookbookDao.insert(cookbook);
 
 
-        // TODO THis is where I left off.
+
         UserCookbooks userCookbooks = new UserCookbooks(user, cookbook);
         userCookbookDao.insert(userCookbooks);
 
         // user.addCookbook(cookbook);
 
+        // TODO Redirect to Results page where user can see cookbook data that was added.
         // Redirect back to user homepage.
-        String url = "userHomepage";
-        resp.sendRedirect(url);
-    }
+        //String url = "userHomepage";
+        //resp.sendRedirect(url);
+        // Return list of results as attributes to the results page.
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/addCookbookResults.jsp");
+        dispatcher.forward(req, resp);    }
 }
 
