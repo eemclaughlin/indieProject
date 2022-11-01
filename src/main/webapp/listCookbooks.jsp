@@ -1,5 +1,5 @@
 <%@include file="taglib.jsp"%>
-<c:set var="title" value="User Homepage" />
+<c:set var="title" value="List Cookbooks" />
 <%@include file="head.jsp"%>
 
 <script type="text/javascript" class="init">
@@ -12,22 +12,22 @@
 <body>
 
 <div class="container-fluid">
-    <h2>User Homepage: </h2>
-    <p>Currently always defaults to Johnny Cash's recipes.</p>
+    <h2>List of User's Cookbooks: </h2>
     <table id="recipeTable" class="display" cellspacing="0" width="100%">
         <thead>
-            <th>Recipe Name</th>
-            <th>Description Id</th>
-            <th>Notes</th>
-            <th>User</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Description/th>
         </thead>
         <tbody>
-        <c:forEach var="recipe" items="${recipes}">
+        <c:forEach var="cookbook" items="${cookbooks}">
             <tr>
-                <td>${recipe.recipeName}</td>
-                <td>${recipe.description}</td>
-                <td>${recipe.notes}</td>
-                <td>${recipe.user.firstName} ${recipe.user.lastName}<br/></td>
+                <td>${cookbook.title}</td>
+                <td>${cookbook.author}</td>
+                <td>${cookbook.publisher}</td>
+                <td>${cookbook.description}</td>
+
             </tr>
         </c:forEach>
 

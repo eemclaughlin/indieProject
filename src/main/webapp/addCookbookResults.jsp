@@ -46,6 +46,7 @@
         <div>
             <p>Links</p>
             <a href="userHomepage">Home</a><br>
+            <a href="listCookbooks">List of Cookbooks</a><br>
             <a href="indexTwo.jsp">Search Page</a><br>
             <a href="addRecipe">Add a New Recipe</a><br>
             <a href="addCookbook.jsp">Add another Cookbook</a><br>

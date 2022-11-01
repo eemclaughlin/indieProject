@@ -1,4 +1,5 @@
 # Project Plan
+#### (Stretch Goals at End)
 
 ### Week 3
 - [x] Create project repository on GitHub
@@ -50,10 +51,9 @@
 ### Week 9
 - [x] Create on add recipe jsp.
 - [x] Create on addRecipe.java
-- [ ] Create form/jsp to search for cookbooks via api
-- [ ] Create jsp to display search results of api
-- [ ] Add way to choose cookbook from list to add to database.
-- [ ] Create way to view cookbooks.
+- [x] Create form/jsp to search for cookbooks via api
+- [x] Create jsp to display search results of api
+- [ ] Create way to view all of a user's cookbooks.
 - [x] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 10
@@ -84,6 +84,9 @@
 
 ### Week 15
 - [ ] Finalize project and prep for demonstrations.
+
+### Stretch Goals
+- [ ] Searchable tags for the recipes
 
 --
 #### [Back to main README](../README.md)

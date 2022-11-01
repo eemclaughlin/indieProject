@@ -1,7 +1,9 @@
 package com.ericmclaughlin.controller;
 
+import com.ericmclaughlin.entity.Cookbook;
 import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
+import com.ericmclaughlin.entity.UserCookbooks;
 import com.ericmclaughlin.persistence.GenericDao;
 
 import javax.servlet.RequestDispatcher;
@@ -16,12 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple servlet to list all of a user's recipes.
+ * A simple servlet to list all cookbooks that a user has.
  * @author eemclaughlin
  * @version 1.0 - 09-29-22
  */
-@WebServlet(urlPatterns = {"/userHomepage"})
-public class ListRecipes extends HttpServlet {
+@WebServlet(urlPatterns = {"/listCookbooks"})
+public class ListCookbooks extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -30,7 +32,7 @@ public class ListRecipes extends HttpServlet {
 
         // Line no longer needed as we switched off of userData and onto UserDao.
         // UserData userData = new UserData();
-        GenericDao recipeDao = new GenericDao(Recipe.class);
+        GenericDao cookbookDao = new GenericDao(Cookbook.class);
         GenericDao userDao = new GenericDao(User.class);
 
         // Establish the session and retrieve user name.
@@ -48,14 +50,19 @@ public class ListRecipes extends HttpServlet {
         // TODO Remove sys out print
         System.out.println(finalUserId);
 
+        User fullUser = (User)userDao.getById(finalUserId);
+
+        System.out.println("Here is the full user on list cookbooks" + fullUser.toString());
+
 
         // TODO value needs to be changed to finalUserId.
-        //req.setAttribute("recipes", recipeDao.getAll());
-        req.setAttribute("recipes", recipeDao.getByPropertyEqual("user", 1));
+        // Retrieve all cookbooks by user
+        req.setAttribute("cookbooks", cookbookDao.getAll());
+        //req.setAttribute("cookbooks", cookbookDao.getByPropertyEqual("user", fullUser));
 
 
         // Return list of results as attributes to the results page.
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/userHomepage.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/listCookbooks.jsp");
         dispatcher.forward(req, resp);
     }
 }
