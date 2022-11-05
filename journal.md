@@ -111,7 +111,7 @@
 - Do a mid-term self-evaluation and turn in (little late) (0:45)
 - Team Project Meeting (2:15)
 
-### Week 10 (11:00)
+### Week 10 (20:30)
 - Set up a cookbook jsp and cookbook java and get the two talking (1:30)
 - Get cookbook.java to receive data from API and submit to database (1:30)
 - Work on many to many relationship and UserCookbooks relationship (some issues) (3:30)
@@ -119,6 +119,13 @@
 - Added a Results page to show cookbook info that was just added (1:30)
 - Work on getting all of a users cookbooks to output (1:30)
   - Stuck because it uses a junction table.
+- Work on and turn in exercise 9 (2:30)
+- Work on setting up some test restful api stuff in team project (1:30)
+- Team meeting and planning (1:30)
+- Testing and troubleshooting merging branches in git (1:00)
+- Implement team project database in and test with data entry (1:00)
+- Team project. Implement a service class and link with restful api and do testing (2:00)
+- 
 
 
 

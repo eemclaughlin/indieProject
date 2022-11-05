@@ -104,7 +104,8 @@ public class Cookbook {
      */
     public void removeBook(Recipe recipe) {
         recipes.remove(recipe);
-        recipe.setCookbooks(null);;
+        recipe.setCookbooks(null);
+        ;
     }
 
     // **** GETTERS AND SETTERS AND TOSTRING ****

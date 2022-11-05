@@ -53,11 +53,11 @@
 - [x] Create on addRecipe.java
 - [x] Create form/jsp to search for cookbooks via api
 - [x] Create jsp to display search results of api
-- [ ] Create way to view all of a user's cookbooks.
 - [x] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 10
-- [ ] Continue work with API and cookbooks
+- [ ] Create way to view all of a user's cookbooks.
+- [ ] First pass at cleaning up files.
 - [ ] Work on editing recipes page.
 - [ ] Add way to edit cookbook data
 - [ ] Add way to remove cookbooks from database.
