@@ -28,6 +28,8 @@ public class BooksApiTest {
         String expectedPublisher = "Sams Publishing";
         String expectedTitle = "Java in 21 Days, Sams Teach Yourself (Covering Java 9)";
         String expectedAuthors = "Rogers Cadenhead";
+        String expectedIsbnTen = "0672337959";
+        String expectedIsbnThirteen = "9780672337956";
         int expectedPageCount = 720;
 
         // On dao, getInfo set up to return full response. Then getItems get me VolumeInfo data.
@@ -40,6 +42,16 @@ public class BooksApiTest {
             // For each author in array at second half of "for"...
             for(String author : item.getVolumeInfo().getAuthors()) {
                 assertEquals(expectedAuthors, author);
+            }
+
+            for (int i = 0; i < item.getVolumeInfo().getIndustryIdentifiers().size(); i++) {
+                if (item.getVolumeInfo().getIndustryIdentifiers().get(i).getType().equals("ISBN_10")) {
+                    String isbnTen = item.getVolumeInfo().getIndustryIdentifiers().get(i).getIdentifier();
+                    assertEquals(expectedIsbnTen, isbnTen);
+                } else if (item.getVolumeInfo().getIndustryIdentifiers().get(i).getType().equals("ISBN_13")) {
+                    String isbnThirteen = item.getVolumeInfo().getIndustryIdentifiers().get(i).getIdentifier();
+                    assertEquals(expectedIsbnThirteen, isbnThirteen);
+                }
             }
 
             assertEquals(expectedPageCount, item.getVolumeInfo().getPageCount());

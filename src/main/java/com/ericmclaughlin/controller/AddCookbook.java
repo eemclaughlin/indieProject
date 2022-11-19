@@ -70,8 +70,8 @@ public class AddCookbook extends HttpServlet {
             publisher = item.getVolumeInfo().getPublisher();
             publishedDate = item.getVolumeInfo().getPublishedDate() + "-01";
             description = item.getVolumeInfo().getDescription();
-            isdnTen = null;
-            isdnThirteen = null;
+            //isdnTen = null;
+            //isdnThirteen = null;
             pageCount = item.getVolumeInfo().getPageCount();
             language = item.getVolumeInfo().getLanguage();
             smallImageLink = item.getVolumeInfo().getImageLinks().getSmallThumbnail();
@@ -81,6 +81,15 @@ public class AddCookbook extends HttpServlet {
             for(String arrayAuthor : item.getVolumeInfo().getAuthors()) {
                 //author = item.getVolumeInfo().getAuthors().toString();
                 author = arrayAuthor;
+            }
+
+            // Get ISBN 10 and 13.
+            for (int i = 0; i < item.getVolumeInfo().getIndustryIdentifiers().size(); i++) {
+                if (item.getVolumeInfo().getIndustryIdentifiers().get(i).getType().equals("ISBN_10")) {
+                    isdnTen = item.getVolumeInfo().getIndustryIdentifiers().get(i).getIdentifier();
+                } else if (item.getVolumeInfo().getIndustryIdentifiers().get(i).getType().equals("ISBN_13")) {
+                    isdnThirteen = item.getVolumeInfo().getIndustryIdentifiers().get(i).getIdentifier();
+                }
             }
         }
 
@@ -105,8 +114,8 @@ public class AddCookbook extends HttpServlet {
         System.out.println("Publisher " + publisher);
         System.out.println("PubDate " + publishedDate);
         System.out.println("Desc " + description);
-        //System.out.println("Ten " + isdnTen);
-        //System.out.println("Thirteen " + isdnThirteen);
+        System.out.println("Ten " + isdnTen);
+        System.out.println("Thirteen " + isdnThirteen);
         System.out.println("page count " + pageCount);
         System.out.println("Lang " + language);
         System.out.println("Small " + smallImageLink);
@@ -125,8 +134,8 @@ public class AddCookbook extends HttpServlet {
 
 
 
-        UserCookbooks userCookbooks = new UserCookbooks(user, cookbook);
-        userCookbookDao.insert(userCookbooks);
+        UserCookbooks userCookbook = new UserCookbooks(user, cookbook);
+        userCookbookDao.insert(userCookbook);
 
         // user.addCookbook(cookbook);
 
@@ -136,6 +145,8 @@ public class AddCookbook extends HttpServlet {
         //resp.sendRedirect(url);
         // Return list of results as attributes to the results page.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/addCookbookResults.jsp");
-        dispatcher.forward(req, resp);    }
+        dispatcher.forward(req, resp);
+    }
 }
+
 

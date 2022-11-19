@@ -125,7 +125,28 @@
 - Testing and troubleshooting merging branches in git (1:00)
 - Implement team project database in and test with data entry (1:00)
 - Team project. Implement a service class and link with restful api and do testing (2:00)
-- 
+
+### Week 11 (17:00)
+- Team project meeting (1:00)
+- Team project meeting. Create the stubs for the rest of the project (2:00)
+- Team project meeting. Sort out entities and work on getting rest and database working (2:30)
+- Team project meeting. Touch base (0:30)
+- Watch a presentation and give feedback (0:30)
+- Team project work.  Work on several different rest calls and methods and database changes (5:30) 
+- Team project work continued.  Round out several of the methods and test (2:00)
+- Team meeting.  Try to resolve some issues and work on checkin checkout methods (3:00)
+
+### Week 12 (16:00)
+- Team Project. Redesign database and entities and methods and test (6:00)
+- Team Meeting.  Meeting for planning the presentation (1:30)
+- Presentation Prep for my portion (0:30)
+- Team Meeting.  Record the presentation and review (2:30)
+- Video editing woes (4:00)
+- View peer presentation 1 and give feedback (0:30)
+- View peer presentation 2 and give feedback (0:45)
+- Survey Gizmo for the Team Project (0:15)
+
+
 
 
 
