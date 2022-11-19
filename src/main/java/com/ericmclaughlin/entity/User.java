@@ -11,7 +11,7 @@ import java.util.Set;
  * A class to represent a user/user account to associate with recipes.
  *
  * @author eemclaughlin
- * @version v1.2 - 10-31-22
+ * @version v2.0 11-19-22 eem.
  */
 @Entity(name = "User")
 @Table(name = "user")
@@ -32,16 +32,16 @@ public class User {
     @Column(name = "login_name")
     private String userName;
 
+    // Connection to the COOKBOOK table to associate a user with a cookbook(s).
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Cookbook> cookbooks = new HashSet<>();
+
     // Connection to the RECIPE table/class.  One user can have several recipes.
     // Mapped by refers to instance variable on the ManyToOne on child class (Recipe in this case).
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Recipe> recipes = new HashSet<>();
 
-    // Many to Many Connection to cookbooks via a junction table user_cookbooks.
-    // cookbook refers to cookbook on the UserCookbook class.
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Set<UserCookbooks> cookbookWithUser = new HashSet<>();
-
+    // Constructors
     /**
      * No argument constructor
      * Instantiates a new User.
@@ -64,6 +64,7 @@ public class User {
         this.userName = userName;
     }
 
+    // UNIQUE METHODS
     /**
      * Add recipe associated with user.
      * @param recipe the given recipe
@@ -85,26 +86,23 @@ public class User {
     }
 
     /**
-     * Add a cookbook associated with a user
-     * @param cookbook the cookbook to add to the user.
+     * Add cookbook associated with user.
+     * @param cookbook the given recipe
      */
     public void addCookbook(Cookbook cookbook) {
-        UserCookbooks userCookbooks = new UserCookbooks(this, cookbook);
-        cookbookWithUser.add(userCookbooks);
-        cookbook.getUser().add(userCookbooks);
+        // Add set of recipes to recipe.
+        cookbooks.add(cookbook);
+        // On that recipe, set a user.
+        cookbook.setUser(this);
     }
 
+    /**
+     * Remove cookbook.
+     * @param cookbook the recipe
+     */
     public void removeCookbook(Cookbook cookbook) {
-        for (Iterator<UserCookbooks> iterator = cookbookWithUser.iterator(); iterator.hasNext(); ) {
-            UserCookbooks userCookbooks = iterator.next();
-
-            if (userCookbooks.getCookbook().equals(this) && userCookbooks.getUser().equals(cookbook)) {
-                iterator.remove();
-                userCookbooks.getCookbook().getUser().remove(userCookbooks);
-                userCookbooks.setCookbook(null);
-                userCookbooks.setUser(null);
-            }
-        }
+        cookbooks.remove(cookbook);
+        cookbook.setUser(null);;
     }
 
     // **** GETTERS AND SETTERS AND TOSTRING ****
@@ -208,18 +206,19 @@ public class User {
      * Gets cookbooks.
      * @return the cookbooks
      */
-    public Set<UserCookbooks> getCookbooks() {
-        return cookbookWithUser;
+    public Set<Cookbook> getCookbooks() {
+        return cookbooks;
     }
 
     /**
      * Sets cookbooks.
      * @param cookbooks the cookbooks
      */
-    public void setCookbooks(Set<UserCookbooks> cookbooks) {
-        this.cookbookWithUser = cookbooks;
+    public void setCookbooks(Set<Cookbook> cookbooks) {
+        this.cookbooks = cookbooks;
     }
 
+    // TO STRING
     @Override
     public String toString() {
         return "User{" +
@@ -228,6 +227,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
+                ", cookbooks=" + cookbooks +
                 ", recipes=" + recipes +
                 '}';
     }

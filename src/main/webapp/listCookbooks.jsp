@@ -15,18 +15,22 @@
     <h2>List of User's Cookbooks: </h2>
     <table id="recipeTable" class="display" cellspacing="0" width="100%">
         <thead>
+            <th></th>
             <th>Title</th>
             <th>Author</th>
             <th>Publisher</th>
-            <th>Description/th>
+            <th>Description</th>
+            <th>Notes</th>
         </thead>
         <tbody>
         <c:forEach var="cookbook" items="${cookbooks}">
             <tr>
+                <td><img src="${cookbook.smallImageLink}" alt="Image of Cookbook"></img></td>
                 <td>${cookbook.title}</td>
                 <td>${cookbook.author}</td>
                 <td>${cookbook.publisher}</td>
                 <td>${cookbook.description}</td>
+                <td>${cookbook.notes}</td>
 
             </tr>
         </c:forEach>

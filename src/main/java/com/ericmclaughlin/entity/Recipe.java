@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * This represents a single recipe in the recipe tracker application.
  * @author eemclaughlin
- * @version v1.0 - 09-29-22
+ * @version v2.0 11-19-22 eem.
  */
 @Entity(name = "Recipe")
 @Table(name = "recipes")
@@ -22,14 +22,10 @@ public class Recipe {
     @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "recipe_id")
     private int recipeId;
-
     @Column(name = "recipe_name")
     private String recipeName;
-
     private String description;
-
     private String notes;
-
     @Column(name = "page_number")
     private int pageNumber;
 
@@ -48,7 +44,7 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER)
     private Set<RecipeTag> tags = new HashSet<RecipeTag>();
 
-
+    // CONSTRUCTORS
     /**
      * No argument constructor
      * Instantiates a new Recipe.
@@ -75,14 +71,22 @@ public class Recipe {
         this.cookbooks = cookbooks;
     }
 
-    // Pass in a tag, instantiate a new RecipeTag, pass in current recipe and new tag.
-    // Add recipeTag to set of tags and then get tags and add to recipes.
+    // UNIQUE METHODS
+    /**
+     * Pass in a tag, instantiate a new RecipeTag, pass in current recipe and new tag.
+     * Add recipeTag to set of tags and then get tags and add to recipes.
+     * @param tag
+     */
     public void addTag(Tag tag) {
         RecipeTag recipeTag = new RecipeTag(this, tag);
         tags.add(recipeTag);
         tag.getRecipes().add(recipeTag);
     }
-    // Iterate through list of tags and remove appropriate one.
+
+    /**
+     * Iterate through list of tags and remove appropriate one.
+     * @param tag
+     */
     public void removeTag(Tag tag) {
         for(Iterator<RecipeTag> iterator = tags.iterator(); iterator.hasNext(); )
         {

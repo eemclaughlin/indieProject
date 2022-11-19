@@ -1,4 +1,3 @@
-delete from user_cookbooks;
 delete from tags;
 delete from recipes;
 delete from cookbooks;
@@ -10,8 +9,8 @@ INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (1, 'Rice'
 INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (2, 'Whole Milk', 'Whole Milk');
 INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (3, 'Carrots', 'Carrots');
 INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (4, 'Beef', 'Beef');
-INSERT INTO RecipeTracker.cookbooks (cookbook_id, title) VALUE (1, 'The Best Cookbook');
-INSERT INTO RecipeTracker.cookbooks (cookbook_id, title) VALUE (2, 'The Next Best Cookbook');
+INSERT INTO RecipeTracker.cookbooks (cookbook_id, title, author, publisher, user_cd) VALUE (1, 'The Best Cookbook', 'Jean-Luc Picard', 'Enterprise Press', 1);
+INSERT INTO RecipeTracker.cookbooks (cookbook_id, title, author, publisher, user_cd) VALUE (2, 'The Next Best Cookbook', 'James T Kirk', 'Enterprise Press', 2);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (1, 'Carrot Cake', null, null, 300, 1, 1);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (2, 'Meatloaf', null, null, 25, 2, 2);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (3, 'Tacos', null, null, 36, 3, 2);

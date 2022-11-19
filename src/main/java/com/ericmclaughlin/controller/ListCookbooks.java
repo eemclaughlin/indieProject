@@ -3,7 +3,6 @@ package com.ericmclaughlin.controller;
 import com.ericmclaughlin.entity.Cookbook;
 import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
-import com.ericmclaughlin.entity.UserCookbooks;
 import com.ericmclaughlin.persistence.GenericDao;
 
 import javax.servlet.RequestDispatcher;
@@ -50,14 +49,17 @@ public class ListCookbooks extends HttpServlet {
         // TODO Remove sys out print
         System.out.println(finalUserId);
 
-        User fullUser = (User)userDao.getById(finalUserId);
-
-        System.out.println("Here is the full user on list cookbooks" + fullUser.toString());
-
 
         // TODO value needs to be changed to finalUserId.
         // Retrieve all cookbooks by user
-        req.setAttribute("cookbooks", cookbookDao.getAll());
+        //List<Cookbook> cookbooks = new ArrayList<Cookbook>();
+        //cookbooks = cookbookDao.getByPropertyEqual("user", fullUser);
+
+        //Cookbook cookbooks = new Cookbook();
+        req.setAttribute("cookbooks", cookbookDao.getByPropertyEqual("user", finalUserId));
+
+
+        //req.setAttribute("cookbooks", cookbookDao.getAll());
         //req.setAttribute("cookbooks", cookbookDao.getByPropertyEqual("user", fullUser));
 
 

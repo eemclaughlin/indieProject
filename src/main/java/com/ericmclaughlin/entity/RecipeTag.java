@@ -1,14 +1,15 @@
 package com.ericmclaughlin.entity;
 
-import org.apache.taglibs.standard.lang.jstl.UnaryMinusOperator;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.xml.namespace.QName;
 import java.io.Serializable;
 
 /**
- * The type Recipe tag.
+ * Method for storing the relationship between a recipe and a tag.
+ * Junction table denoted that a recipe can have several tags.
+ * @author Eric McLaughlin
+ * @version 2.0 11-19-22 eem.
  */
 @Entity(name = "RecipeTag")
 @Table(name = "recipe_tags")
@@ -29,6 +30,7 @@ public class RecipeTag implements Serializable {
     @JoinColumn(name = "tag_cd", referencedColumnName = "tag_id")
     private Tag tag;
 
+    // CONSTRUCTORS
     /**
      * Instantiates a new Recipe tag.
      */
@@ -45,6 +47,7 @@ public class RecipeTag implements Serializable {
         this.tag = tag;
     }
 
+    // GETTERS AND SETTERS
     /**
      * Gets id.
      * @return the id
@@ -93,6 +96,7 @@ public class RecipeTag implements Serializable {
         this.tag = tag;
     }
 
+    // TO STRING
     @Override
     public String toString() {
         return "RecipeTag{" +

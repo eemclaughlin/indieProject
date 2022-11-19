@@ -52,7 +52,7 @@ public class ListRecipes extends HttpServlet {
         // TODO value needs to be changed to finalUserId.
         //req.setAttribute("recipes", recipeDao.getAll());
         req.setAttribute("recipes", recipeDao.getByPropertyEqual("user", 1));
-
+        req.setAttribute("recipes", recipeDao.getByPropertyEqual("user", finalUserId));
 
         // Return list of results as attributes to the results page.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/userHomepage.jsp");

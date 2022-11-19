@@ -7,10 +7,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * A class to represent a cookbook to associate with recipes.
+ * A class to represent a cookbook to associate with recipes and users.
  *
  * @author eemclaughlin
- * @version v1.0 - 10-02-22
+ * @version v2.0 - 11-19-22 eem.
  */
 @Entity(name = "Cookbook")
 @Table(name = "cookbooks")
@@ -40,14 +40,19 @@ public class Cookbook {
     private String smallImageLink;
     @Column(name = "med_image_link")
     private String mediumImageLink;
+    private String notes;
+
+    // Connection to the user table to associate a user with a cookbook(s)
+    @ManyToOne
+    @JoinColumn(name = "user_cd", foreignKey = @ForeignKey(name = "cookbooks_user"))
+    private User user;
+
     // Connection to the RECIPE table/class.  One cookbook can have several recipes.
     // Mapped by refers to instance variable on the ManyToOne on child class (Recipe in this case).
     @OneToMany(mappedBy = "cookbooks", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Recipe> recipes = new HashSet<>();
 
-    @OneToMany(mappedBy = "cookbookWithUser", fetch = FetchType.EAGER)
-    private Set<UserCookbooks> user = new HashSet<>();
-
+    // CONSTRUCTORS
     /**
      * No argument constructor
      * Instantiates a new Cookbook.
@@ -56,7 +61,6 @@ public class Cookbook {
     }
 
     /**
-     * Constructor with arguments.
      * Instantiates a new Cookbook.
      *
      * @param title           the title
@@ -70,8 +74,14 @@ public class Cookbook {
      * @param language        the language
      * @param smallImageLink  the small image link
      * @param mediumImageLink the medium image link
+     * @param notes           the notes
+     * @param user            the user
      */
-    public Cookbook(String title, String author, String publisher, String publishedDate, String description, String isdnTen, String isdnThirteen, int pageCount, String language, String smallImageLink, String mediumImageLink) {
+    public Cookbook(String title, String author, String publisher, String publishedDate,
+                    String description, String isdnTen, String isdnThirteen,
+                    Integer pageCount, String language, String smallImageLink,
+                    String mediumImageLink, String notes, User user)
+    {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -83,11 +93,13 @@ public class Cookbook {
         this.language = language;
         this.smallImageLink = smallImageLink;
         this.mediumImageLink = mediumImageLink;
+        this.notes = notes;
+        this.user = user;
     }
 
+    // UNIQUE METHODS RELATED TO RECIPES.
     /**
      * Add recipe associated with cookbook.
-     *
      * @param recipe the given recipe
      */
     public void addRecipe(Recipe recipe) {
@@ -99,7 +111,6 @@ public class Cookbook {
 
     /**
      * Remove recipe.
-     *
      * @param recipe the recipe
      */
     public void removeBook(Recipe recipe) {
@@ -109,6 +120,7 @@ public class Cookbook {
     }
 
     // **** GETTERS AND SETTERS AND TOSTRING ****
+
     /**
      * Gets cookbook id.
      * @return the cookbook id
@@ -302,6 +314,38 @@ public class Cookbook {
     }
 
     /**
+     * Gets notes.
+     * @return the notes
+     */
+    public String getNotes() {
+        return notes;
+    }
+
+    /**
+     * Sets notes.
+     * @param notes the notes
+     */
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    /**
+     * Gets user.
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Sets user.
+     * @param user the user
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    /**
      * Gets recipes.
      * @return the recipes
      */
@@ -317,24 +361,7 @@ public class Cookbook {
         this.recipes = recipes;
     }
 
-    /**
-     * Gets user.
-     * @return the user
-     */
-    public Set<UserCookbooks> getUser() {
-        return user;
-    }
-
-    /**
-     * Sets user.
-     * @param user the user
-     */
-    public void setUser(Set<UserCookbooks> user) {
-        this.user = user;
-    }
-
-
-
+    // TO STRING
     @Override
     public String toString() {
         return "Cookbook{" +
@@ -350,6 +377,8 @@ public class Cookbook {
                 ", language='" + language + '\'' +
                 ", smallImageLink='" + smallImageLink + '\'' +
                 ", mediumImageLink='" + mediumImageLink + '\'' +
+                ", notes='" + notes + '\'' +
+                ", user=" + user +
                 ", recipes=" + recipes +
                 '}';
     }

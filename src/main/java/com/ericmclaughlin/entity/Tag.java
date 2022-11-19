@@ -7,7 +7,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Class for referencing Tags out from the database.
+ * Class for referencing Tags out from the database.  Tags are used with recipes for better
+ * sorting and searching.
+ * @author Eric McLaughlin
+ * @version 2.0 11-19-22 eem.
  */
 @Entity(name = "Tag")
 @Table(name = "tags")
@@ -26,9 +29,10 @@ public class Tag {
 
     // Many to Many Connection to recipes via a junction table recipe_tags.
     // tag refers to tag on the RecipeTag class.
-   @OneToMany(mappedBy = "tag", fetch = FetchType.EAGER)
-   private Set<RecipeTag> recipes = new HashSet<>();
+    @OneToMany(mappedBy = "tag", fetch = FetchType.EAGER)
+    private Set<RecipeTag> recipes = new HashSet<>();
 
+    // Constructors
     /**
      * No argument constructor
      * Instantiates a new Tags.
@@ -47,6 +51,7 @@ public class Tag {
         this.description = description;
     }
 
+    // Getters and Setters
     /**
      * Gets tag id.
      * @return the tag id
@@ -111,6 +116,7 @@ public class Tag {
         this.recipes = recipes;
     }
 
+    // toString
     @Override
     public String toString() {
         return "Tags{" +

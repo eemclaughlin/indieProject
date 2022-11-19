@@ -16,6 +16,9 @@
         <label for="isbn">ISBN</label>
         <input type="text" class="form-control" id="isbn" name="isbn"
                aria-describedby="isbnHelp" placeholder="isbn">
+        <label for="cookbookNotes">Notes</label>
+        <input type="text" class="form-control" id="cookbookNotes" name="cookbookNotes"
+               aria-describedby="cookbookNotes" placeholder="Any notes about this cookbook">
     </div>
     <button type="submit" name="submit" value="addCookbook" class="btn btn-primary">Add Cookbook</button>
     <!-- TODO Maybe direct to page with info about the cookbook and ask user to confirm -->

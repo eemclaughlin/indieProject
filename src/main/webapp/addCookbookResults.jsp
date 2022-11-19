@@ -21,6 +21,7 @@
     <p>Currently always defaults to Johnny Cash's recipes.</p>
     <table id="recipeTable" class="display" cellspacing="0" width="100%">
         <thead>
+        <th></th>
         <th>Title</th>
         <th>Author</th>
         <th>Publisher</th>
@@ -29,9 +30,11 @@
         <th>Short ISBN</th>
         <th>Long ISBN</th>
         <th>Page Count</th>
+        <th>Notes</th>
         </thead>
         <tbody>
             <tr>
+                <td><img src="${newCookbookParts['cbSmallImageLink']}" alt="Image of Cookbook"></img></td>
                 <td>${newCookbookParts['cbTitle']}</td>
                 <td>${newCookbookParts['cbAuthor']}</td>
                 <td>${newCookbookParts['cbPublisher']}</td>
@@ -40,7 +43,7 @@
                 <td>${newCookbookParts['cbIsdnTen']}</td>
                 <td>${newCookbookParts['cbIsdnThirteen']}</td>
                 <td>${newCookbookParts['cbPageCount']}</td>
-
+                <td>${newCookbookParts['cbNotes']}</td>
             </tr>
 
         <div>

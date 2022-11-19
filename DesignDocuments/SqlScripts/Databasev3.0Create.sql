@@ -1,5 +1,4 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-10-16 21:09:21.413
+-- Last modification date: 2022-11-19 15:28:20.399
 
 -- tables
 -- Table: cookbooks
@@ -16,6 +15,8 @@ CREATE TABLE cookbooks (
     language varchar(5) NULL,
     small_image_link varchar(200) NULL,
     med_image_link varchar(200) NULL,
+    notes varchar(300) NULL,
+    user_cd int NOT NULL,
     CONSTRAINT cookbooks_pk PRIMARY KEY (cookbook_id)
 ) COMMENT 'Information about each cookbook.  Soon to be an API';
 
@@ -57,15 +58,11 @@ CREATE TABLE user (
     CONSTRAINT user_pk PRIMARY KEY (user_id)
 ) COMMENT 'Information about each user.';
 
--- Table: user_cookbooks
-CREATE TABLE user_cookbooks (
-    id int NOT NULL AUTO_INCREMENT,
-    user_cd int NOT NULL,
-    cookbook_cd int NOT NULL,
-    CONSTRAINT user_cookbooks_pk PRIMARY KEY (id)
-) COMMENT 'Junction table between users and cookbooks';
-
 -- foreign keys
+-- Reference: cookbooks_user (table: cookbooks)
+ALTER TABLE cookbooks ADD CONSTRAINT cookbooks_user FOREIGN KEY cookbooks_user (user_cd)
+    REFERENCES user (user_id);
+
 -- Reference: recipe_tags_recipes (table: recipe_tags)
 ALTER TABLE recipe_tags ADD CONSTRAINT recipe_tags_recipes FOREIGN KEY recipe_tags_recipes (recipe_cd)
     REFERENCES recipes (recipe_id);
@@ -80,14 +77,6 @@ ALTER TABLE recipes ADD CONSTRAINT recipes_cookbooks FOREIGN KEY recipes_cookboo
 
 -- Reference: recipes_user (table: recipes)
 ALTER TABLE recipes ADD CONSTRAINT recipes_user FOREIGN KEY recipes_user (user_cd)
-    REFERENCES user (user_id);
-
--- Reference: user_cookbooks_cookbooks (table: user_cookbooks)
-ALTER TABLE user_cookbooks ADD CONSTRAINT user_cookbooks_cookbooks FOREIGN KEY user_cookbooks_cookbooks (cookbook_cd)
-    REFERENCES cookbooks (cookbook_id);
-
--- Reference: user_cookbooks_user (table: user_cookbooks)
-ALTER TABLE user_cookbooks ADD CONSTRAINT user_cookbooks_user FOREIGN KEY user_cookbooks_user (user_cd)
     REFERENCES user (user_id);
 
 -- End of file.

@@ -4,7 +4,6 @@ import com.ericmclaughlin.api.ItemsItem;
 import com.ericmclaughlin.entity.Cookbook;
 import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
-import com.ericmclaughlin.entity.UserCookbooks;
 import com.ericmclaughlin.persistence.BookApiDao;
 import com.ericmclaughlin.persistence.GenericDao;
 import java.io.IOException;
@@ -30,10 +29,10 @@ public class AddCookbook extends HttpServlet {
         // Call on the Daos for Recipes and for Cookbooks.
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
         GenericDao userDao = new GenericDao(User.class);
-        GenericDao userCookbookDao = new GenericDao(UserCookbooks.class);
 
         // Get information entered from the form
         String isbn = req.getParameter("isbn");
+        String cookbookNotes = req.getParameter("cookbookNotes");
 
         // TODO Remove Sys. out prints
         System.out.println("Add Cookbook Java isbn " + isbn);
@@ -60,6 +59,7 @@ public class AddCookbook extends HttpServlet {
         String language = null;
         String smallImageLink = null;
         String mediumImageLink = null;
+        String notes = cookbookNotes;
 
 
 
@@ -93,7 +93,8 @@ public class AddCookbook extends HttpServlet {
             }
         }
 
-
+        // Creates a map and adds the cookbook information to it.
+        // The map is added to the session and is called by the jsp.
         HashMap<String, String> newCookbookParts = new HashMap();
         newCookbookParts.put("cbTitle", title);
         newCookbookParts.put("cbAuthor", author);
@@ -103,6 +104,9 @@ public class AddCookbook extends HttpServlet {
         newCookbookParts.put("cbIsdnTen", isdnTen);
         newCookbookParts.put("cbIsdnThirteen", isdnThirteen);
         newCookbookParts.put("cbPageCount", String.valueOf(pageCount));
+        newCookbookParts.put("cbLanguage", language);
+        newCookbookParts.put("cbSmallImageLink", smallImageLink);
+        newCookbookParts.put("cbNotes", cookbookNotes);
 
         req.setAttribute("newCookbookParts", newCookbookParts);
 
@@ -129,15 +133,11 @@ public class AddCookbook extends HttpServlet {
         // Get user object by id
         User user = (User) userDao.getById(finalUserId);
 
-        Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate, description, isdnTen, isdnThirteen, pageCount, language, smallImageLink, mediumImageLink);
+        Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate,
+                description, isdnTen, isdnThirteen, pageCount, language, smallImageLink,
+                mediumImageLink, notes, user);
         cookbookDao.insert(cookbook);
 
-
-
-        UserCookbooks userCookbook = new UserCookbooks(user, cookbook);
-        userCookbookDao.insert(userCookbook);
-
-        // user.addCookbook(cookbook);
 
         // TODO Redirect to Results page where user can see cookbook data that was added.
         // Redirect back to user homepage.

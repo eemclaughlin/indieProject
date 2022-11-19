@@ -1,4 +1,8 @@
+-- DROP SECTION
 -- foreign keys
+ALTER TABLE cookbooks
+    DROP FOREIGN KEY cookbooks_user;
+
 ALTER TABLE recipe_tags
     DROP FOREIGN KEY recipe_tags_recipes;
 
@@ -11,12 +15,6 @@ ALTER TABLE recipes
 ALTER TABLE recipes
     DROP FOREIGN KEY recipes_user;
 
-ALTER TABLE user_cookbooks
-    DROP FOREIGN KEY user_cookbooks_cookbooks;
-
-ALTER TABLE user_cookbooks
-    DROP FOREIGN KEY user_cookbooks_user;
-
 -- tables
 DROP TABLE cookbooks;
 
@@ -28,7 +26,8 @@ DROP TABLE tags;
 
 DROP TABLE user;
 
-DROP TABLE user_cookbooks;
+-- END DROP SECTION
+-- CREATE SECTION
 
 -- tables
 -- Table: cookbooks
@@ -45,6 +44,8 @@ CREATE TABLE cookbooks (
     language varchar(5) NULL,
     small_image_link varchar(200) NULL,
     med_image_link varchar(200) NULL,
+    notes varchar(300) NULL,
+    user_cd int NOT NULL,
     CONSTRAINT cookbooks_pk PRIMARY KEY (cookbook_id)
 ) COMMENT 'Information about each cookbook.  Soon to be an API';
 
@@ -86,15 +87,11 @@ CREATE TABLE user (
     CONSTRAINT user_pk PRIMARY KEY (user_id)
 ) COMMENT 'Information about each user.';
 
--- Table: user_cookbooks
-CREATE TABLE user_cookbooks (
-    id int NOT NULL AUTO_INCREMENT,
-    user_cd int NOT NULL,
-    cookbook_cd int NOT NULL,
-    CONSTRAINT user_cookbooks_pk PRIMARY KEY (id)
-) COMMENT 'Junction table between users and cookbooks';
-
 -- foreign keys
+-- Reference: cookbooks_user (table: cookbooks)
+ALTER TABLE cookbooks ADD CONSTRAINT cookbooks_user FOREIGN KEY cookbooks_user (user_cd)
+    REFERENCES user (user_id);
+
 -- Reference: recipe_tags_recipes (table: recipe_tags)
 ALTER TABLE recipe_tags ADD CONSTRAINT recipe_tags_recipes FOREIGN KEY recipe_tags_recipes (recipe_cd)
     REFERENCES recipes (recipe_id);
@@ -111,15 +108,9 @@ ALTER TABLE recipes ADD CONSTRAINT recipes_cookbooks FOREIGN KEY recipes_cookboo
 ALTER TABLE recipes ADD CONSTRAINT recipes_user FOREIGN KEY recipes_user (user_cd)
     REFERENCES user (user_id);
 
--- Reference: user_cookbooks_cookbooks (table: user_cookbooks)
-ALTER TABLE user_cookbooks ADD CONSTRAINT user_cookbooks_cookbooks FOREIGN KEY user_cookbooks_cookbooks (cookbook_cd)
-    REFERENCES cookbooks (cookbook_id);
+-- END CREATE SECTION
+-- START DATA ENTRY
 
--- Reference: user_cookbooks_user (table: user_cookbooks)
-ALTER TABLE user_cookbooks ADD CONSTRAINT user_cookbooks_user FOREIGN KEY user_cookbooks_user (user_cd)
-    REFERENCES user (user_id);
-
--- DATA REFRESH STUFF
 INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (1, 'Johnny', 'Cash', 'jcash@yahoo.com', 'CashJ');
 INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (2, 'Peggy', 'Curbs', 'pcurbs@gmail.com', 'CurbsP');
 INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (3, 'Bob', 'Hamelin', 'bobh@outlook.com', 'HamelB');
@@ -127,16 +118,12 @@ INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (1, 'Rice'
 INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (2, 'Whole Milk', 'Whole Milk');
 INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (3, 'Carrots', 'Carrots');
 INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (4, 'Beef', 'Beef');
-INSERT INTO RecipeTracker.cookbooks (cookbook_id, title) VALUE (1, 'The Best Cookbook');
-INSERT INTO RecipeTracker.cookbooks (cookbook_id, title) VALUE (2, 'The Next Best Cookbook');
+INSERT INTO RecipeTracker.cookbooks (cookbook_id, title, author, publisher, user_cd) VALUE (1, 'The Best Cookbook', 'Jean-Luc Picard', 'Enterprise Press', 1);
+INSERT INTO RecipeTracker.cookbooks (cookbook_id, title, author, publisher, user_cd) VALUE (2, 'The Next Best Cookbook', 'James T Kirk', 'Enterprise Press', 2);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (1, 'Carrot Cake', null, null, 300, 1, 1);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (2, 'Meatloaf', null, null, 25, 2, 2);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (3, 'Tacos', null, null, 36, 3, 2);
 INSERT INTO RecipeTracker.recipes (recipe_id, recipe_name, description, notes, page_number, user_cd, cookbook_cd) VALUES (4, 'Creme Brulee', null, null, 281, 1, 1);
-
-
-
-
 
 -- End of file.
 
