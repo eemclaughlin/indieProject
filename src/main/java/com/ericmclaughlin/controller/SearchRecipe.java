@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+//TODO This whole class may be unnecessary.
+
 /**
  * A simple servlet to search for recipes.
  * @author eemclaughlin

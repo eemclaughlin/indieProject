@@ -9,7 +9,7 @@
 <html>
 <body>
 
-<h2>Add a Recipe</h2>
+<h2>Add a Cookbook</h2>
 
 <form action="addCookbook" class="form-inline">
     <div class="form-group">
