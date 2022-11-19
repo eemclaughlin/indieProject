@@ -3,6 +3,8 @@ package com.ericmclaughlin.controller;
 import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
 import com.ericmclaughlin.persistence.GenericDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,40 +20,45 @@ import java.util.List;
 /**
  * A simple servlet to list all of a user's recipes.
  * @author eemclaughlin
- * @version 1.0 - 09-29-22
+ * @version 2.0 11-19-22
  */
 @WebServlet(urlPatterns = {"/userHomepage"})
 public class ListRecipes extends HttpServlet {
+
+    // Create a logger for this class
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
+    /**
+     * doGet method that gets all recipes for a user and sends them to the jsp.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // If we search by last name then pass data through to getUsersByLastName
-        // else run search for all users.
-
-        // Line no longer needed as we switched off of userData and onto UserDao.
-        // UserData userData = new UserData();
+        // Call on the Daos for Users and for Recipes.
         GenericDao recipeDao = new GenericDao(Recipe.class);
         GenericDao userDao = new GenericDao(User.class);
 
-        // Establish the session and retrieve user name.
+        // Establish the session and retrieve username.
         HttpSession session = req.getSession();
         String storedUsername = (String)session.getAttribute("userName");
-        System.out.println(storedUsername);
+
+        logger.debug("The user's username is: " + storedUsername);
 
         // Get Id of user by username
-        List<User> userIds = new ArrayList<User>();
-        userIds= userDao.getByPropertyEqual("userName", storedUsername);
-        // TODO Remove sys out print
-        for(User userId:userIds) System.out.println(userId.getUserId());
+        List<User> userIds = userDao.getByPropertyEqual("userName", storedUsername);
 
+        // Log Statement
+        for(User userId:userIds) logger.debug("The user's id is: " + userId.getUserId());
+
+        // Get only the first user id that is returned.
         int finalUserId = (int)userIds.get(0).getUserId();
-        // TODO Remove sys out print
-        System.out.println(finalUserId);
+        logger.debug("The user's id is: " + finalUserId);
 
-
-        // TODO value needs to be changed to finalUserId.
-        //req.setAttribute("recipes", recipeDao.getAll());
-        req.setAttribute("recipes", recipeDao.getByPropertyEqual("user", 1));
+        // Get all recipes for the user.
         req.setAttribute("recipes", recipeDao.getByPropertyEqual("user", finalUserId));
 
         // Return list of results as attributes to the results page.

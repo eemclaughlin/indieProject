@@ -378,8 +378,7 @@ public class Cookbook {
                 ", smallImageLink='" + smallImageLink + '\'' +
                 ", mediumImageLink='" + mediumImageLink + '\'' +
                 ", notes='" + notes + '\'' +
-                ", user=" + user +
-                ", recipes=" + recipes +
+                ", user=" + user.getUserName() +
                 '}';
     }
 }

@@ -18,7 +18,7 @@
             <th>Recipe Name</th>
             <th>Description Id</th>
             <th>Notes</th>
-            <th>User</th>
+            <th>Page Number</th>
         </thead>
         <tbody>
         <c:forEach var="recipe" items="${recipes}">
@@ -26,7 +26,7 @@
                 <td>${recipe.recipeName}</td>
                 <td>${recipe.description}</td>
                 <td>${recipe.notes}</td>
-                <td>${recipe.user.firstName} ${recipe.user.lastName}<br/></td>
+                <td>${recipe.pageNumber}</td>
             </tr>
         </c:forEach>
         </tbody>

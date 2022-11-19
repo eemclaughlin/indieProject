@@ -4,6 +4,8 @@ import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
 import com.ericmclaughlin.persistence.GenericDao;
 import net.bytebuddy.description.type.TypeList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,53 +20,49 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * A simple servlet to search for users.
+ * A simple servlet to search for recipes.
  * @author eemclaughlin
- * @version 1.0 - 09-29-22
+ * @version 2.0 11-19-22
  */
 @WebServlet(urlPatterns = {"/searchRecipe"})
 public class SearchRecipe extends HttpServlet {
+
+    // Create a logger for this class
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
+    /**
+     * doGet method that gets aa recipe based on what is entered and sends the results to the jsp.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // If we search by last name then pass data through to getUsersByLastName
-        // else run search for all users.
-
-        // Line no longer needed as we switched off of userData and onto UserDao.
-        // UserData userData = new UserData();
+        // Call on the Daos for Recipes.
         GenericDao recipeDao = new GenericDao(Recipe.class);
-        GenericDao userDao = new GenericDao(User.class);
 
         // Establish the session and retrieve username.
         HttpSession session = req.getSession();
         String storedUsername = (String)session.getAttribute("userName");
 
-        //TODO Remove sys out print
-        System.out.println(storedUsername);
-
-        // TODO Delete all this code. Saved to session on Auth page instead.
-        // Get Id of user by username
-        //List<User> userIds = new ArrayList<User>();
-        //userIds= userDao.getByPropertyEqual("userName", storedUsername);
-        // TODO Remove sys out print
-        //for(User userId:userIds) System.out.println(userId.getUserId());
-        //int finalUserId = (int)userIds.get(0).getUserId();
+        logger.debug("The user's username is: " + storedUsername);
 
         // Call on session for the saved user id for use to filter by user.
         int finalUserId = (int)session.getAttribute("userId");
-        // TODO Remove sys out print
-        System.out.println("This is on the search recipe page " + finalUserId);
+        logger.debug("The user's id is: " + finalUserId);
 
+        //TODO This needs work to only get back result of recipes that this user owns.
+        // If the search button is pressed, take data from the form and search for it.
         if (req.getParameter("submit").equals("search")) {
             req.setAttribute("recipes", recipeDao.getByPropertyLike("recipeName", req.getParameter("searchTermRecipe")));
         } else {
-            // TODO value needs to be changed to say finalUserId.
-            //req.setAttribute("recipes", recipeDao.getAll());
-            req.setAttribute("recipes", recipeDao.getByPropertyEqual("user", 1));
+            req.setAttribute("recipes", recipeDao.getByPropertyEqual("user", finalUserId));
         }
 
         // Return list of results as attributes to the results page.
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/resultsRecipe.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/searchRecipeResults.jsp");
         dispatcher.forward(req, resp);
     }
 }

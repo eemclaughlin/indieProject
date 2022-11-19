@@ -36,8 +36,6 @@ public class LogIn extends HttpServlet implements PropertiesLoader {
      * Read in the cognito props file and get the client id and required urls
      * for authenticating a user.
      */
-    // TODO This code appears in a couple classes, consider using a startup servlet similar to adv java project
-    // 4 to do this work a single time and put the properties in the application scope
     private void loadProperties() {
         try {
             properties = loadProperties("/cognito.properties");
@@ -60,7 +58,7 @@ public class LogIn extends HttpServlet implements PropertiesLoader {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO if properties weren't loaded properly, route to an error page
+        //TODO if properties weren't loaded properly, route to an error page
         String url = LOGIN_URL + "?response_type=code&client_id=" + CLIENT_ID + "&redirect_uri=" + REDIRECT_URL;
         resp.sendRedirect(url);
     }

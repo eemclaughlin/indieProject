@@ -6,6 +6,9 @@ import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
 import com.ericmclaughlin.persistence.BookApiDao;
 import com.ericmclaughlin.persistence.GenericDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,13 +23,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Servlet that works with the jsps to add a cookbook to the database.
+ * @author eemclaughlin
+ * @version 2.0 11-19-22
+ */
 @WebServlet("/addCookbook")
 public class AddCookbook extends HttpServlet {
 
+    // Create a logger for this class
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
+    /**
+     * DoGet method that gets an ISBN and additional notes from a jsp.  It then searches
+     * Google Books for the book info related to the ISBN.  It then adds the info to the
+     * database and sends the user to the confirmation page.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // Call on the Daos for Recipes and for Cookbooks.
+        // Call on the Daos for Users and for Cookbooks.
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
         GenericDao userDao = new GenericDao(User.class);
 
@@ -34,20 +54,12 @@ public class AddCookbook extends HttpServlet {
         String isbn = req.getParameter("isbn");
         String cookbookNotes = req.getParameter("cookbookNotes");
 
-        // TODO Remove Sys. out prints
-        System.out.println("Add Cookbook Java isbn " + isbn);
+        logger.debug("The user entered ISBN: " + isbn);
 
-        // TODO Get cookbook from API with ISBN
-        // Method for checking api with ISBN
-        //try {
-        //    getBookDataFromApi(isbn);
-        //} catch (Exception e) {
-        //    throw new RuntimeException(e);
-        //}
-
-        // Instantiate a new dao to get a book data response.
+        // Instantiate a new Google Books dao to get the info out of Google Books
         BookApiDao dao = new BookApiDao();
 
+        // Declare the variables for the cookbook
         String title = null;
         String author = null;
         String publisher = null;
@@ -59,11 +71,12 @@ public class AddCookbook extends HttpServlet {
         String language = null;
         String smallImageLink = null;
         String mediumImageLink = null;
+
+        // This was user entered data, so it does not start as null and is not used with
+        // the Google Books API.
         String notes = cookbookNotes;
 
-
-
-        // Get data from API and populate into variables.
+        // Get data from the Google Books API and populate into variables.
         for (ItemsItem item : dao.getResponseInfo(isbn).getItems()) {
 
             title = item.getVolumeInfo().getTitle();
@@ -83,7 +96,7 @@ public class AddCookbook extends HttpServlet {
                 author = arrayAuthor;
             }
 
-            // Get ISBN 10 and 13.
+            // Get ISBN 10 and 13 from the data returned from Google Books
             for (int i = 0; i < item.getVolumeInfo().getIndustryIdentifiers().size(); i++) {
                 if (item.getVolumeInfo().getIndustryIdentifiers().get(i).getType().equals("ISBN_10")) {
                     isdnTen = item.getVolumeInfo().getIndustryIdentifiers().get(i).getIdentifier();
@@ -94,7 +107,7 @@ public class AddCookbook extends HttpServlet {
         }
 
         // Creates a map and adds the cookbook information to it.
-        // The map is added to the session and is called by the jsp.
+        // The map is added to the session and is used by the jsp for output.
         HashMap<String, String> newCookbookParts = new HashMap();
         newCookbookParts.put("cbTitle", title);
         newCookbookParts.put("cbAuthor", author);
@@ -110,22 +123,8 @@ public class AddCookbook extends HttpServlet {
 
         req.setAttribute("newCookbookParts", newCookbookParts);
 
+        logger.debug("The new cookbook parts are: " + newCookbookParts);
 
-
-        //TODO Delete Sys out print
-        System.out.println("Title " + title);
-        System.out.println("author " + author);
-        System.out.println("Publisher " + publisher);
-        System.out.println("PubDate " + publishedDate);
-        System.out.println("Desc " + description);
-        System.out.println("Ten " + isdnTen);
-        System.out.println("Thirteen " + isdnThirteen);
-        System.out.println("page count " + pageCount);
-        System.out.println("Lang " + language);
-        System.out.println("Small " + smallImageLink);
-        System.out.println("Med " + mediumImageLink);
-
-        // TODO Take API data and add to database.
         // Establish session to get user id.
         HttpSession session = req.getSession();
         int finalUserId = (int)session.getAttribute("userId");
@@ -133,17 +132,15 @@ public class AddCookbook extends HttpServlet {
         // Get user object by id
         User user = (User) userDao.getById(finalUserId);
 
+        // Create a new cookbook object with all the collected info and insert into the database.
         Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate,
                 description, isdnTen, isdnThirteen, pageCount, language, smallImageLink,
                 mediumImageLink, notes, user);
         cookbookDao.insert(cookbook);
 
+        logger.debug("The new cookbook is: " + cookbook);
 
-        // TODO Redirect to Results page where user can see cookbook data that was added.
-        // Redirect back to user homepage.
-        //String url = "userHomepage";
-        //resp.sendRedirect(url);
-        // Return list of results as attributes to the results page.
+        // Direct user to a results page and return results for user to see.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/addCookbookResults.jsp");
         dispatcher.forward(req, resp);
     }
