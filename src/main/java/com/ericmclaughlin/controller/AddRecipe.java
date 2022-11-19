@@ -56,12 +56,11 @@ public class AddRecipe extends HttpServlet {
             for(User userId:userIds) logger.debug("The user's id is: " + userId.getUserId());
 
             // Get only the first user id that is returned.
-            int finalUserId = (int)userIds.get(0).getUserId();
+            int finalUserId = userIds.get(0).getUserId();
             logger.debug("The user's id is: " + finalUserId);
 
-            // Get the logged in user's cookbooks.
+            // Get the logged-in user's cookbooks.
             List<Cookbook> cookbookList = cookbookDao.getByPropertyEqual("user", finalUserId);
-            //List<Cookbook> cookbookList = cookbookDao.getAll();
 
             // Set the cookbooks back into the session.
             req.setAttribute("cookbookList", cookbookList);
