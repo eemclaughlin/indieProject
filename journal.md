@@ -136,7 +136,7 @@
 - Team project work continued.  Round out several of the methods and test (2:00)
 - Team meeting.  Try to resolve some issues and work on checkin checkout methods (3:00)
 
-### Week 12 (16:00)
+### Week 12 (20:00)
 - Team Project. Redesign database and entities and methods and test (6:00)
 - Team Meeting.  Meeting for planning the presentation (1:30)
 - Presentation Prep for my portion (0:30)
@@ -145,6 +145,13 @@
 - View peer presentation 1 and give feedback (0:30)
 - View peer presentation 2 and give feedback (0:45)
 - Survey Gizmo for the Team Project (0:15)
+- Revamped database and implemented the changes (2:00)
+- Cleaned up all the code I have now and made sure it works (4:00)
+  - Added the javadocs and comments and removed sys out prints
+  - Implemented changes to restrict database result to the logged in user.
+
+### Week 13 ()
+-
 
 
 

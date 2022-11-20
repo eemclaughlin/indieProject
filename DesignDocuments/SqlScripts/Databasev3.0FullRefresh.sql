@@ -112,7 +112,7 @@ ALTER TABLE recipes ADD CONSTRAINT recipes_user FOREIGN KEY recipes_user (user_c
 -- START DATA ENTRY
 
 INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (1, 'Johnny', 'Cash', 'jcash@yahoo.com', 'CashJ');
-INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (2, 'Peggy', 'Curbs', 'pcurbs@gmail.com', 'CurbsP');
+INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (2, 'Test', 'User1', 'eemclaughlin@madisoncollege.edu', 'testuser1!');
 INSERT INTO RecipeTracker.user (user_id, first_name, last_name, email, login_name) VALUES (3, 'Bob', 'Hamelin', 'bobh@outlook.com', 'HamelB');
 INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (1, 'Rice', 'Rice');
 INSERT INTO RecipeTracker.tags (tag_id, tag_name, description) VALUES (2, 'Whole Milk', 'Whole Milk');

@@ -56,37 +56,40 @@
 - [x] Continue adding to ToDo List/Project plan for upcoming weeks
 
 ### Week 10
-- [ ] Create way to view all of a user's cookbooks.
-- [ ] First pass at cleaning up files.
-- [ ] Work on editing recipes page.
-- [ ] Add way to edit cookbook data
-- [ ] Add way to remove cookbooks from database.
-- [ ] Implement/finalize suggested changes from Paula.
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [x] Create way to view all of a user's cookbooks.
+- [x] First pass at cleaning up files.
+- [x] Team Project Stuff
+
 
 ### Week 11
-- [ ] Work related to editing entries and deleting entries
-- [ ] Integrate error handling.
-- [ ] Begin cleaning up each page and eliminate unnecessary stuff.
-- [ ] Add javadoc and comments on all pages.
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [x] Bye-Week (All attention on Team Project and presentation)
 
 ### Week 12
-- [ ] Start working on proper layout and design of jsp pages.
-- [ ] Build up unit-testing to get more coverage
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [ ] Integrate error handling.
+- [x] Add javadoc and comments on all pages. First Pass.
+- [ ] Add way to remove cookbooks from database.
+- [ ] Add way to remove recipes from database.
 
 ### Week 13
-- [ ] Continue to refine layout, CSS and HTML.
+- [ ] Build up unit-testing to get more coverage
+- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
+- [ ] Work on editing recipes page.
+- [ ] Add way to edit cookbook data
 
 ### Week 14
-- [ ] Finilize project
+- [ ] Final pass on javadoc and comments.
+- [ ] Final pass on cleaning up code and printlns.
+- [ ] Start working on proper layout and design of jsp pages.
+- [ ] Implement/finalize suggested changes from Paula and from peer.
 
 ### Week 15
+- [ ] Continue to refine layout, CSS and HTML.
 - [ ] Finalize project and prep for demonstrations.
 
 ### Stretch Goals
-- [ ] Searchable tags for the recipes
+- [ ] Add tags to a tags table]
+- [ ] Associate tags with recipes via junction table.
+- [ ] Search for recipes by tags
 
 --
 #### [Back to main README](../README.md)

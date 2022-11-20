@@ -239,8 +239,8 @@ public class Recipe {
                 ", description='" + description + '\'' +
                 ", notes='" + notes + '\'' +
                 ", pageNumber='" + pageNumber + '\'' +
-                ", user=" + user +
-                ", cookbooks=" + cookbooks +
+                ", user=" + user.getUserName() +
+                ", cookbooks=" + cookbooks.getTitle() +
                 '}';
     }
 }
