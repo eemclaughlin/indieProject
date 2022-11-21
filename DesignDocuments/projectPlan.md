@@ -72,8 +72,9 @@
 ### Week 13
 - [ ] Build up unit-testing to get more coverage
 - [x] Work on editing recipes page.
-- [ ] Add way to edit cookbook data
+- [x] Add way to edit cookbook data
 - [ ] Create an Add Cookbook Manually page.
+- [ ] Unit Testing!!!
 
 ### Week 14
 - [ ] Final pass on javadoc and comments.
