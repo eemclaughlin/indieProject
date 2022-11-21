@@ -18,19 +18,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns = {"/editRecipe"})
-public class editRecipe extends HttpServlet {
+@WebServlet(urlPatterns = {"/editCookbook"})
+public class editCookbook extends HttpServlet {
 
     // Create a logger for this class
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     // Global variable to hold the recipe id.
-    int recipeId;
+    int cookbookId;
 
     /**
-     * doGet method for getting the recipe id from the homepage, getting the recipe by id,
-     * and then prepopulating the edit recipe page with that recipe's data.
-     * This also gets the list of cookbooks and populates the dropdown.
+     * doGet method for getting the cookbook id from the cookbook list, getting the cookbook by id,
+     * and then prepopulating the edit cookbook page with that cookbooks's data.
      *
      * @param req
      * @param resp
@@ -62,24 +61,18 @@ public class editRecipe extends HttpServlet {
             logger.debug("The user's id is: " + finalUserId);
 
             // Get the recipe id from the session.
-            recipeId = Integer.parseInt(req.getParameter("recipeId"));
-            logger.debug("The recipe id is: " + recipeId);
+            cookbookId = Integer.parseInt(req.getParameter("cookbookId"));
+            logger.debug("The cookbook id is: " + cookbookId);
 
             // Get the recipe from the database.
-            Recipe editRecipe = (Recipe) recipeDao.getById(recipeId);
-            logger.debug("The recipe is: " + editRecipe);
+            Cookbook editCookbook = (Cookbook) cookbookDao.getById(cookbookId);
+            logger.debug("The recipe is: " + editCookbook);
 
             // Set the recipe information to the session.
-            session.setAttribute("editRecipe", editRecipe);
-
-            // Get the logged-in user's cookbooks.
-            List<Cookbook> cookbookList = cookbookDao.getByPropertyEqual("user", finalUserId);
-
-            // Set the cookbooks back into the session.
-            req.setAttribute("cookbookList", cookbookList);
+            session.setAttribute("editCookbook", editCookbook);
 
             // Forward to the jsp.
-            RequestDispatcher dispatcher = req.getRequestDispatcher("editRecipe.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("editCookbook.jsp");
             dispatcher.forward(req, resp);
 
         } catch (Exception e) {
@@ -89,7 +82,7 @@ public class editRecipe extends HttpServlet {
     }
 
     /**
-     * doPost method for adding a the edited recipe information back to the database.
+     * doPost method for adding the edited cookbook information back to the database.
      *
      * @param req
      * @param resp
@@ -105,16 +98,23 @@ public class editRecipe extends HttpServlet {
         GenericDao userDao = new GenericDao(User.class);
 
         // Get the various changed parameters from the form.
-        String recipeName = req.getParameter("recipeName");
+        String title = req.getParameter("title");
+        String author = req.getParameter("author");
+        String publisher = req.getParameter("publisher");
+        String publishedDate = req.getParameter("publishedDate");
         String description = req.getParameter("description");
+        String isbnTen = req.getParameter("isbnTen");
+        String isbnThirteen = req.getParameter("isbnThirteen");
+        int pageCount = Integer.parseInt(req.getParameter("pageCount"));
+        String language = req.getParameter("language");
+        String smallImageLink = req.getParameter("smallImageLink");
+        String mediumImageLink = req.getParameter("mediumImageLink");
         String notes = req.getParameter("notes");
-        int pageNumber = Integer.parseInt(req.getParameter("pageNumber"));
 
-        // Get the cookbook id from the form.
-        int cookbookId = Integer.parseInt(req.getParameter("cookbook"));
-
-        logger.debug("cookbookId: " + cookbookId);
-        logger.debug(recipeName + " " + description + " " + notes + " " + pageNumber);
+        logger.debug(title + " " + author + " " + publisher + " " + publishedDate + " "
+                + description + " " + isbnTen + " " + isbnThirteen + " " + pageCount
+                + " " + language + " " + smallImageLink + " " + mediumImageLink + " "
+                + notes);
 
         // Establish session to get user id.
         HttpSession session = req.getSession();
@@ -126,26 +126,29 @@ public class editRecipe extends HttpServlet {
         // Get cookbook object by id.
         Cookbook cookbook = (Cookbook) cookbookDao.getById(cookbookId);
 
-        // Get recipe object by id.
-        Recipe recipe = (Recipe) recipeDao.getById(recipeId);
+// Set the new values to the cookbook object.
+        cookbook.setTitle(title);
+        cookbook.setAuthor(author);
+        cookbook.setPublisher(publisher);
+        cookbook.setPublishedDate(publishedDate);
+        cookbook.setDescription(description);
+        cookbook.setIsdnTen(isbnTen);
+        cookbook.setIsdnThirteen(isbnThirteen);
+        cookbook.setPageCount(pageCount);
+        cookbook.setLanguage(language);
+        cookbook.setSmallImageLink(smallImageLink);
+        cookbook.setMediumImageLink(mediumImageLink);
+        cookbook.setNotes(notes);
 
-        // Set the recipe information.
-        recipe.setRecipeName(recipeName);
-        recipe.setDescription(description);
-        recipe.setNotes(notes);
-        recipe.setPageNumber(pageNumber);
+        // Set the user to the cookbook.
+        cookbook.setUser(user);
 
-        // Set the user information.
-        recipe.setUser(user);
-
-        // Set the cookbook information.
-        recipe.setCookbooks(cookbook);
-
-        // Update the recipe.
-        recipeDao.saveOrUpdate(recipe);
+        // Update the cookbook in the database.
+        cookbookDao.saveOrUpdate(cookbook);
 
         // Redirect back to user homepage.
-        String url = "userHomepage";
+        String url = "listCookbooks";
         resp.sendRedirect(url);
     }
 }
+

@@ -60,7 +60,6 @@
 - [x] First pass at cleaning up files.
 - [x] Team Project Stuff
 
-
 ### Week 11
 - [x] Bye-Week (All attention on Team Project and presentation)
 
@@ -72,19 +71,22 @@
 
 ### Week 13
 - [ ] Build up unit-testing to get more coverage
-- [ ] Continue adding to ToDo List/Project plan for upcoming weeks
-- [ ] Work on editing recipes page.
+- [x] Work on editing recipes page.
 - [ ] Add way to edit cookbook data
+- [ ] Create an Add Cookbook Manually page.
 
 ### Week 14
 - [ ] Final pass on javadoc and comments.
 - [ ] Final pass on cleaning up code and printlns.
+- [ ] Get everything working again in AWS.
 - [ ] Start working on proper layout and design of jsp pages.
+  - [ ] Break up repeating elements into jsp fragments.
 - [ ] Implement/finalize suggested changes from Paula and from peer.
 
 ### Week 15
 - [ ] Continue to refine layout, CSS and HTML.
 - [ ] Finalize project and prep for demonstrations.
+- [ ] Add project to AWS final time.
 
 ### Stretch Goals
 - [ ] Add tags to a tags table]
