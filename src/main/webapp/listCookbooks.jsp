@@ -21,6 +21,7 @@
             <th>Publisher</th>
             <th>Description</th>
             <th>Notes</th>
+            <th>Details</th>
             <th>Edit?</th>
             <th>Delete?</th>
         </thead>
@@ -33,6 +34,7 @@
                 <td>${cookbook.publisher}</td>
                 <td>${cookbook.description}</td>
                 <td>${cookbook.notes}</td>
+                <td><a href="detailCookbook?cookbookId=${cookbook.cookbookId}">Details</a></td>
                 <td><a href="editCookbook?cookbookId=${cookbook.cookbookId}">Edit ${cookbook.cookbookId}</a></td>
                 <td><a href="deleteRecipe.jsp?recipeId=${recipe.recipeId}">Delete ${recipe.recipeId}</a></td>
             </tr>

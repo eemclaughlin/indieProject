@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet(urlPatterns = {"/editCookbook"})
-public class editCookbook extends HttpServlet {
+public class EditCookbook extends HttpServlet {
 
     // Create a logger for this class
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -60,15 +59,15 @@ public class editCookbook extends HttpServlet {
             int finalUserId = userIds.get(0).getUserId();
             logger.debug("The user's id is: " + finalUserId);
 
-            // Get the recipe id from the session.
+            // Get the cookbook id from the session.
             cookbookId = Integer.parseInt(req.getParameter("cookbookId"));
             logger.debug("The cookbook id is: " + cookbookId);
 
-            // Get the recipe from the database.
+            // Get the cookbook from the database.
             Cookbook editCookbook = (Cookbook) cookbookDao.getById(cookbookId);
             logger.debug("The recipe is: " + editCookbook);
 
-            // Set the recipe information to the session.
+            // Set the cookbook information to the session.
             session.setAttribute("editCookbook", editCookbook);
 
             // Forward to the jsp.

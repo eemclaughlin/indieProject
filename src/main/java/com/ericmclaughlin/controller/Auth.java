@@ -63,7 +63,9 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     String REGION;
     String POOL_ID;
     Keys jwks;
+    int loggedInUserId;
 
+    // Create a logger for this class
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
@@ -81,14 +83,19 @@ public class Auth extends HttpServlet implements PropertiesLoader {
      * @throws IOException
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException
+    {
+        // Get the auth code from the request
         String authCode = req.getParameter("code");
+
+        // Get the session.
         HttpSession session = req.getSession();
-        // String userName = null;
+
+        // Establish the userInfo Map
         Map<String, String> userInfo;
 
-        // If authcode is null then error,
-        // Else get relevant login data and add to the session.
+        // If authcode is null then error ELSE get relevant login data and add to the session.
         if (authCode == null) {
             //TODO forward to an error page or back to the login
         } else {
@@ -97,7 +104,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 TokenResponse tokenResponse = getToken(authRequest);
                 userInfo = validate(tokenResponse);
 
-                // Call on method to add user to database.
+                // Call on method to check if user is in database add them, if needed.
                 insertUserIntoDatabase(userInfo);
 
                 // Load up session with login info.
@@ -105,28 +112,16 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 session.setAttribute("firstName", userInfo.get("firstName"));
                 session.setAttribute("lastName", userInfo.get("lastName"));
                 session.setAttribute("email", userInfo.get("email"));
+                session.setAttribute("userId", loggedInUserId);
+
+                //TODO Remove this if it is not needed.  Each individual variable is above.
+                // Get the entire user from the database by id and add it to the session.
+                GenericDao userDao = new GenericDao(User.class);
+                User user = (User) userDao.getById(loggedInUserId);
+                session.setAttribute("loggedInUser", user);
 
                 // TODO See if this is needed.
                 req.setAttribute("userName", userInfo.get("userName"));
-
-                // TODO Move this to its own method for getting the users id.
-                // Call on user dao
-                GenericDao userDao = new GenericDao(User.class);
-                // Get user name and store it for easy use.
-                String storedUsername = userInfo.get("userName");
-                // Create a list to store the results from database.
-                List<User> userIds = new ArrayList<User>();
-                // Get users with the given username.
-                userIds= userDao.getByPropertyEqual("userName", storedUsername);
-                // TODO Remove sys out print
-                for(User userId:userIds) System.out.println("This is from Auth Page " + userId.getUserId());
-                // Get the id from the first entry in the list.
-                int finalUserId = (int)userIds.get(0).getUserId();
-                // TODO Remove sys out print
-                System.out.println("This is from the Auth page " + finalUserId);
-                // Add to session for use on other pages.
-                session.setAttribute("userId", finalUserId);
-
 
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
@@ -159,10 +154,11 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         if(findUser.isEmpty()) {
             // Create a new user and insert user into database.
             User newUser = new User(userInfo.get("firstName"), userInfo.get("lastName"), userInfo.get("email"), userInfo.get("userName"));
-            dao.insert(newUser);
+            loggedInUserId = dao.insert(newUser);
             logger.debug("New user added to database with username " + userInfo.get("userName"));
         } else {
             logger.debug("User already exists " + userInfo.get("userName"));
+            loggedInUserId = findUser.get(0).getUserId();
             // TODO Update database with any user info changes.
         }
     }
