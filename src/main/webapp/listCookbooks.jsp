@@ -3,18 +3,18 @@
   Date: 11/24/22
   Page for users to see all the cookbooks that they have available.
 --%>
-<%@include file="/imports/taglib.jsp"%>
+<%@include file="/includes/taglib.jsp"%>
 <c:set var="title" value="List Cookbooks" />
-<%@include file="/imports/head.jsp"%>
+<%@include file="/includes/head.jsp"%>
 <html>
 <body>
 
 <div class="container-fluid">
-<div class="row">
-<div class="col-md-12">
+<div class="row justify-content-center mx-2">
+<div class="col-12">
 
     <!-- Brings in the NavBar -->
-    <%@include file="/imports/navbar.jsp"%>
+    <%@include file="/includes/navbar.jsp"%>
 
     <!-- Page Header -->
     <div class="page-header">
@@ -24,13 +24,15 @@
     </div>
 
     <!-- Call to add more cookbooks -->
-    <div class="jumbotron">
-        <p>
-            Use the button below to add another cookbook to your collection.
-        </p>
-        <p>
-            <a class="btn btn-primary btn-large" href="addCookbook.jsp">Add a Cookbook</a>
-        </p>
+    <div class="row">
+        <div class="jumbotron bg-secondary mx-auto">
+            <p>
+                Use the button below to add another cookbook to your collection.
+            </p>
+            <p>
+                <a class="btn btn-primary btn-large" href="addCookbook.jsp">Add a Cookbook</a>
+            </p>
+        </div>
     </div>
 
     <!-- Bring in each cookbook and display it in a row -->
@@ -39,17 +41,17 @@
         <div class="col-md-3">
             <img alt="Cookbook Cover" src="${cookbook.smallImageLink}">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h2>${cookbook.title}</h2>
             <p>
                 <strong>Author: </strong>${cookbook.author}<br>
                 <strong>Publisher: </strong>${cookbook.publisher}
             </p>
             <p>
-                <a class="btn" href="detailCookbook?cookbookId=${cookbook.cookbookId}">View details »</a>
+                <a class="btn btn-dark btn-sm" href="detailCookbook?cookbookId=${cookbook.cookbookId}">View details</a>
             </p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
             <h2>
                 Notes
             </h2>
@@ -59,11 +61,14 @@
     </c:forEach>
 
     <!-- Brings in the Footer -->
-    <%@include file="/imports/footer.jsp"%>
+    <%@include file="/includes/footer.jsp"%>
 
 </div>
 </div>
 </div>
+
+    <!-- Reference to JavaScript Sources -->
+    <%@include file="/includes/javascript.jsp"%>
 
 </body>
 </html>
