@@ -29,7 +29,7 @@
         <c:forEach var="cookbook" items="${cookbooks}">
             <tr>
                 <td><img src="${cookbook.smallImageLink}" alt="Image of Cookbook"></img></td>
-                <td>${cookbook.title}</td>
+                <td><a href="detailCookbook?cookbookId=${cookbook.cookbookId}">${cookbook.title}</a></td>
                 <td>${cookbook.author}</td>
                 <td>${cookbook.publisher}</td>
                 <td>${cookbook.description}</td>

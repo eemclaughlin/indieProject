@@ -24,5 +24,7 @@
     <!-- TODO Maybe direct to page with info about the cookbook and ask user to confirm -->
 </form>
 
+<p><a href="addCookbookManually.jsp">Add a Cookbook Manually</a></p>
+
 </body>
 </html>

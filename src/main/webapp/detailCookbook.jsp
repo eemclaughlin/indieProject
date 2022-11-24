@@ -29,7 +29,7 @@
 <p>${detailCookbook.notes}"</p>
 
 <p><a href="editCookbook?cookbookId=${detailCookbook.cookbookId}">Edit ${detailCookbook.cookbookId}</a></p>
-<p><a href="deleteRecipe.jsp?recipeId=${recipe.recipeId}">Delete ${recipe.recipeId}</a></p>
+<p><a href="deleteCookbook?cookbookId=${detailCookbook.cookbookId}">Delete ${detailCookbook.cookbookId}</a></p>
 
 
 </body>

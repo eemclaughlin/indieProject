@@ -26,13 +26,13 @@
         <tbody>
         <c:forEach var="recipe" items="${recipes}">
             <tr>
-                <td>${recipe.recipeName}</td>
+                <td><a href="editRecipe?recipeId=${recipe.recipeId}">Edit ${recipe.recipeName}</a></td>
                 <td>${recipe.description}</td>
                 <td>${recipe.notes}</td>
-                <td>${recipe.cookbooks.title}</td>
+                <td><a href="detailCookbook?cookbookId=${recipe.cookbooks.cookbookId}">${recipe.cookbooks.title}</a></td>
                 <td>${recipe.pageNumber}<br/></td>
                 <td><a href="editRecipe?recipeId=${recipe.recipeId}">Edit ${recipe.recipeId}</a></td>
-                <td><a href="deleteRecipe.jsp?recipeId=${recipe.recipeId}">Delete ${recipe.recipeId}</a></td>
+                <td><a href="deleteRecipe?recipeId=${recipe.recipeId}">Delete ${recipe.recipeId}</a></td>
             </tr>
         </c:forEach>
 

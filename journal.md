@@ -150,11 +150,14 @@
   - Added the javadocs and comments and removed sys out prints
   - Implemented changes to restrict database result to the logged in user.
 
-### Week 13 (9:15)
+### Week 13 (13:00)
 - Fix a ton of small issues (1:30)
 - Add in an edit recipes section and all the stuff needed for that (5:00)
 - Add in the edit cookbooks section and all that stuff (1:00)
 - Add in a cookbook details page and all that stuff (1:45)
+- Added Delete cookbook and recipe functionality (3:00)
+  - Also some cleanup and minor changes related to this.
+- Added an Add a cookbook manually page (0:45)
 - 
 
 

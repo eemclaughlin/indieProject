@@ -18,7 +18,6 @@
 
 <div class="container-fluid">
     <h2>This Cookbook was Just Added: </h2>
-    <p>Currently always defaults to Johnny Cash's recipes.</p>
     <table id="recipeTable" class="display" cellspacing="0" width="100%">
         <thead>
         <th></th>
@@ -34,7 +33,7 @@
         </thead>
         <tbody>
             <tr>
-                <td><img src="${newCookbookParts['cbSmallImageLink']}" alt="Image of Cookbook"></img></td>
+                <td><img src="${newCookbookParts['cbSmallImageLink']}" alt="Image of Cookbook"></td>
                 <td>${newCookbookParts['cbTitle']}</td>
                 <td>${newCookbookParts['cbAuthor']}</td>
                 <td>${newCookbookParts['cbPublisher']}</td>
