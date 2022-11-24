@@ -66,15 +66,15 @@
 ### Week 12
 - [ ] Integrate error handling.
 - [x] Add javadoc and comments on all pages. First Pass.
-- [ ] Add way to remove cookbooks from database.
-- [ ] Add way to remove recipes from database.
+- [x] Add way to remove cookbooks from database.
+- [x] Add way to remove recipes from database.
 
 ### Week 13
 - [ ] Build up unit-testing to get more coverage
 - [x] Work on editing recipes page.
 - [x] Add way to edit cookbook data
-- [ ] Create an Add Cookbook Manually page.
-- [ ] Unit Testing!!!
+- [x] Create an Add Cookbook Manually page.
+- [ ] Clean up redundant calls for user information.
 
 ### Week 14
 - [ ] Final pass on javadoc and comments.
