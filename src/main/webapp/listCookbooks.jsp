@@ -1,56 +1,68 @@
-<%@include file="taglib.jsp"%>
+<%--
+  User: eemclaughlin
+  Date: 11/24/22
+  Page for users to see all the cookbooks that they have available.
+--%>
+<%@include file="/imports/taglib.jsp"%>
 <c:set var="title" value="List Cookbooks" />
-<%@include file="head.jsp"%>
-
-<script type="text/javascript" class="init">
-    $(document).ready( function () {
-        $('#recipeTable').DataTable();
-    });
-</script>
-
+<%@include file="/imports/head.jsp"%>
 <html>
 <body>
 
 <div class="container-fluid">
-    <h2>List of User's Cookbooks: </h2>
-    <table id="recipeTable" class="display" cellspacing="0" width="100%">
-        <thead>
-            <th></th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Publisher</th>
-            <th>Description</th>
-            <th>Notes</th>
-            <th>Details</th>
-            <th>Edit?</th>
-            <th>Delete?</th>
-        </thead>
-        <tbody>
-        <c:forEach var="cookbook" items="${cookbooks}">
-            <tr>
-                <td><img src="${cookbook.smallImageLink}" alt="Image of Cookbook"></img></td>
-                <td><a href="detailCookbook?cookbookId=${cookbook.cookbookId}">${cookbook.title}</a></td>
-                <td>${cookbook.author}</td>
-                <td>${cookbook.publisher}</td>
-                <td>${cookbook.description}</td>
-                <td>${cookbook.notes}</td>
-                <td><a href="detailCookbook?cookbookId=${cookbook.cookbookId}">Details</a></td>
-                <td><a href="editCookbook?cookbookId=${cookbook.cookbookId}">Edit ${cookbook.cookbookId}</a></td>
-                <td><a href="deleteRecipe.jsp?recipeId=${recipe.recipeId}">Delete ${recipe.recipeId}</a></td>
-            </tr>
-        </c:forEach>
+<div class="row">
+<div class="col-md-12">
 
-        <div>
-            <p>Links</p>
-            <a href="userHomepage">Home</a><br>
-            <a href="listCookbooks">List of Cookbooks</a><br>
-            <a href="searchRecipe.jsp">Search Page</a><br>
-            <a href="addRecipe">Add a New Recipe</a><br>
-            <a href="addCookbook.jsp">Add a New Cookbook</a><br>
-            <a href="logout">LogOut</a><br>
+    <!-- Brings in the NavBar -->
+    <%@include file="/imports/navbar.jsp"%>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>
+            Cookbooks <small>A listing of all your cookbooks.</small>
+        </h1>
+    </div>
+
+    <!-- Call to add more cookbooks -->
+    <div class="jumbotron">
+        <p>
+            Use the button below to add another cookbook to your collection.
+        </p>
+        <p>
+            <a class="btn btn-primary btn-large" href="addCookbook.jsp">Add a Cookbook</a>
+        </p>
+    </div>
+
+    <!-- Bring in each cookbook and display it in a row -->
+    <c:forEach var="cookbook" items="${cookbooks}">
+    <div class="row">
+        <div class="col-md-3">
+            <img alt="Cookbook Cover" src="${cookbook.smallImageLink}">
         </div>
-        </tbody>
-    </table>
+        <div class="col-md-4">
+            <h2>${cookbook.title}</h2>
+            <p>
+                <strong>Author: </strong>${cookbook.author}<br>
+                <strong>Publisher: </strong>${cookbook.publisher}
+            </p>
+            <p>
+                <a class="btn" href="detailCookbook?cookbookId=${cookbook.cookbookId}">View details »</a>
+            </p>
+        </div>
+        <div class="col-md-5">
+            <h2>
+                Notes
+            </h2>
+            <p>${cookbook.notes}</p>
+        </div>
+    </div>
+    </c:forEach>
+
+    <!-- Brings in the Footer -->
+    <%@include file="/imports/footer.jsp"%>
+
+</div>
+</div>
 </div>
 
 </body>

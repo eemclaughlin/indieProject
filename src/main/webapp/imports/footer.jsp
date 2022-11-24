@@ -1,16 +1,11 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: student
+  User: eemclaughlin
   Date: 11/24/22
-  Time: 8:42 AM
-  To change this template use File | Settings | File Templates.
+  Snippet to add the footer to all relevant pages
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="footer">
+    <p>
+        Enterprise Java 2022<br>
+        eeMcLaughlin
+    </p>
+</div>
