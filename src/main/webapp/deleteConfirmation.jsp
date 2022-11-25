@@ -1,7 +1,7 @@
 <%--
   User: eemclaughlin
   Date: 11/25/22
-  Page used to output all the details of a single cookbook and ask for editing/deleting.
+  Page used to output a confirmation that an item is deleted.
 --%>
 <%@include file="/includes/taglib.jsp"%>
 <c:set var="title" value="List Cookbooks" />
@@ -35,10 +35,10 @@
                         </th>
                     </tr>
                     <tr>
-                        <td><a href="userHomepage">Home</a></td>
+                        <td><a href="listCookbooks">Return to Cookbooks List</a><br></td>
                     </tr>
                     <tr>
-                        <td><a href="listCookbooks">Cookbook List</a><br></td>
+                        <td><a href="userHomepage">Return to Recipes List</a></td>
                     </tr>
                     <tr>
                         <td><a href="addRecipe">Add a New Recipe</a><br></td>

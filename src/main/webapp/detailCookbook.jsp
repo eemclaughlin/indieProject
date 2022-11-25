@@ -37,7 +37,7 @@
                     <tbody>
                     <tr class="table-secondary">
                         <th scope="row">Image</th>
-                        <td><img src="${detailCookbook.mediumImageLink}" alt="Image of Cookbook"></td>
+                        <td><img src="${detailCookbook.smallImageLink}" alt="Image of Cookbook"></td>
                     </tr>
                     <tr class="table-secondary">
                         <th scope="row">Title</th>
@@ -93,8 +93,13 @@
                 </table>
             </div>
 
+            <p class="text-danger"><strong>Important!  Deleting a cookbook will also remove the recipes associated with it!</strong></p>
+
             <div class="row mb-4 ">
-                <div class="col-5">
+                <div class="col-2">
+                    <a class="btn btn-warning btn-large text-dark" href="listCookbooks"><strong>Return To List</strong></a>
+                </div>
+                <div class="col-2">
                     <a class="btn btn-warning btn-large text-dark" href="editCookbook?cookbookId=${detailCookbook.cookbookId}"><strong>Edit Cookbook</strong></a>
                 </div>
                 <div class="col-auto">
