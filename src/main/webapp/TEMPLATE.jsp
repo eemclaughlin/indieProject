@@ -22,33 +22,13 @@
             <!-- Page Header -->
             <div class="page-header my-3 py-2">
                 <h1>
-                    Delete Confirmed: <small>Confirmation of Deletion</small>
+                    Cookbooks: <small>A listing of all your cookbooks.</small>
                 </h1>
             </div>
+            <!-- START INDIVIDUAL PAGE CODE HERE -->
 
-            <h1 class="my-5">Your item was successfully deleted!</h1>
 
-            <div class="row ms-4">
-                <table>
-                    <tr>
-                        <th><strong>Links</strong>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td><a href="userHomepage">Home</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="listCookbooks">Cookbook List</a><br></td>
-                    </tr>
-                    <tr>
-                        <td><a href="addRecipe">Add a New Recipe</a><br></td>
-                    </tr>
-                    <tr>
-                        <td><a href="addCookbook.jsp">Add a New Cookbook</a><br></td>
-                    </tr>
-                </table>
-            </div>
-
+            <!-- END OF INDIVIDUAL PAGE CODE -->
             <div class ="row mb-5">
                 <div class="col mb-5"></div>
             </div>
