@@ -1,0 +1,19 @@
+html, body {
+    height:100%;
+}
+
+#wrapper {
+    position: relative;
+    min-height:100%;
+}
+
+#main {
+    padding-bottom: 44px;
+}
+
+footer {
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    width: 98%;
+}
