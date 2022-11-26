@@ -4,7 +4,7 @@
   Page used to output all the details of a single cookbook and ask for editing/deleting.
 --%>
 <%@include file="/includes/taglib.jsp"%>
-<c:set var="title" value="List Cookbooks" />
+<c:set var="title" value="Cookbook Details" />
 <%@include file="/includes/head.jsp"%>
 <html>
 <body>
@@ -54,10 +54,6 @@
                     <tr class="table-secondary">
                         <th scope="row">Published Date</th>
                         <td>${detailCookbook.publishedDate}</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">Cookbook Title</th>
-                        <td>${detailCookbook.title}</td>
                     </tr>
                     <tr class="table-secondary">
                         <th scope="row">Description</th>

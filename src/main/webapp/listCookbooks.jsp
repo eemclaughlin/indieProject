@@ -41,11 +41,11 @@
             <!-- Bring in each cookbook and display it in a row -->
             <c:forEach var="cookbook" items="${cookbooks}">
                 <div class="row py-2 my-2 border border-secondary">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <img alt="Cookbook Cover" src="${cookbook.smallImageLink}">
                     </div>
-                    <div class="col-md-3">
-                        <h2>${cookbook.title}</h2>
+                    <div class="col-md-4">
+                        <h3>${cookbook.title}</h3>
                         <p>
                             <strong>Author: </strong>${cookbook.author}<br>
                             <strong>Publisher: </strong>${cookbook.publisher}

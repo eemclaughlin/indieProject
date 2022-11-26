@@ -1,79 +1,143 @@
 <%--
   User: eemclaughlin
-  Date: 11/20/22
+  Date: 11/25/22
+  Page used to allow user to edit info about a cookbook.
 --%>
-<%@include file="taglib.jsp"%>
+<%@include file="/includes/taglib.jsp"%>
 <c:set var="title" value="Edit a Cookbook" />
-<%@include file="head.jsp"%>
+<%@include file="/includes/head.jsp"%>
 <html>
 <body>
 
-<h2>Edit a Cookbook</h2>
+<div class="container-fluid" id="wrapper">
+<div class="row">
+<div class="col-12">
 
-<form action="editCookbook" class="form-inline" method="post">
-    <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title"
-               aria-describedby="titleHelp" placeholder="title"
-               value="${editCookbook.title}">
+    <!-- Brings in the NavBar -->
+    <%@include file="/includes/navbar.jsp"%>
 
-        <label for="author">Author</label>
-        <input type="text" class="form-control" id="author" name="author"
-               aria-describedby="authorHelp" placeholder="author"
-               value="${editCookbook.author}">
+    <div class="container align-items-center">
+        <div class="col-12">
 
-        <label for="publisher">Publisher</label>
-        <input type="text" class="form-control" id="publisher" name="publisher"
-               aria-describedby="publisherHelp" placeholder="publisher"
-               value="${editCookbook.publisher}">
+            <!-- Page Header -->
+            <div class="page-header my-3 py-2">
+                <h1>
+                    Edit Cookbook: <small>Change data about a cookbook.</small>
+                </h1>
+            </div>
 
-        <label for="publishedDate">Published Date</label>
-        <input type="text" class="form-control" id="publishedDate" name="publishedDate"
-               aria-describedby="publishedDateHelp" placeholder="publishedDate"
-               value="${editCookbook.publishedDate}">
+            <div class="row">
+                <div class="col-md-5">
+                    <form role="form" action="editCookbook" method="post">
+                        <div class="form-group mx-3 mb-3">
+                            <label for="title" class="mb-1">Title</label>
+                            <input type="text" class="form-control" id="title"
+                                   name="title" aria-describedby="titleHelp"
+                                   placeholder="Ex. Cooking For Dummies" required
+                                   value="${editCookbook.title}">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="author" class="mb-1">Author</label>
+                            <input type="text" class="form-control" id="author"
+                                   name="author" aria-describedby="authorHelp"
+                                   placeholder="Ex. Rachel Ray"
+                                   value="${editCookbook.author}">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="publisher" class="mb-1">Publisher</label>
+                            <input type="text" class="form-control" id="publisher"
+                                   name="publisher" aria-describedby="publisherHelp"
+                                   placeholder="Publisher"
+                                   value="${editCookbook.publisher}">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="publishedDate">Published Date</label>
+                            <input type="text" class="form-control" id="publishedDate" name="publishedDate"
+                                   aria-describedby="publishedDateHelp" placeholder="publishedDate"
+                                   value="${editCookbook.publishedDate}">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="description" class="mb-1">Description</label>
+                            <textarea type="text" class="form-control" id="description"
+                                      name="description" aria-describedby="descriptionHelp"
+                                      placeholder="Description of the book or info from the back cover."
+                                      rows="4">${editCookbook.description}</textarea>
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="isbnTen" class="mb-1">ISBN-10</label>
+                            <input type="text" class="form-control" id="isbnTen"
+                                   name="isbnTen" aria-describedby="isbnTenHelp"
+                                   placeholder="Ex. 0-672-33795-9"
+                                   value="${editCookbook.isdnTen}">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="isbnThirteen" class="mb-1">ISBN-13</label>
+                            <input type="text" class="form-control" id="isbnThirteen"
+                                   name="isbnThirteen" aria-describedby="isbnThirteenHelp"
+                                   placeholder="Ex. 978-0-672-33795-6"
+                                   value="${editCookbook.isdnThirteen}">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="pageCount" class="mb-1">Page Count</label>
+                            <input type="number" class="form-control" id="pageCount"
+                                   name="pageCount" aria-describedby="pageCountHelp"
+                                   placeholder="Number of pages"
+                                   value="${editCookbook.pageCount}">
+                            <div class="invalid-feedback">
+                                Please enter a number.
+                            </div>
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="language" class="mb-1">Language</label>
+                            <input type="text" class="form-control" id="language"
+                                   name="language" aria-describedby="languageHelp"
+                                   placeholder="Enter 2 Letters for Language"
+                                   value="${editCookbook.language}">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="smallImageLink">Web Link to Small Image</label>
+                            <input type="text" class="form-control" id="smallImageLink" name="smallImageLink"
+                                   aria-describedby="smallImageLinkHelp" placeholder="Link to Small Image"
+                                   value="${editCookbook.smallImageLink}">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="mediumImageLink">Web Link to Medium Image</label>
+                            <input type="text" class="form-control" id="mediumImageLink" name="mediumImageLink"
+                                   aria-describedby="mediumImageLinkHelp" placeholder="Link to Medium Image"
+                                   value="${editCookbook.mediumImageLink}">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="notes" class="mb-1">Notes</label>
+                            <textarea type="text" class="form-control" id="notes"
+                                      name="notes" aria-describedby="notesHelp"
+                                      placeholder="Personal notes about the cookbook"
+                                      rows="4">${editCookbook.notes}</textarea>
+                        </div>
 
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description" name="description"
-               aria-describedby="descriptionHelp" placeholder="description"
-               value="${editCookbook.description}">
+                        <button type="submit" name="submit" value="editCookbook"
+                                class="btn btn-warning text-dark mx-3 my-2">Submit Change
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-        <label for="isbnTen">Short ISBN</label>
-        <input type="text" class="form-control" id="isbnTen" name="isbnTen"
-               aria-describedby="isbnTenHelp" placeholder="isbnTen"
-               value="${editCookbook.isdnTen}">
+            <div class ="row mb-5">
+                <div class="col mb-5"></div>
+            </div>
 
-        <label for="isbnThirteen">Long ISBN</label>
-        <input type="text" class="form-control" id="isbnThirteen" name="isbnThirteen"
-               aria-describedby="isbnThirteenHelp" placeholder="isbnThirteen"
-               value="${editCookbook.isdnThirteen}">
-
-        <label for="pageCount">Total Page Count</label>
-        <input type="text" class="form-control" id="pageCount" name="pageCount"
-               aria-describedby="pageCountHelp" placeholder="pageCount"
-               value="${editCookbook.pageCount}">
-
-        <label for="language">Language</label>
-        <input type="text" class="form-control" id="language" name="language"
-               aria-describedby="languageHelp" placeholder="language"
-               value="${editCookbook.language}">
-
-        <label for="smallImageLink">Web Link to Small Image</label>
-        <input type="text" class="form-control" id="smallImageLink" name="smallImageLink"
-               aria-describedby="smallImageLinkHelp" placeholder="smallImageLink"
-               value="${editCookbook.smallImageLink}">
-
-        <label for="mediumImageLink">Web Link to Medium Image</label>
-        <input type="text" class="form-control" id="mediumImageLink" name="mediumImageLink"
-               aria-describedby="mediumImageLinkHelp" placeholder="mediumImageLink"
-               value="${editCookbook.mediumImageLink}">
-
-        <label for="notes">Notes</label>
-        <input type="text" class="form-control" id="notes" name="notes"
-               aria-describedby="notesHelp" placeholder="notes"
-               value="${editCookbook.notes}">
+        </div>
     </div>
-    <button type="submit" name="submit" value="editCookbook" class="btn btn-primary">Save Changes</button>
-</form>
+
+    <!-- Brings in the Footer -->
+    <%@include file="/includes/footer.jsp"%>
+
+</div>
+</div>
+</div>
+
+    <!-- Reference to JavaScript Sources -->
+    <%@include file="/includes/javascript.jsp"%>
 
 </body>
 </html>
+

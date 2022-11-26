@@ -4,7 +4,7 @@
   Page used to confirm user is logged out and offer links to log back in.
 --%>
 <%@include file="/includes/taglib.jsp"%>
-<c:set var="title" value="List Cookbooks" />
+<c:set var="title" value="Logout" />
 <%@include file="/includes/head.jsp"%>
 <html>
 <body>

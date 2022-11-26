@@ -4,7 +4,7 @@
   Page used to allow user to enter info about a cookbook manually.
 --%>
 <%@include file="/includes/taglib.jsp"%>
-<c:set var="title" value="List Cookbooks" />
+<c:set var="title" value="Manual Cookbook Addition" />
 <%@include file="/includes/head.jsp"%>
 <html>
 <body>

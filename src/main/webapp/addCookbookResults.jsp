@@ -1,62 +1,125 @@
 <%--
   User: eemclaughlin
-  Date: 11/1/22
-  Displays info on the cookbook that was just added.
+  Date: 11/25/22
+  Page used to output the details of a newly added cookbook (from Google Books).
 --%>
-<%@include file="taglib.jsp"%>
+<%@include file="/includes/taglib.jsp"%>
 <c:set var="title" value="Add Cookbook Results" />
-<%@include file="head.jsp"%>
-
-<script type="text/javascript" class="init">
-    $(document).ready( function () {
-        $('#recipeTable').DataTable();
-    });
-</script>
-
+<%@include file="/includes/head.jsp"%>
 <html>
 <body>
 
-<div class="container-fluid">
-    <h2>This Cookbook was Just Added: </h2>
-    <table id="recipeTable" class="display" cellspacing="0" width="100%">
-        <thead>
-        <th></th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Publisher</th>
-        <th>Published Date</th>
-        <th>Description</th>
-        <th>Short ISBN</th>
-        <th>Long ISBN</th>
-        <th>Page Count</th>
-        <th>Notes</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="${newCookbookParts['cbSmallImageLink']}" alt="Image of Cookbook"></td>
-                <td>${newCookbookParts['cbTitle']}</td>
-                <td>${newCookbookParts['cbAuthor']}</td>
-                <td>${newCookbookParts['cbPublisher']}</td>
-                <td>${newCookbookParts['cbPublishedDate']}</td>
-                <td>${newCookbookParts['cbDescription']}</td>
-                <td>${newCookbookParts['cbIsdnTen']}</td>
-                <td>${newCookbookParts['cbIsdnThirteen']}</td>
-                <td>${newCookbookParts['cbPageCount']}</td>
-                <td>${newCookbookParts['cbNotes']}</td>
-            </tr>
+<div class="container-fluid" id="wrapper">
+<div class="row">
+<div class="col-12">
 
-        <div>
-            <p>Links</p>
-            <a href="userHomepage">Home</a><br>
-            <a href="listCookbooks">List of Cookbooks</a><br>
-            <a href="searchRecipe.jsp">Search Page</a><br>
-            <a href="addRecipe">Add a New Recipe</a><br>
-            <a href="addCookbook.jsp">Add another Cookbook</a><br>
-            <a href="logout">LogOut</a><br>
+    <!-- Brings in the NavBar -->
+    <%@include file="/includes/navbar.jsp"%>
+
+    <div class="container align-items-center">
+        <div class="col-12">
+
+            <!-- Page Header -->
+            <div class="page-header my-3 py-2">
+                <h1>
+                    Cookbook Details: <small>This is the cookbook that was added.</small>
+                </h1>
+            </div>
+
+            <div class="row py-2 my-2 border border-secondary">
+                <table class="col-3 table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Label</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-secondary">
+                        <th scope="row">Image</th>
+                        <td><img src="${newCookbookParts['cbSmallImageLink']}" alt="Image of Cookbook"></td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">Title</th>
+                        <td>${newCookbookParts['cbTitle']}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">Author</th>
+                        <td>${newCookbookParts['cbAuthor']}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">Publisher</th>
+                        <td>${newCookbookParts['cbPublisher']}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">Published Date</th>
+                        <td>${newCookbookParts['cbPublishedDate']}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">Description</th>
+                        <td>${newCookbookParts['cbDescription']}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">ISBN-10</th>
+                        <td>${newCookbookParts['cbIsdnTen']}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">ISBN-13</th>
+                        <td>${newCookbookParts['cbIsdnThirteen']}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">Page Count</th>
+
+                        <c:if test="${newCookbookParts['cbPageCount'] == null}">
+                            <td>N/A</td>
+                        </c:if>
+                        <c:if test="${newCookbookParts['cbPageCount'] != null}">
+                            <td>${newCookbookParts['cbPageCount']}</td>
+                        </c:if>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">Language</th>
+                        <td>${newCookbookParts['cbLanguage']}</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th scope="row">Notes</th>
+                        <td>${newCookbookParts['cbNotes']}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-danger"><strong>Important!  Deleting a cookbook will also remove the recipes associated with it!</strong></p>
+
+            <div class="row mb-4 ">
+                <div class="col-2">
+                    <a class="btn btn-warning btn-large text-dark" href="listCookbooks"><strong>Return To List</strong></a>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-warning btn-large text-dark" href="editCookbook?cookbookId=${detailCookbook.cookbookId}"><strong>Edit Cookbook</strong></a>
+                </div>
+                <div class="col-auto">
+                    <a class="btn btn-danger btn-large text-light" href="deleteCookbook?cookbookId=${detailCookbook.cookbookId}"><strong>Delete Cookbook</strong></a>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col mb-5"></div>
+            </div>
+
         </div>
-        </tbody>
-    </table>
+    </div>
+
+    <!-- Brings in the Footer -->
+    <%@include file="/includes/footer.jsp"%>
+
 </div>
+</div>
+</div>
+
+<!-- Reference to JavaScript Sources -->
+<%@include file="/includes/javascript.jsp"%>
 
 </body>
 </html>
+

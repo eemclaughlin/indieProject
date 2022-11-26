@@ -59,9 +59,14 @@ public class EditCookbook extends HttpServlet {
             int finalUserId = userIds.get(0).getUserId();
             logger.debug("The user's id is: " + finalUserId);
 
-            // Get the cookbook id from the session.
-            cookbookId = Integer.parseInt(req.getParameter("cookbookId"));
-            logger.debug("The cookbook id is: " + cookbookId);
+            try {
+                // Get the cookbook id from the request
+                cookbookId = Integer.parseInt(req.getParameter("cookbookId"));
+                logger.debug("The cookbook id is: " + cookbookId + "SPACE CHECK");
+            } catch (NumberFormatException e) {
+                logger.error("The cookbook id " + cookbookId + " is not a number.");
+
+            }
 
             // Get the cookbook from the database.
             Cookbook editCookbook = (Cookbook) cookbookDao.getById(cookbookId);
@@ -124,6 +129,7 @@ public class EditCookbook extends HttpServlet {
 
         // Get cookbook object by id.
         Cookbook cookbook = (Cookbook) cookbookDao.getById(cookbookId);
+        logger.debug("The cookbook in POST is: " + cookbook);
 
 // Set the new values to the cookbook object.
         cookbook.setTitle(title);

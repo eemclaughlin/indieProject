@@ -75,13 +75,15 @@
 - [x] Add way to edit cookbook data
 - [x] Create an Add Cookbook Manually page.
 - [ ] Clean up redundant calls for user information.
+- [x] Start working on proper layout and design of jsp pages.
+  - [x] Break up repeating elements into jsp fragments.
 
 ### Week 14
 - [ ] Final pass on javadoc and comments.
 - [ ] Final pass on cleaning up code and printlns.
 - [ ] Get everything working again in AWS.
-- [ ] Start working on proper layout and design of jsp pages.
-  - [ ] Break up repeating elements into jsp fragments.
+- [ ] Continue converting jsps to new layouts.
+- [ ] Create the landing page for the site.
 - [ ] Implement/finalize suggested changes from Paula and from peer.
 
 ### Week 15
@@ -90,9 +92,24 @@
 - [ ] Add project to AWS final time.
 
 ### Stretch Goals
-- [ ] Add tags to a tags table]
+- [ ] Refined way to search through recipes.
+- [ ] Add tags to a tags table
 - [ ] Associate tags with recipes via junction table.
 - [ ] Search for recipes by tags
+- [ ] Implement icons and images.
+- [ ] Add a ratings option to the recipes.
+- [ ] Allow user to add recipe pictures.
 
+### Outstanding Bugs/Tasks
+- [ ] Fix editRecipe dropdown to show current cookbook on arrival.
+- [ ] Add ability to add picture on addCookbookManually.
+- [ ] Add back buttons to many of the pages.
+- [ ] On listCookbooks and listRecipes, if there are no items, print that to user.
+- [ ] Fix why no cover image causes table on detailsCookbook to shift over.
+- [ ] Create a confirmation page for adding books from GoogleBooks.
+- [ ] Create a confirmation page for deleting a book or recipe.
+- [ ] On detailsCookbook, fix the delete/abort button and edit button.
+- [ ] On addCookbookByISBN, implement a dash removal method.
+- [ ] On addRecipe, require a page number.
 --
 #### [Back to main README](../README.md)

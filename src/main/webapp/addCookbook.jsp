@@ -4,7 +4,7 @@
   Page used to allow user to enter info about a cookbook by entering an ISBN number.
 --%>
 <%@include file="/includes/taglib.jsp"%>
-<c:set var="title" value="List Cookbooks" />
+<c:set var="title" value="Add a Cookbook" />
 <%@include file="/includes/head.jsp"%>
 <html>
 <body>

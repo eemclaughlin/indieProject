@@ -4,7 +4,7 @@
   Page used to output a confirmation that an item is deleted.
 --%>
 <%@include file="/includes/taglib.jsp"%>
-<c:set var="title" value="List Cookbooks" />
+<c:set var="title" value="Confirm Deleted" />
 <%@include file="/includes/head.jsp"%>
 <html>
 <body>
