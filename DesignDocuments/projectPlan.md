@@ -1,5 +1,6 @@
 # Project Plan
 #### (Stretch Goals at End)
+#### (Outstanding bugs near end)
 
 ### Week 3
 - [x] Create project repository on GitHub
@@ -82,25 +83,20 @@
 - [ ] Final pass on javadoc and comments.
 - [ ] Final pass on cleaning up code and printlns.
 - [ ] Get everything working again in AWS.
-- [ ] Continue converting jsps to new layouts.
-- [ ] Create the landing page for the site.
+- [x] Continue converting jsps to new layouts.
+- [x] Create the landing page for the site (minus picture).
+- [ ] Find a main picture, edit, and add it to homepage
 - [ ] Implement/finalize suggested changes from Paula and from peer.
 
 ### Week 15
 - [ ] Continue to refine layout, CSS and HTML.
+- [ ] Breakup classes into more methods.
 - [ ] Finalize project and prep for demonstrations.
 - [ ] Add project to AWS final time.
+- [ ] Work through the list of bugs and issues below.
+- [ ] Finalize on all the design documents and update.
 
-### Stretch Goals
-- [ ] Refined way to search through recipes.
-- [ ] Add tags to a tags table
-- [ ] Associate tags with recipes via junction table.
-- [ ] Search for recipes by tags
-- [ ] Implement icons and images.
-- [ ] Add a ratings option to the recipes.
-- [ ] Allow user to add recipe pictures.
-
-### Outstanding Bugs/Tasks
+## Outstanding Bugs/Refinements
 - [ ] Fix editRecipe dropdown to show current cookbook on arrival.
 - [ ] Add ability to add picture on addCookbookManually.
 - [ ] Add back buttons to many of the pages.
@@ -111,5 +107,16 @@
 - [ ] On detailsCookbook, fix the delete/abort button and edit button.
 - [ ] On addCookbookByISBN, implement a dash removal method.
 - [ ] On addRecipe, require a page number.
+- [ ] Center picture of cookbook, on listRecipes.
+
+# Stretch Goals
+### Things I would like to get added given more time.
+- [ ] Refined way to search through recipes.
+- [ ] Add tags to a tags table
+- [ ] Associate tags with recipes via junction table.
+- [ ] Search for recipes by tags
+- [ ] Implement icons and images.
+- [ ] Add a ratings option to the recipes.
+- [ ] Allow user to add recipe pictures.
 --
 #### [Back to main README](../README.md)

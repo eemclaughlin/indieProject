@@ -38,12 +38,12 @@
                 </div>
             </div>
 
-            <!-- Bring in each recip and display -->
+            <!-- Bring in each recipe and display -->
             <c:forEach var="recipe" items="${recipes}">
                 <div class="row my-2 border border-secondary">
 
                     <div class="col-md-7 bg-light">
-                        <h2><a class="link-dark" href="editRecipe?recipeId=${recipe.recipeId}">${recipe.recipeName}</a></h2>
+                        <h3><a class="link-dark" href="editRecipe?recipeId=${recipe.recipeId}">${recipe.recipeName}</a></h3>
                         <p>
                             <strong>Description: </strong>${recipe.description}
 

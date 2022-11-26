@@ -55,6 +55,9 @@ public class AddCookbook extends HttpServlet {
         String cookbookNotes = req.getParameter("cookbookNotes");
 
         logger.debug("The user entered ISBN: " + isbn);
+        // Remove the dashes from the ISBN.
+        isbn = removeDashes(isbn);
+        logger.debug("The isbn without dashes is: " + isbn);
 
         // Instantiate a new Google Books dao to get the info out of Google Books
         BookApiDao dao = new BookApiDao();
@@ -143,6 +146,17 @@ public class AddCookbook extends HttpServlet {
         // Direct user to a results page and return results for user to see.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/addCookbookResults.jsp");
         dispatcher.forward(req, resp);
+    }
+
+    /**
+     * Service Method to Remove all non-numeric characters from a string.
+     * @return A string with only numeric characters.
+     */
+    private String removeDashes(String isbn) {
+        // Remove dashes from ISBN number.
+        isbn = isbn.replace("-", "");
+
+        return isbn;
     }
 }
 

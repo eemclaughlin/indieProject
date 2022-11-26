@@ -150,7 +150,7 @@
   - Added the javadocs and comments and removed sys out prints
   - Implemented changes to restrict database result to the logged in user.
 
-### Week 13 (25:00)
+### Week 13 (30:30)
 - Fix a ton of small issues (1:30)
 - Add in an edit recipes section and all the stuff needed for that (5:00)
 - Add in the edit cookbooks section and all that stuff (1:00)
@@ -162,6 +162,9 @@
 - Styled new header, new footer, new head link (4:00)
 - Styled new listCookbooks page, new cookbookDetails page, new deleteCookbook page (2:00)
 - Styled several more of the pages including addrecipe and addcookbook pages (3:00)
+- Styled the editRecipe and editCookbook pages plus extensive troubleshooting on editCookook (3:00)
+- Styled the listRecipes page and the index page minus a picture (2:15)
+- Added a method to addCookbook that filters out the dashes and tested (0:15)
 
 
 
