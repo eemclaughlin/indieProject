@@ -2,6 +2,8 @@
 #### (Stretch Goals at End)
 #### (Outstanding bugs near end)
 
+#### [Back to main README](../README.md)
+
 ### Week 3
 - [x] Create project repository on GitHub
 - [x] Create project structure in intellij and push
