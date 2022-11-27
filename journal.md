@@ -168,8 +168,8 @@
 - Watch a peer presentation and give feedback on it and on the one I forgot (0:30)
 - Week 13 Readings, Videos, and Assignment (3:15)
 
-### Week 14 ()
-- r
+### Week 14 (3:00)
+- Cleaned up a lot or redundant code and created unitTests (3:00)
 
 
 

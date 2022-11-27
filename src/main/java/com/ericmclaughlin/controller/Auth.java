@@ -114,13 +114,11 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 session.setAttribute("email", userInfo.get("email"));
                 session.setAttribute("userId", loggedInUserId);
 
-                //TODO Remove this if it is not needed.  Each individual variable is above.
                 // Get the entire user from the database by id and add it to the session.
                 GenericDao userDao = new GenericDao(User.class);
                 User user = (User) userDao.getById(loggedInUserId);
                 session.setAttribute("loggedInUser", user);
 
-                // TODO See if this is needed.
                 req.setAttribute("userName", userInfo.get("userName"));
 
             } catch (IOException e) {
@@ -201,7 +199,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         String keyId = tokenHeader.getKid();
         String alg = tokenHeader.getAlg();
 
-        // TODO pick proper key from the two - it just so happens that the first one works for my case
         // Use Key's N and E
         BigInteger modulus = new BigInteger(1, org.apache.commons.codec.binary.Base64.decodeBase64(jwks.getKeys().get(0).getN()));
         BigInteger exponent = new BigInteger(1, org.apache.commons.codec.binary.Base64.decodeBase64(jwks.getKeys().get(0).getE()));

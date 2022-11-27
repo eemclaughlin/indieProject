@@ -47,7 +47,7 @@ public class RecipeDaoTest {
      */
     @Test
     void insertSuccess() {
-        // Create new author.
+        // Create new user.
         User newUser = new User("Bill", "Nye", "NyeB", "NyeB");
         // Create new cookbook.
         //Cookbook newCookbook = new Cookbook("Greatest Cookbook", "Test", "123-123-123", "Test");
@@ -94,7 +94,9 @@ public class RecipeDaoTest {
         Recipe retrievedRecipe = (Recipe)genericDaoRecipe.getById(1);
         assertNotNull(retrievedRecipe);
         assertEquals("Carrot Cake", retrievedRecipe.getRecipeName());
-        //TODO: Add other assertions for the other fields, if needed.
+        assertEquals(300, retrievedRecipe.getPageNumber());
+        assertEquals(1, retrievedRecipe.getUser().getUserId());
+        assertEquals(1, retrievedRecipe.getCookbooks().getCookbookId());
     }
 
     /**
@@ -125,7 +127,7 @@ public class RecipeDaoTest {
     }
 
     /**
-     * Verify successful update of a Book
+     * Verify successful update of a recipe
      * c.r.UPDATE.d
      */
     @Test

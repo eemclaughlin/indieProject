@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-//TODO This whole class may be unnecessary.
-
 /**
  * A simple servlet to search for recipes.
  * @author eemclaughlin
@@ -55,7 +53,7 @@ public class SearchRecipe extends HttpServlet {
         int finalUserId = (int)session.getAttribute("userId");
         logger.debug("The user's id is: " + finalUserId);
 
-        //TODO This needs work to only get back result of recipes that this user owns.
+        // This needs work to only get back result of recipes that this user owns.
         // If the search button is pressed, take data from the form and search for it.
         if (req.getParameter("submit").equals("search")) {
             req.setAttribute("recipes", recipeDao.getByPropertyLike("recipeName", req.getParameter("searchTermRecipe")));

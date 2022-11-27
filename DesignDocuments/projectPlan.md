@@ -73,7 +73,7 @@
 - [x] Add way to remove recipes from database.
 
 ### Week 13
-- [ ] Build up unit-testing to get more coverage
+- [x] Build up unit-testing to get more coverage
 - [x] Work on editing recipes page.
 - [x] Add way to edit cookbook data
 - [x] Create an Add Cookbook Manually page.
