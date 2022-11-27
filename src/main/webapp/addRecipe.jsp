@@ -52,7 +52,7 @@
                             <label for="pageNumber" class="mb-1">Page Number</label>
                             <input type="number" class="form-control" id="pageNumber"
                                       name="pageNumber" aria-describedby="pageNumberHelp"
-                                      placeholder="Ex. 123">
+                                      placeholder="Ex. 123" required>
                         </div>
                         <div class="form-group m-3">
                             <label for="cookbookList" class="form-label mt-2 mb-1">Select The Cookbook</label>

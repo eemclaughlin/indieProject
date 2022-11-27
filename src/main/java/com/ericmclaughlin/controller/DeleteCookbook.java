@@ -25,14 +25,8 @@ public class DeleteCookbook extends HttpServlet {
 
         // Call on the Dao for all the aspects
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
-        GenericDao userDao = new GenericDao(User.class);
 
         try {
-            // Establish the session and retrieve user
-            HttpSession session = req.getSession();
-            User loggedInUser = (User) session.getAttribute("loggedInUser");
-            logger.debug("The user's username is: " + loggedInUser.getUserName());
-
             // Get the cookbook id from the request
             int cookbookId = Integer.parseInt(req.getParameter("cookbookId"));
             logger.debug("The cookbook's id is: " + cookbookId);

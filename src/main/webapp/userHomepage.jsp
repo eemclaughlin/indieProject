@@ -42,7 +42,7 @@
             <c:forEach var="recipe" items="${recipes}">
                 <div class="row my-2 border border-secondary">
 
-                    <div class="col-md-7 bg-light">
+                    <div class="col-md-6 bg-light">
                         <h3><a class="link-dark" href="editRecipe?recipeId=${recipe.recipeId}">${recipe.recipeName}</a></h3>
                         <p>
                             <strong>Description: </strong>${recipe.description}
@@ -62,8 +62,11 @@
 
                         </p>
                     </div>
-                    <div class="col-md-2 bg-light">
-                        <img alt="Cookbook Cover" src="${recipe.cookbooks.smallImageLink}">
+                    <div class="col-md-2 bg-warning d-flex justify-content-end">
+                        <img class="border border-dark" alt="Cookbook Cover" src="${recipe.cookbooks.smallImageLink}">
+                    </div>
+                    <div class="col-md-1 bg-warning d-flex align-items-center justify-content-center">
+                        <a class="btn btn-dark btn-sm text-secondary border" href="deleteRecipe?recipeId=${recipe.recipeId}"><strong>X</strong></a>
                     </div>
                 </div>
             </c:forEach>

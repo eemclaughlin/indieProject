@@ -46,9 +46,8 @@ public class AddCookbook extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // Call on the Daos for Users and for Cookbooks.
+        // Call on the Dao for Cookbooks.
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
-        GenericDao userDao = new GenericDao(User.class);
 
         // Get information entered from the form
         String isbn = req.getParameter("isbn");
@@ -86,8 +85,6 @@ public class AddCookbook extends HttpServlet {
             publisher = item.getVolumeInfo().getPublisher();
             publishedDate = item.getVolumeInfo().getPublishedDate() + "-01";
             description = item.getVolumeInfo().getDescription();
-            //isdnTen = null;
-            //isdnThirteen = null;
             pageCount = item.getVolumeInfo().getPageCount();
             language = item.getVolumeInfo().getLanguage();
             smallImageLink = item.getVolumeInfo().getImageLinks().getSmallThumbnail();
@@ -95,7 +92,6 @@ public class AddCookbook extends HttpServlet {
 
             // For each author in array at second half of "for"...
             for(String arrayAuthor : item.getVolumeInfo().getAuthors()) {
-                //author = item.getVolumeInfo().getAuthors().toString();
                 author = arrayAuthor;
             }
 
@@ -128,17 +124,15 @@ public class AddCookbook extends HttpServlet {
 
         logger.debug("The new cookbook parts are: " + newCookbookParts);
 
-        // Establish session to get user id.
+        // Establish the session and retrieve user
         HttpSession session = req.getSession();
-        int finalUserId = (int)session.getAttribute("userId");
-
-        // Get user object by id
-        User user = (User) userDao.getById(finalUserId);
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        logger.debug("The user's username is: " + loggedInUser.getUserName());
 
         // Create a new cookbook object with all the collected info and insert into the database.
         Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate,
                 description, isdnTen, isdnThirteen, pageCount, language, smallImageLink,
-                mediumImageLink, notes, user);
+                mediumImageLink, notes, loggedInUser);
         cookbookDao.insert(cookbook);
 
         logger.debug("The new cookbook is: " + cookbook);

@@ -40,23 +40,14 @@ public class AddRecipe extends HttpServlet {
 
         // Call on the Dao for the cookbooks.
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
-        GenericDao userDao = new GenericDao(User.class);
 
         try {
-            // Establish the session and retrieve username.
+
+            // Establish the session and retrieve user
             HttpSession session = req.getSession();
-            String storedUsername = (String)session.getAttribute("userName");
-
-            logger.debug("The user's username is: " + storedUsername);
-
-            // Get Id of user by username
-            List<User> userIds = userDao.getByPropertyEqual("userName", storedUsername);
-
-            // Log Statement
-            for(User userId:userIds) logger.debug("The user's id is: " + userId.getUserId());
-
-            // Get only the first user id that is returned.
-            int finalUserId = userIds.get(0).getUserId();
+            User loggedInUser = (User) session.getAttribute("loggedInUser");
+            int finalUserId = loggedInUser.getUserId();
+            logger.debug("The user's username is: " + loggedInUser.getUserName());
             logger.debug("The user's id is: " + finalUserId);
 
             // Get the logged-in user's cookbooks.
@@ -87,7 +78,6 @@ public class AddRecipe extends HttpServlet {
         // Call on the Daos for Recipes, Users, and for Cookbooks.
         GenericDao recipeDao = new GenericDao(Recipe.class);
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
-        GenericDao userDao = new GenericDao(User.class);
 
         // Get information entered from the form
         String recipeName = req.getParameter("recipeName");
@@ -101,18 +91,16 @@ public class AddRecipe extends HttpServlet {
         logger.debug("cookbookId: " + cookbookId);
         logger.debug(recipeName + " " + description + " " + notes + " " + pageNumber);
 
-        // Establish session to get user id.
+        // Establish the session and retrieve user
         HttpSession session = req.getSession();
-        int finalUserId = (int)session.getAttribute("userId");
-
-        // Get user object by id
-        User user = (User) userDao.getById(finalUserId);
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        logger.debug("The user's username is: " + loggedInUser.getUserName());
 
         // Get cookbook object by id.
         Cookbook cookbook = (Cookbook) cookbookDao.getById(cookbookId);
 
         // Take all parts and put together into a recipe.  Add said recipe to database.
-        Recipe recipe = new Recipe(recipeName, description, notes, pageNumber, user, cookbook);
+        Recipe recipe = new Recipe(recipeName, description, notes, pageNumber, loggedInUser, cookbook);
         recipeDao.insert(recipe);
 
         // Redirect back to user homepage.

@@ -39,26 +39,8 @@ public class EditCookbook extends HttpServlet {
 
         // Call on the Dao for all the aspects
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
-        GenericDao userDao = new GenericDao(User.class);
-        GenericDao recipeDao = new GenericDao(Recipe.class);
 
         try {
-            // Establish the session and retrieve username.
-            HttpSession session = req.getSession();
-            String storedUsername = (String) session.getAttribute("userName");
-            logger.debug("The user's username is: " + storedUsername);
-
-            // Get Id of user by username
-            List<User> userIds = userDao.getByPropertyEqual("userName", storedUsername);
-
-            // Log Statement
-            for (User userId : userIds)
-                logger.debug("The user's id is: " + userId.getUserId());
-
-            // Get only the first user id that is returned.
-            int finalUserId = userIds.get(0).getUserId();
-            logger.debug("The user's id is: " + finalUserId);
-
             try {
                 // Get the cookbook id from the request
                 cookbookId = Integer.parseInt(req.getParameter("cookbookId"));
@@ -72,6 +54,8 @@ public class EditCookbook extends HttpServlet {
             Cookbook editCookbook = (Cookbook) cookbookDao.getById(cookbookId);
             logger.debug("The recipe is: " + editCookbook);
 
+            // Establish the session and retrieve username.
+            HttpSession session = req.getSession();
             // Set the cookbook information to the session.
             session.setAttribute("editCookbook", editCookbook);
 
@@ -96,10 +80,8 @@ public class EditCookbook extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // Call on the Daos for Recipes, Users, and for Cookbooks.
-        GenericDao recipeDao = new GenericDao(Recipe.class);
+        // Call on the Daos
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
-        GenericDao userDao = new GenericDao(User.class);
 
         // Get the various changed parameters from the form.
         String title = req.getParameter("title");
@@ -120,12 +102,10 @@ public class EditCookbook extends HttpServlet {
                 + " " + language + " " + smallImageLink + " " + mediumImageLink + " "
                 + notes);
 
-        // Establish session to get user id.
+        // Establish the session and retrieve user
         HttpSession session = req.getSession();
-        int finalUserId = (int)session.getAttribute("userId");
-
-        // Get user object by id
-        User user = (User) userDao.getById(finalUserId);
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        logger.debug("The user's username is: " + loggedInUser.getUserName());
 
         // Get cookbook object by id.
         Cookbook cookbook = (Cookbook) cookbookDao.getById(cookbookId);
@@ -146,7 +126,7 @@ public class EditCookbook extends HttpServlet {
         cookbook.setNotes(notes);
 
         // Set the user to the cookbook.
-        cookbook.setUser(user);
+        cookbook.setUser(loggedInUser);
 
         // Update the cookbook in the database.
         cookbookDao.saveOrUpdate(cookbook);

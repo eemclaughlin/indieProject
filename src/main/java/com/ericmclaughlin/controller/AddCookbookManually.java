@@ -35,25 +35,27 @@ public class AddCookbookManually extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        // Call on the Dao for Cookbooks.
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
-        GenericDao userDao = new GenericDao(User.class);
 
         // Declare the variables for the cookbook
-
         int pageCount = 0;
-        logger.debug("The 0 pageCount: " + pageCount);
 
         // Get information entered from the form
         String title = req.getParameter("title");
         String author = req.getParameter("author");
         String publisher = req.getParameter("publisher");
         String description = req.getParameter("description");
-        String isbnTen = req.getParameter("isbnTen");
-        String isbnThirteen = req.getParameter("isbnThirteen");
+        String unfixedIsbnTen = req.getParameter("isbnTen");
+        String unfixedIsbnThirteen = req.getParameter("isbnThirteen");
         pageCount = Integer.parseInt(req.getParameter("pageCount"));
         String language = req.getParameter("language");
         String smallImageLink = "images/NoCover.png";
         String notes = req.getParameter("notes");
+
+        // Remove the dashes from the ISBN.
+        String isbnTen = removeDashes(unfixedIsbnTen);
+        String isbnThirteen = removeDashes(unfixedIsbnThirteen);
 
         // Creates a map and adds the cookbook information to it.
         // The map is added to the session and is used by the jsp for output.
@@ -73,7 +75,7 @@ public class AddCookbookManually extends HttpServlet {
 
         logger.debug("The new cookbook parts are: " + newCookbookParts);
 
-// Establish the session and retrieve user
+        // Establish the session and retrieve user
         HttpSession session = req.getSession();
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         logger.debug("The user's username is: " + loggedInUser.getUserName());
@@ -88,5 +90,16 @@ public class AddCookbookManually extends HttpServlet {
         // Direct the user to the confirmation page
         RequestDispatcher dispatcher = req.getRequestDispatcher("/addCookbookResults.jsp");
         dispatcher.forward(req, resp);
+    }
+
+    /**
+     * Service Method to Remove all non-numeric characters from a string.
+     * @return A string with only numeric characters.
+     */
+    private String removeDashes(String isbn) {
+        // Remove dashes from ISBN number.
+        isbn = isbn.replace("-", "");
+
+        return isbn;
     }
 }

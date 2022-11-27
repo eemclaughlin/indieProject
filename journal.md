@@ -150,7 +150,7 @@
   - Added the javadocs and comments and removed sys out prints
   - Implemented changes to restrict database result to the logged in user.
 
-### Week 13 (31:00)
+### Week 13 (34:15)
 - Fix a ton of small issues (1:30)
 - Add in an edit recipes section and all the stuff needed for that (5:00)
 - Add in the edit cookbooks section and all that stuff (1:00)
@@ -166,6 +166,10 @@
 - Styled the listRecipes page and the index page minus a picture (2:15)
 - Added a method to addCookbook that filters out the dashes and tested (0:15)
 - Watch a peer presentation and give feedback on it and on the one I forgot (0:30)
+- Week 13 Readings, Videos, and Assignment (3:15)
+
+### Week 14 ()
+- r
 
 
 

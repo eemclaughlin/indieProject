@@ -77,7 +77,7 @@
 - [x] Work on editing recipes page.
 - [x] Add way to edit cookbook data
 - [x] Create an Add Cookbook Manually page.
-- [ ] Clean up redundant calls for user information.
+- [x] Clean up redundant calls for user information.
 - [x] Start working on proper layout and design of jsp pages.
   - [x] Break up repeating elements into jsp fragments.
 
@@ -89,6 +89,7 @@
 - [x] Create the landing page for the site (minus picture).
 - [ ] Find a main picture, edit, and add it to homepage
 - [ ] Implement/finalize suggested changes from Paula and from peer.
+- [ ] Removed the TOBEDELETED folder and its contents.
 
 ### Week 15
 - [ ] Continue to refine layout, CSS and HTML.

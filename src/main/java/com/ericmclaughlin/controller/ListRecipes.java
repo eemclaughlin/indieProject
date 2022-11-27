@@ -38,24 +38,14 @@ public class ListRecipes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // Call on the Daos for Users and for Recipes.
+        // Call on the Dao for Recipes.
         GenericDao recipeDao = new GenericDao(Recipe.class);
-        GenericDao userDao = new GenericDao(User.class);
 
-        // Establish the session and retrieve username.
+        // Establish the session and retrieve user
         HttpSession session = req.getSession();
-        String storedUsername = (String)session.getAttribute("userName");
-
-        logger.debug("The user's username is: " + storedUsername);
-
-        // Get Id of user by username
-        List<User> userIds = userDao.getByPropertyEqual("userName", storedUsername);
-
-        // Log Statement
-        for(User userId:userIds) logger.debug("The user's id is: " + userId.getUserId());
-
-        // Get only the first user id that is returned.
-        int finalUserId = (int)userIds.get(0).getUserId();
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        int finalUserId = loggedInUser.getUserId();
+        logger.debug("The user's username is: " + loggedInUser.getUserName());
         logger.debug("The user's id is: " + finalUserId);
 
         // Get all recipes for the user.
