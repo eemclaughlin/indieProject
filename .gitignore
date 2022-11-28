@@ -27,6 +27,7 @@
 *.iws
 
 ## Plugin-specific files:
+.idea/qaplug_profiles.xml
 
 # IntelliJ
 /out/
