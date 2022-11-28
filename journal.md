@@ -170,6 +170,9 @@
 
 ### Week 14 (3:00)
 - Cleaned up a lot or redundant code and created unitTests (3:00)
+- Updated AWS database and moved over up-to-date code (1:00)
+  - Copied over current code to master branch and upload to github
+  - Generated the JavaDocs.
 
 
 

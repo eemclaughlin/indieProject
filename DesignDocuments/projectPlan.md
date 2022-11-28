@@ -84,10 +84,10 @@
 ### Week 14
 - [ ] Final pass on javadoc and comments.
 - [ ] Final pass on cleaning up code and printlns.
-- [ ] Get everything working again in AWS.
+- [x] Get everything working again in AWS.
 - [x] Continue converting jsps to new layouts.
 - [x] Create the landing page for the site (minus picture).
-- [ ] Find a main picture, edit, and add it to homepage
+- [x] Find a main picture, edit, and add it to homepage
 - [ ] Implement/finalize suggested changes from Paula and from peer.
 - [ ] Removed the TOBEDELETED folder and its contents.
 
@@ -100,17 +100,18 @@
 - [ ] Finalize on all the design documents and update.
 
 ## Outstanding Bugs/Refinements
-- [ ] Fix editRecipe dropdown to show current cookbook on arrival.
-- [ ] Add ability to add picture on addCookbookManually.
-- [ ] Add back buttons to many of the pages.
+- [ ] On editRecipe, fix dropdown to show current cookbook on arrival.
+- [ ] On addCookbookManually, add ability to add picture.
+- [ ] Many pages, add back buttons.
 - [ ] On listCookbooks and listRecipes, if there are no items, print that to user.
-- [ ] Fix why no cover image causes table on detailsCookbook to shift over.
+- [ ] On detailsCookbook, fix why NoCover image causes table to shift over.
 - [ ] Create a confirmation page for adding books from GoogleBooks.
 - [ ] Create a confirmation page for deleting a book or recipe.
 - [ ] On detailsCookbook, fix the delete/abort button and edit button.
-- [ ] On addCookbookByISBN, implement a dash removal method.
-- [ ] On addRecipe, require a page number.
-- [ ] Center picture of cookbook, on listRecipes.
+- [x] On addCookbookByISBN, implement a dash removal method.
+- [ ] On editCookbook/addCookbook, it errors when no page number is entered.
+- [x] On addRecipe, require a page number.
+- [x] Center picture of cookbook, on listRecipes.
 
 # Stretch Goals
 ### Things I would like to get added given more time.
