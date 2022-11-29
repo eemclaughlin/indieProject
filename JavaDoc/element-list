@@ -1,0 +1,7 @@
+com.ericmclaughlin.api
+com.ericmclaughlin.auth
+com.ericmclaughlin.controller
+com.ericmclaughlin.entity
+com.ericmclaughlin.persistence
+com.ericmclaughlin.testutil
+com.ericmclaughlin.util

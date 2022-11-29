@@ -122,5 +122,6 @@
 - [ ] Implement icons and images.
 - [ ] Add a ratings option to the recipes.
 - [ ] Allow user to add recipe pictures.
+- [ ] Implement a change profile option.
 --
 #### [Back to main README](../README.md)

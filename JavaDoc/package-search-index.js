@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.ericmclaughlin.api"},{"l":"com.ericmclaughlin.auth"},{"l":"com.ericmclaughlin.controller"},{"l":"com.ericmclaughlin.entity"},{"l":"com.ericmclaughlin.persistence"},{"l":"com.ericmclaughlin.testutil"},{"l":"com.ericmclaughlin.util"}]

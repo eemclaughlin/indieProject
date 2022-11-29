@@ -17,6 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Servlet that works with the jsps to edit a recipe
+ * @author eemclaughlin
+ * @version 2.0 11-28-22
+ */
 @WebServlet(urlPatterns = {"/editRecipe"})
 public class EditRecipe extends HttpServlet {
 

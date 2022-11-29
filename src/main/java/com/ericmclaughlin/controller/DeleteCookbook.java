@@ -17,6 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Servlet that works with the jsps to delete a cookbook from the database.
+ * @author eemclaughlin
+ * @version 2.0 11-28-22
+ */
 @WebServlet(urlPatterns = {"/deleteCookbook"})
 public class DeleteCookbook extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());

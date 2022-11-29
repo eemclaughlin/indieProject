@@ -1,14 +1,12 @@
 package com.ericmclaughlin.controller;
 
 import com.ericmclaughlin.entity.Cookbook;
-import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
 import com.ericmclaughlin.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Servlet that works with the jsps to edit a cookbook's info.
+ * @author eemclaughlin
+ * @version 2.0 11-28-22
+ */
 @WebServlet(urlPatterns = {"/editCookbook"})
 public class EditCookbook extends HttpServlet {
 

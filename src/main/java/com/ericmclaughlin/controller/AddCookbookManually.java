@@ -17,6 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Servlet that works with the jsps to add a cookbook to the database manually.
+ * @author eemclaughlin
+ * @version 2.0 11-19-22
+ */
 @WebServlet("/addCookbookManually")
 public class AddCookbookManually extends HttpServlet {
 

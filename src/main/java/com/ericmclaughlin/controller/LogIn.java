@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Servlet for going through the login process with the user.
+ * @author eemclaughlin
+ * @version 2.0 11-28-22
+ */
 @WebServlet(
         urlPatterns = {"/logIn"}
 )
