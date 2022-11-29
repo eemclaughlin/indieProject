@@ -17,6 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Outputs all the details on a specific cookbook.
+ * @author eemclaughlin
+ * @version 2.0 11-28-22
+ */
 @WebServlet(urlPatterns = {"/detailCookbook"})
 public class DetailCookbook extends HttpServlet {
 

@@ -168,11 +168,11 @@
 - Watch a peer presentation and give feedback on it and on the one I forgot (0:30)
 - Week 13 Readings, Videos, and Assignment (3:15)
 
-### Week 14 (3:00)
+### Week 14 (3:30)
 - Cleaned up a lot or redundant code and created unitTests (3:00)
 - Updated AWS database and moved over up-to-date code (1:00)
   - Copied over current code to master branch and upload to github
-  - Generated the JavaDocs.
+- Generated the JavaDocs and fixed some parts that were missing/not correct (0:30)
 
 
 
