@@ -62,6 +62,7 @@ public class AddCookbook extends HttpServlet {
         BookApiDao dao = new BookApiDao();
 
         // Declare the variables for the cookbook
+        int cookbookId = 0;
         String title = null;
         String author = null;
         String publisher = null;
@@ -105,8 +106,7 @@ public class AddCookbook extends HttpServlet {
             }
         }
 
-        // Creates a map and adds the cookbook information to it.
-        // The map is added to the session and is used by the jsp for output.
+        // Creates a map and adds the cookbook information to it (except for ID)
         HashMap<String, String> newCookbookParts = new HashMap();
         newCookbookParts.put("cbTitle", title);
         newCookbookParts.put("cbAuthor", author);
@@ -120,9 +120,7 @@ public class AddCookbook extends HttpServlet {
         newCookbookParts.put("cbSmallImageLink", smallImageLink);
         newCookbookParts.put("cbNotes", cookbookNotes);
 
-        req.setAttribute("newCookbookParts", newCookbookParts);
-
-        logger.debug("The new cookbook parts are: " + newCookbookParts);
+        logger.debug("The new cookbook parts except for ID are: " + newCookbookParts);
 
         // Establish the session and retrieve user
         HttpSession session = req.getSession();
@@ -133,9 +131,16 @@ public class AddCookbook extends HttpServlet {
         Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate,
                 description, isdnTen, isdnThirteen, pageCount, language, smallImageLink,
                 mediumImageLink, notes, loggedInUser);
-        cookbookDao.insert(cookbook);
+        cookbookId = cookbookDao.insert(cookbook);
 
         logger.debug("The new cookbook is: " + cookbook);
+        logger.debug("The new cookbook ID is: " + cookbookId);
+
+        // The cookbook id is added to the hash map and all is added to the session and is used by the jsp for output.
+        newCookbookParts.put("cbId", String.valueOf((cookbookId)));
+        req.setAttribute("newCookbookParts", newCookbookParts);
+
+        logger.debug("The new cookbook parts WITH ID are: " + newCookbookParts);
 
         // Direct user to a results page and return results for user to see.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/addCookbookResults.jsp");

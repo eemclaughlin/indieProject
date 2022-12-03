@@ -36,9 +36,9 @@
                                    placeholder="Ex. 978-0-672-33795-6 or 0-672-33795-9 or 9780672337956" required>
                         </div>
                         <div class="form-group m-3">
-                            <label for="notes" class="mb-1">Notes</label>
-                            <textarea type="text" class="form-control" id="notes"
-                                      name="notes" aria-describedby="notesHelp"
+                            <label for="cookbookNotes" class="mb-1">Notes</label>
+                            <textarea type="text" class="form-control" id="cookbookNotes"
+                                      name="cookbookNotes" aria-describedby="notesHelp"
                                       placeholder="Personal notes about the cookbook"
                                       rows="4"></textarea>
                         </div>
@@ -46,7 +46,6 @@
                         <button type="submit" name="submit" value="addCookbook"
                                 class="btn btn-warning text-dark mx-3 my-2">Add Cookbook
                         </button>
-                        <!--TODO Maybe direct to page with info about the cookbook and ask user to confirm -->
 
                         <div class="mt-3 mx-3">
                             <p><a href="addCookbookManually.jsp"><strong>No ISBN?  Add a Cookbook Manually.</strong></a></p>

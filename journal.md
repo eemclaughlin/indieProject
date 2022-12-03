@@ -168,11 +168,15 @@
 - Watch a peer presentation and give feedback on it and on the one I forgot (0:30)
 - Week 13 Readings, Videos, and Assignment (3:15)
 
-### Week 14 (3:30)
+### Week 14 (8:45)
 - Cleaned up a lot or redundant code and created unitTests (3:00)
 - Updated AWS database and moved over up-to-date code (1:00)
   - Copied over current code to master branch and upload to github
 - Generated the JavaDocs and fixed some parts that were missing/not correct (0:30)
+- Initial Code Review Meeting with Craig (0:30)
+- Second Code Review meeting with Craig (0:45)
+- Review of Craig's code and also creation of the report (2:00)
+- Many QOL changes and bug resolutions (2:00)
 
 
 

@@ -22,7 +22,7 @@
             <!-- Page Header -->
             <div class="page-header my-3 py-2">
                 <h1>
-                    Cookbook Details: <small>This is the cookbook that was added.</small>
+                    Added Cookbook: <small>This is the cookbook that was added.</small>
                 </h1>
             </div>
 
@@ -89,17 +89,15 @@
                 </table>
             </div>
 
-            <p class="text-danger"><strong>Important!  Deleting a cookbook will also remove the recipes associated with it!</strong></p>
-
             <div class="row mb-4 ">
                 <div class="col-2">
                     <a class="btn btn-warning btn-large text-dark" href="listCookbooks"><strong>Return To List</strong></a>
                 </div>
                 <div class="col-2">
-                    <a class="btn btn-warning btn-large text-dark" href="editCookbook?cookbookId=${detailCookbook.cookbookId}"><strong>Edit Cookbook</strong></a>
+                    <a class="btn btn-warning btn-large text-dark" href="editCookbook?cookbookId=${newCookbookParts['cbId']}"><strong>Edit Information</strong></a>
                 </div>
                 <div class="col-auto">
-                    <a class="btn btn-danger btn-large text-light" href="deleteCookbook?cookbookId=${detailCookbook.cookbookId}"><strong>Delete Cookbook</strong></a>
+                    <a class="btn btn-danger btn-large text-light" href="deleteCookbook?cookbookId=${newCookbookParts['cbId']}"><strong>Do Not Add</strong></a>
                 </div>
             </div>
 

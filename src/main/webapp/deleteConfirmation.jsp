@@ -22,11 +22,11 @@
             <!-- Page Header -->
             <div class="page-header my-3 py-2">
                 <h1>
-                    Delete Confirmed: <small>Confirmation of Deletion</small>
+                    Removal Confirmed: <small>Item was removed</small>
                 </h1>
             </div>
 
-            <h1 class="my-5">Your item was successfully deleted!</h1>
+            <h1 class="my-5">Your item was successfully removed!</h1>
 
             <div class="row ms-4">
                 <table>

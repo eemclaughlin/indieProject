@@ -83,6 +83,9 @@ public class EditCookbook extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        // Variable declaration.
+        int pageCount = 0;
+
         // Call on the Daos
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
 
@@ -94,16 +97,29 @@ public class EditCookbook extends HttpServlet {
         String description = req.getParameter("description");
         String isbnTen = req.getParameter("isbnTen");
         String isbnThirteen = req.getParameter("isbnThirteen");
-        int pageCount = Integer.parseInt(req.getParameter("pageCount"));
+        String pageCountText = req.getParameter("pageCount");
         String language = req.getParameter("language");
         String smallImageLink = req.getParameter("smallImageLink");
         String mediumImageLink = req.getParameter("mediumImageLink");
         String notes = req.getParameter("notes");
 
         logger.debug(title + " " + author + " " + publisher + " " + publishedDate + " "
-                + description + " " + isbnTen + " " + isbnThirteen + " " + pageCount
+                + description + " " + isbnTen + " " + isbnThirteen + " " + pageCountText
                 + " " + language + " " + smallImageLink + " " + mediumImageLink + " "
                 + notes);
+
+        // Prep a couple variables for the database.
+        // If no date was entered, set it to null.
+        if (publishedDate.equals("")) {
+            publishedDate = null;
+        }
+        // If no page count was entered, set it to zero, otherwise, convert to int.
+        if (pageCountText.equals("")) {
+            pageCount = 0;
+        } else {
+            pageCount = Integer.parseInt(pageCountText);
+        }
+
 
         // Establish the session and retrieve user
         HttpSession session = req.getSession();

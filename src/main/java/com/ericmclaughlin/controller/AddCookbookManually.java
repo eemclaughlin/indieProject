@@ -47,13 +47,15 @@ public class AddCookbookManually extends HttpServlet {
         int pageCount = 0;
 
         // Get information entered from the form
+        int cookbookId = 0;
         String title = req.getParameter("title");
         String author = req.getParameter("author");
         String publisher = req.getParameter("publisher");
+        String publishedDate = req.getParameter("publishedDate");
         String description = req.getParameter("description");
         String unfixedIsbnTen = req.getParameter("isbnTen");
         String unfixedIsbnThirteen = req.getParameter("isbnThirteen");
-        pageCount = Integer.parseInt(req.getParameter("pageCount"));
+        String pageCountText = req.getParameter("pageCount");
         String language = req.getParameter("language");
         String smallImageLink = "images/NoCover.png";
         String notes = req.getParameter("notes");
@@ -62,12 +64,25 @@ public class AddCookbookManually extends HttpServlet {
         String isbnTen = removeDashes(unfixedIsbnTen);
         String isbnThirteen = removeDashes(unfixedIsbnThirteen);
 
+        // Prep a couple variables for the database.
+        // If no date was entered, set it to null.
+        if (publishedDate.equals("")) {
+            publishedDate = null;
+        }
+        // If no page count was entered, set it to zero, otherwise, convert to int.
+        if (pageCountText.equals("")) {
+            pageCount = 0;
+        } else {
+            pageCount = Integer.parseInt(pageCountText);
+        }
+
         // Creates a map and adds the cookbook information to it.
         // The map is added to the session and is used by the jsp for output.
         HashMap<String, String> newCookbookParts = new HashMap();
         newCookbookParts.put("cbTitle", title);
         newCookbookParts.put("cbAuthor", author);
         newCookbookParts.put("cbPublisher", publisher);
+        newCookbookParts.put("cbPublishedDate", publishedDate);
         newCookbookParts.put("cbDescription", description);
         newCookbookParts.put("cbIsdnTen", isbnTen);
         newCookbookParts.put("cbIsdnThirteen", isbnThirteen);
@@ -76,9 +91,7 @@ public class AddCookbookManually extends HttpServlet {
         newCookbookParts.put("cbSmallImageLink", smallImageLink);
         newCookbookParts.put("cbNotes", notes);
 
-        req.setAttribute("newCookbookParts", newCookbookParts);
-
-        logger.debug("The new cookbook parts are: " + newCookbookParts);
+        logger.debug("The new cookbook parts except for ID are: " + newCookbookParts);
 
         // Establish the session and retrieve user
         HttpSession session = req.getSession();
@@ -86,11 +99,18 @@ public class AddCookbookManually extends HttpServlet {
         logger.debug("The user's username is: " + loggedInUser.getUserName());
 
         // Create the cookbook object
-        Cookbook cookbook = new Cookbook(title, author, publisher, null, description,
+        Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate, description,
                 isbnTen, isbnThirteen, pageCount, language, smallImageLink, null, notes, loggedInUser);
 
         // Add the cookbook to the database
-        cookbookDao.insert(cookbook);
+        cookbookId = cookbookDao.insert(cookbook);
+
+        logger.debug("The new cookbook is: " + cookbook);
+        logger.debug("The new cookbook ID is: " + cookbookId);
+
+        // The cookbook id is added to the hash map and all is added to the session and is used by the jsp for output.
+        newCookbookParts.put("cbId", String.valueOf((cookbookId)));
+        req.setAttribute("newCookbookParts", newCookbookParts);
 
         // Direct the user to the confirmation page
         RequestDispatcher dispatcher = req.getRequestDispatcher("/addCookbookResults.jsp");

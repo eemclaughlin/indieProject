@@ -52,8 +52,8 @@
                         </div>
                         <div class="form-group m-3">
                             <label for="publishedDate">Published Date</label>
-                            <input type="text" class="form-control" id="publishedDate" name="publishedDate"
-                                   aria-describedby="publishedDateHelp" placeholder="publishedDate"
+                            <input type="date" class="form-control" id="publishedDate" name="publishedDate"
+                                   aria-describedby="publishedDateHelp" placeholder="Date Published Ex. 2018-11-09"
                                    value="${editCookbook.publishedDate}">
                         </div>
                         <div class="form-group m-3">

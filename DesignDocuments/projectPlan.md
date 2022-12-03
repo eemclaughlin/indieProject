@@ -79,10 +79,10 @@
 - [x] Create an Add Cookbook Manually page.
 - [x] Clean up redundant calls for user information.
 - [x] Start working on proper layout and design of jsp pages.
-  - [x] Break up repeating elements into jsp fragments.
+- [x] Break up repeating elements into jsp fragments.
 
 ### Week 14
-- [ ] Final pass on javadoc and comments.
+- [x] Final pass on javadoc and comments.
 - [ ] Final pass on cleaning up code and printlns.
 - [x] Get everything working again in AWS.
 - [x] Continue converting jsps to new layouts.
@@ -90,6 +90,7 @@
 - [x] Find a main picture, edit, and add it to homepage
 - [ ] Implement/finalize suggested changes from Paula and from peer.
 - [ ] Removed the TOBEDELETED folder and its contents.
+- [ ] Continue with bug and qol fixes. (See below for some noted bugs).
 
 ### Week 15
 - [ ] Continue to refine layout, CSS and HTML.
@@ -105,13 +106,16 @@
 - [ ] Many pages, add back buttons.
 - [ ] On listCookbooks and listRecipes, if there are no items, print that to user.
 - [ ] On detailsCookbook, fix why NoCover image causes table to shift over.
-- [ ] Create a confirmation page for adding books from GoogleBooks.
-- [ ] Create a confirmation page for deleting a book or recipe.
-- [ ] On detailsCookbook, fix the delete/abort button and edit button.
+- [x] Create a confirmation page for adding books from GoogleBooks.
+- [x] Create a confirmation page for deleting a book or recipe.
+- [x] On addCookbookSuccess Page, fix the delete/abort button and edit button.
 - [x] On addCookbookByISBN, implement a dash removal method.
-- [ ] On editCookbook/addCookbook, it errors when no page number is entered.
+- [x] On editCookbook/addCookbook, it errors when no page number is entered.
+- [x] On editCookbook/addCookbook, date format was not correct and no date causes error.
 - [x] On addRecipe, require a page number.
 - [x] Center picture of cookbook, on listRecipes.
+- [x] On AddCookbookByISBN, Notes aren't being added with the cookbook info.
+- [x] On DeleteCookbook, fix phrasing to be more relevant.
 
 # Stretch Goals
 ### Things I would like to get added given more time.
