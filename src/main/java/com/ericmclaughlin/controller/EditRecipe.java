@@ -73,6 +73,11 @@ public class EditRecipe extends HttpServlet {
             // Set the cookbooks back into the session.
             req.setAttribute("cookbookList", cookbookList);
 
+            // Get the relevant cookbook id associated with the recipe and put to session
+            // Dropdown menu references this to preselect the cookbook.
+            int selectedCookbookId = editRecipe.getCookbooks().getCookbookId();
+            req.setAttribute("selectedCookbookId", selectedCookbookId);
+
             // Forward to the jsp.
             RequestDispatcher dispatcher = req.getRequestDispatcher("editRecipe.jsp");
             dispatcher.forward(req, resp);

@@ -62,8 +62,8 @@
 
                         </p>
                     </div>
-                    <div class="col-md-2 bg-warning d-flex justify-content-end">
-                        <img class="border border-dark" alt="Cookbook Cover" src="${recipe.cookbooks.smallImageLink}">
+                    <div class="col-md-2 bg-warning d-flex justify-content-end align-items-center">
+                        <img id="listCover" class="border border-dark" alt="Cookbook Cover" src="${recipe.cookbooks.smallImageLink}">
                     </div>
                     <div class="col-md-1 bg-warning d-flex align-items-center justify-content-center">
                         <a class="btn btn-dark btn-sm text-secondary border" href="deleteRecipe?recipeId=${recipe.recipeId}"><strong>X</strong></a>

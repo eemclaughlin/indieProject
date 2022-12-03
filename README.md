@@ -1,4 +1,5 @@
-# Cookbook Recipe Tracker Individual Project
+# RecipeWhere?
+## Cookbook Recipe Tracker Individual Project
 
 ![Cookbook with a lot of tabs](DesignDocuments/LayoutPictures/CookbookChaos.jpg)
 

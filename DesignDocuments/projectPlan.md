@@ -101,7 +101,7 @@
 - [ ] Finalize on all the design documents and update.
 
 ## Outstanding Bugs/Refinements
-- [ ] On editRecipe, fix dropdown to show current cookbook on arrival.
+- [x] On editRecipe, fix dropdown to show current cookbook on arrival.
 - [ ] On addCookbookManually, add ability to add picture.
 - [ ] Many pages, add back buttons.
 - [ ] On listCookbooks and listRecipes, if there are no items, print that to user.
