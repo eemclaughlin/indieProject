@@ -90,20 +90,27 @@
 - [x] Find a main picture, edit, and add it to homepage
 - [ ] Implement/finalize suggested changes from Paula and from peer.
 - [ ] Removed the TOBEDELETED folder and its contents.
-- [ ] Continue with bug and qol fixes. (See below for some noted bugs).
+- [x] Continue with bug and qol fixes. (See below for some noted bugs).
 
 ### Week 15
 - [ ] Continue to refine layout, CSS and HTML.
+- [ ] Continue with bug and qol fixes. (See below for some noted bugs).
 - [ ] Breakup classes into more methods.
 - [ ] Finalize project and prep for demonstrations.
 - [ ] Add project to AWS final time.
 - [ ] Work through the list of bugs and issues below.
 - [ ] Finalize on all the design documents and update.
+- [ ] Record presentation for reference in GitHub.
+- [ ] Record presentation for submission for class. (Due 12/13)
+- [ ] Final Self-Evaluation (Due 12/15)
+
+### Week 16
+- [ ] Class wrapup.
 
 ## Outstanding Bugs/Refinements
 - [x] On editRecipe, fix dropdown to show current cookbook on arrival.
 - [ ] On addCookbookManually, add ability to add picture.
-- [ ] Many pages, add back buttons.
+- [x] Many pages, add back buttons.
 - [ ] On listCookbooks and listRecipes, if there are no items, print that to user.
 - [ ] On detailsCookbook, fix why NoCover image causes table to shift over.
 - [x] Create a confirmation page for adding books from GoogleBooks.
@@ -120,12 +127,13 @@
 # Stretch Goals
 ### Things I would like to get added given more time.
 - [ ] Refined way to search through recipes.
+  - [ ] Search Recipes By Tag
+- [ ] Sort Recipes and Sort Cookbooks
 - [ ] Add tags to a tags table
 - [ ] Associate tags with recipes via junction table.
-- [ ] Search for recipes by tags
 - [ ] Implement icons and images.
 - [ ] Add a ratings option to the recipes.
 - [ ] Allow user to add recipe pictures.
-- [ ] Implement a change profile option.
+- [ ] Implement a change profile options.
 --
 #### [Back to main README](../README.md)

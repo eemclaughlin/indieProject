@@ -91,14 +91,14 @@
 
             <p class="text-danger"><strong>Important!  Deleting a cookbook will also remove the recipes associated with it!</strong></p>
 
-            <div class="row mb-4 ">
-                <div class="col-2">
+            <div class="row mb-4">
+                <div class="col-12 col-md-2 m-1">
                     <a class="btn btn-warning btn-large text-dark" href="listCookbooks"><strong>Return To List</strong></a>
                 </div>
-                <div class="col-2">
+                <div class="col-12 col-md-2 m-1">
                     <a class="btn btn-warning btn-large text-dark" href="editCookbook?cookbookId=${detailCookbook.cookbookId}"><strong>Edit Cookbook</strong></a>
                 </div>
-                <div class="col-auto">
+                <div class="col-12 col-md-2 m-1">
                     <a class="btn btn-danger btn-large text-light" href="deleteCookbook?cookbookId=${detailCookbook.cookbookId}"><strong>Delete Cookbook</strong></a>
                 </div>
             </div>

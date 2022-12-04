@@ -62,7 +62,7 @@
 
                         </p>
                     </div>
-                    <div class="col-md-2 bg-warning d-flex justify-content-end align-items-center">
+                    <div class="d-none d-md-grid col-md-2 bg-warning d-flex justify-content-end align-items-center">
                         <img id="listCover" class="border border-dark" alt="Cookbook Cover" src="${recipe.cookbooks.smallImageLink}">
                     </div>
                     <div class="col-md-1 bg-warning d-flex align-items-center justify-content-center">

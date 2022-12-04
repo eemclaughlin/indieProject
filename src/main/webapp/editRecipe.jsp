@@ -27,7 +27,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-lg-5">
                     <form role="form" action="editRecipe" method="post">
                         <div class="form-group mx-3 mb-3">
                             <label for="recipeName" class="mb-1">Recipe Name</label>
@@ -68,8 +68,10 @@
                             </select>
                         </div>
 
+                        <a class="btn btn-warning btn-large text-dark ms-3 me-1" href="userHomepage"><strong>Return To List</strong></a>
+
                         <button type="submit" name="submit" value="editRecipe"
-                                class="btn btn-warning text-dark mx-3 my-2">Submit Change
+                                class="btn btn-warning text-dark mx-3 my-2"><strong>Submit Change</strong>
                         </button>
                     </form>
                 </div>

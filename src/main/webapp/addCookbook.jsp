@@ -27,7 +27,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-lg-5">
                     <form role="form" action="addCookbook">
                         <div class="form-group mx-3 mb-3">
                             <label for="isbn" class="mb-1">ISBN</label>
@@ -43,8 +43,10 @@
                                       rows="4"></textarea>
                         </div>
 
+                        <a class="btn btn-warning btn-large text-dark ms-3 me-1" href="listCookbooks"><strong>Return To List</strong></a>
+
                         <button type="submit" name="submit" value="addCookbook"
-                                class="btn btn-warning text-dark mx-3 my-2">Add Cookbook
+                                class="btn btn-warning text-dark mx-3 my-2"><strong>Add Cookbook</strong>
                         </button>
 
                         <div class="mt-3 mx-3">

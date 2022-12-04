@@ -11,6 +11,11 @@ html, body {
     padding-bottom: 44px;
 }
 
+#listCover {
+    width: auto;
+    height: 100px;
+}
+
 footer {
     height: 80px;
     position: absolute;
