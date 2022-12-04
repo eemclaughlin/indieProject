@@ -114,7 +114,7 @@
 - [x] On editRecipe, fix dropdown to show current cookbook on arrival.
 - [ ] On addCookbookManually, add ability to add picture.
 - [x] Many pages, add back buttons.
-- [ ] On listCookbooks and listRecipes, if there are no items, print that to user.
+- [x] On listCookbooks and listRecipes, if there are no items, print that to user.
 - [ ] On detailsCookbook, fix why NoCover image causes table to shift over.
 - [x] Create a confirmation page for adding books from GoogleBooks.
 - [x] Create a confirmation page for deleting a book or recipe.

@@ -38,30 +38,40 @@
                 </div>
             </div>
 
-            <!-- Bring in each cookbook and display it in a row -->
-            <c:forEach var="cookbook" items="${cookbooks}">
-                <div class="row py-2 my-2 border border-secondary">
-                    <div class="col-md-2">
-                        <img alt="Cookbook Cover" src="${cookbook.smallImageLink}">
-                    </div>
-                    <div class="col-md-4">
-                        <h3>${cookbook.title}</h3>
-                        <p>
-                            <strong>Author: </strong>${cookbook.author}<br>
-                            <strong>Publisher: </strong>${cookbook.publisher}
-                        </p>
-                        <p>
-                            <a class="btn btn-dark btn-sm" href="detailCookbook?cookbookId=${cookbook.cookbookId}">View details</a>
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <h2>
-                            Notes
-                        </h2>
-                        <p>${cookbook.notes}</p>
+            <!-- If there are no cookbooks, display a message -->
+            <c:if test="${cookbooks.size() == 0}">
+                <div class="row">
+                    <div class="jumbotron text-dark m-2 d-flex">
+                        <h5 class="p-2"><strong>You don't have any cookbooks yet!</strong></h5>
                     </div>
                 </div>
-            </c:forEach>
+            </c:if>
+            <!-- Bring in each cookbook and display it in a row -->
+            <c:if test="${cookbooks.size() != 0}">
+                <c:forEach var="cookbook" items="${cookbooks}">
+                    <div class="row py-2 my-2 border border-secondary">
+                        <div class="col-md-2">
+                            <img alt="Cookbook Cover" src="${cookbook.smallImageLink}">
+                        </div>
+                        <div class="col-md-4">
+                            <h3>${cookbook.title}</h3>
+                            <p>
+                                <strong>Author: </strong>${cookbook.author}<br>
+                                <strong>Publisher: </strong>${cookbook.publisher}
+                            </p>
+                            <p>
+                                <a class="btn btn-dark btn-sm" href="detailCookbook?cookbookId=${cookbook.cookbookId}">View details</a>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h2>
+                                Notes
+                            </h2>
+                            <p>${cookbook.notes}</p>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
 
             <div class ="row mb-5">
                 <div class="col mb-5"></div>

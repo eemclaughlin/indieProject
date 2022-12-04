@@ -178,8 +178,11 @@
 - Review of Craig's code and also creation of the report (2:00)
 - Many QOL changes and bug resolutions (3:00)
 
-### Week 15 (0:00)
-
+### Week 15 (3:45)
+- Added back buttons and some HTML tweaks (1:30)
+- Created and error page and added redirects on pages (1:00)
+- Created a general properties file and integrated that (0:30)
+- Worked through the TODOs and some general fixes (0:45)
 
 
 
