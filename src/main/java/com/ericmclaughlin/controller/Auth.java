@@ -97,7 +97,9 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
         // If authcode is null then error ELSE get relevant login data and add to the session.
         if (authCode == null) {
-            //TODO forward to an error page or back to the login
+            logger.error("Auth code is null");
+            // Redirect to error.jsp
+            req.getRequestDispatcher("/error.jsp");
         } else {
             HttpRequest authRequest = buildAuthRequest(authCode);
             try {
@@ -123,10 +125,10 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
-                //TODO forward to an error page
+                req.getRequestDispatcher("/error.jsp");
             } catch (InterruptedException e) {
                 logger.error("Error getting token from Cognito oauth url " + e.getMessage(), e);
-                //TODO forward to an error page
+                req.getRequestDispatcher("/error.jsp");
             }
         }
         // Return to index.jsp and, if all is well, to user homepage.
@@ -157,7 +159,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         } else {
             logger.debug("User already exists " + userInfo.get("userName"));
             loggedInUserId = findUser.get(0).getUserId();
-            // TODO Update database with any user info changes.
         }
     }
 
@@ -203,7 +204,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         BigInteger modulus = new BigInteger(1, org.apache.commons.codec.binary.Base64.decodeBase64(jwks.getKeys().get(0).getN()));
         BigInteger exponent = new BigInteger(1, org.apache.commons.codec.binary.Base64.decodeBase64(jwks.getKeys().get(0).getE()));
 
-        // TODO the following is "happy path", what if the exceptions are caught?
         // Create a public key
         PublicKey publicKey = null;
         try {
@@ -304,7 +304,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
      * Read in the cognito props file and get/set the client id, secret, and required urls
      * for authenticating a user.
      */
-    // TODO This code appears in a couple classes, consider using a startup servlet similar to adv java project
     private void loadProperties() {
         try {
             properties = loadProperties("/cognito.properties");

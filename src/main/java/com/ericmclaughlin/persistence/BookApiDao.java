@@ -1,8 +1,11 @@
 package com.ericmclaughlin.persistence;
 
 import com.ericmclaughlin.api.ApiIsdnCookbook;
+import com.ericmclaughlin.util.PropertiesLoader;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,13 +13,15 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Dao for processing Google book API responses.
  * @author eemclaughlin
  * @version 1.0 10-10-22
  */
-public class BookApiDao {
+public class BookApiDao implements PropertiesLoader {
 
     // Logging
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -36,8 +41,21 @@ public class BookApiDao {
         // Generic client builder being build.
         Client client = ClientBuilder.newClient();
 
-        // TODO Read in the URI from a properties file.
-        String urlSearchInfo = "https://www.googleapis.com/books/v1/volumes?fields=items/volumeInfo%28title%2Cauthors%2Cpublisher%2CpublishedDate%2Cdescription%2CindustryIdentifiers%2CpageCount%2Ccategories%2CmaturityRating%2CimageLinks%2Clanguage%29&q=isbn:";
+        // Instantiate the properties object
+        Properties properties;
+
+        // Variable for url path
+        String urlSearchInfo = null;
+
+        try {
+            // Load the generic properties file and get the path
+            properties = loadProperties("/general.properties");
+            urlSearchInfo = properties.getProperty("urlSearchInfo");
+        } catch (IOException ioException) {
+            logger.error("Cannot load properties..." + ioException.getMessage(), ioException);
+        } catch (Exception e) {
+            logger.error("Error loading properties" + e.getMessage(), e);
+        }
 
         // Put together the url string and the isbn for the final search.
         String urlComplete = urlSearchInfo + submittedIsbn;
@@ -57,8 +75,7 @@ public class BookApiDao {
             // Do the mapper work.  Read in the response and map to class.
             responseInfo = mapper.readValue(response, ApiIsdnCookbook.class);
         } catch (JsonProcessingException e) {
-            // TODO Set up Logging and Write This into said log.
-            e.printStackTrace();
+           logger.debug("JSON Processing Error with Google Books API: " + e);
         }
         // Return the response.
         return responseInfo;

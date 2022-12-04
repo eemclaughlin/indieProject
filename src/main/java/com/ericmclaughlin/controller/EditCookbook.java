@@ -50,7 +50,9 @@ public class EditCookbook extends HttpServlet {
                 logger.debug("The cookbook id is: " + cookbookId + "SPACE CHECK");
             } catch (NumberFormatException e) {
                 logger.error("The cookbook id " + cookbookId + " is not a number.");
-
+                // Redirect to the error page.
+                resp.sendRedirect("error.jsp");
+                throw new ServletException(e);
             }
 
             // Get the cookbook from the database.
@@ -67,7 +69,9 @@ public class EditCookbook extends HttpServlet {
             dispatcher.forward(req, resp);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("There was an error editing the cookbook: " + e);
+            //Redirect to the error page.
+            resp.sendRedirect("error.jsp");
             throw new ServletException(e);
         }
     }

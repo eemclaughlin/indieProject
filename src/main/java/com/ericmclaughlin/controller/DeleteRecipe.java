@@ -44,7 +44,9 @@ public class DeleteRecipe extends HttpServlet {
             dispatcher.forward(req, resp);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("There was an error deleting the recipe: " + e);
+            //Redirect to the error page.
+            resp.sendRedirect("error.jsp");
             throw new ServletException(e);
         }
     }

@@ -64,13 +64,16 @@
 - [x] Team Project Stuff
 
 ### Week 11
-- [x] Bye-Week (All attention on Team Project and presentation)
+- [x] Bye-Week for IndieProject
+- [x] Wrap up team project.
+- [x] Team project presentation work.
 
 ### Week 12
-- [ ] Integrate error handling.
+- [x] Integrate error handling.
 - [x] Add javadoc and comments on all pages. First Pass.
 - [x] Add way to remove cookbooks from database.
 - [x] Add way to remove recipes from database.
+- [x] Implement a properies file
 
 ### Week 13
 - [x] Build up unit-testing to get more coverage
@@ -89,7 +92,7 @@
 - [x] Create the landing page for the site (minus picture).
 - [x] Find a main picture, edit, and add it to homepage
 - [ ] Implement/finalize suggested changes from Paula and from peer.
-- [ ] Removed the TOBEDELETED folder and its contents.
+- [x] Removed the TOBEDELETED folder and its contents.
 - [x] Continue with bug and qol fixes. (See below for some noted bugs).
 
 ### Week 15
@@ -107,7 +110,7 @@
 ### Week 16
 - [ ] Class wrapup.
 
-## Outstanding Bugs/Refinements
+## Outstanding Bugs/Refinements (Weeks 14 to 16 Mostly)
 - [x] On editRecipe, fix dropdown to show current cookbook on arrival.
 - [ ] On addCookbookManually, add ability to add picture.
 - [x] Many pages, add back buttons.

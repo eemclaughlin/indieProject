@@ -42,7 +42,6 @@ public class AddRecipe extends HttpServlet {
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
 
         try {
-
             // Establish the session and retrieve user
             HttpSession session = req.getSession();
             User loggedInUser = (User) session.getAttribute("loggedInUser");
@@ -60,8 +59,8 @@ public class AddRecipe extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("addRecipe.jsp");
             dispatcher.forward(req, resp);
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new ServletException(e);
+            logger.error("Servlet error in Add Recipe doGet method: " + e);
+            resp.sendRedirect("error.jsp");
         }
     }
 

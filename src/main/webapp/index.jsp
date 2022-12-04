@@ -89,10 +89,10 @@
 
 </c:when>
 <c:otherwise>
-    <!-- TODO Find alternate method to redirect to homepage. -->
-    <%
-        response.sendRedirect(request.getContextPath() + "/userHomepage");
-    %>
+
+    <!-- redirect page to userHomepage -->
+    <c:redirect url="/userHomepage" />
+
 </c:otherwise>
 </c:choose>
 
