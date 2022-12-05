@@ -113,6 +113,7 @@
 ## Outstanding Bugs/Refinements (Weeks 14 to 16 Mostly)
 - [x] On editRecipe, fix dropdown to show current cookbook on arrival.
 - [ ] On addCookbookManually, add ability to add picture.
+- [x] Sort the cookbooks and recipes alphabetically on the list pages.
 - [x] Many pages, add back buttons.
 - [x] On listCookbooks and listRecipes, if there are no items, print that to user.
 - [ ] On detailsCookbook, fix why NoCover image causes table to shift over.

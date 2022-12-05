@@ -49,8 +49,14 @@ public class ListCookbooks extends HttpServlet {
         logger.debug("The user's username is: " + loggedInUser.getUserName());
         logger.debug("The user's id is: " + finalUserId);
 
-        // Get all cookbooks for the user and send them to the jsp.
-        req.setAttribute("cookbooks", cookbookDao.getByPropertyEqual("user", finalUserId));
+        // Get all cookbooks for the user.
+        List<Cookbook> allCookbooks = cookbookDao.getByPropertyEqual("user", finalUserId);
+
+        // Sort the cookbooks by name.
+        allCookbooks.sort((c1, c2) -> c1.getTitle().compareTo(c2.getTitle()));
+
+        // Send all cookbooks to the jsp.
+        req.setAttribute("cookbooks", allCookbooks);
 
         // Return list of results as attributes to the results page.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/listCookbooks.jsp");

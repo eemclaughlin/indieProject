@@ -49,7 +49,13 @@ public class ListRecipes extends HttpServlet {
         logger.debug("The user's id is: " + finalUserId);
 
         // Get all recipes for the user.
-        req.setAttribute("recipes", recipeDao.getByPropertyEqual("user", finalUserId));
+        List<Recipe> allRecipes = recipeDao.getByPropertyEqual("user", finalUserId);
+
+        // Sort the recipes by name.
+        allRecipes.sort((r1, r2) -> r1.getRecipeName().compareTo(r2.getRecipeName()));
+
+        // Send all recipes to the jsp.
+        req.setAttribute("recipes", allRecipes);
 
         // Return list of results as attributes to the results page.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/userHomepage.jsp");
