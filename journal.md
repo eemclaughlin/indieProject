@@ -178,12 +178,13 @@
 - Review of Craig's code and also creation of the report (2:00)
 - Many QOL changes and bug resolutions (3:00)
 
-### Week 15 (4:15)
+### Week 15 (4:30)
 - Added back buttons and some HTML tweaks (1:30)
 - Created and error page and added redirects on pages (1:00)
 - Created a general properties file and integrated that (0:30)
 - Worked through the TODOs and some general fixes (0:45)
 - Made so listRecipes and listCookbooks pages are sorted alphabetically (0:30)
+- Converted and uploaded latest app version to AWS (0:15)
 
 
 
