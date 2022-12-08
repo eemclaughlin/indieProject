@@ -102,6 +102,8 @@
 - [ ] Finalize project and prep for demonstrations.
 - [ ] Add project to AWS final time.
 - [ ] Work through the list of bugs and issues below.
+- [ ] Implement sorting capabilities on listCookbooks/Recipes
+- [ ] Implement a way to search through recipes and cookbooks.
 - [ ] Finalize on all the design documents and update.
 - [ ] Record presentation for reference in GitHub.
 - [ ] Record presentation for submission for class. (Due 12/13)
@@ -130,9 +132,7 @@
 
 # Stretch Goals
 ### Things I would like to get added given more time.
-- [ ] Refined way to search through recipes.
-  - [ ] Search Recipes By Tag
-- [ ] Sort Recipes and Sort Cookbooks
+- [ ] Search Recipes By Tag
 - [ ] Add tags to a tags table
 - [ ] Associate tags with recipes via junction table.
 - [ ] Implement icons and images.

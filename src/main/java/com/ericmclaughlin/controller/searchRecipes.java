@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,8 +22,8 @@ import java.util.List;
  * @author eemclaughlin
  * @version 2.0 11-19-22
  */
-@WebServlet(urlPatterns = {"/userHomepage"})
-public class ListRecipes extends HttpServlet {
+@WebServlet(urlPatterns = {"/searchRecipe"})
+public class searchRecipes extends HttpServlet {
 
     // Create a logger for this class
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -47,28 +48,38 @@ public class ListRecipes extends HttpServlet {
         logger.debug("The user's username is: " + loggedInUser.getUserName());
         logger.debug("The user's id is: " + finalUserId);
 
+        // Get the search parameter.
+        String search = req.getParameter("search");
+        logger.debug("The search term is: " + search);
+
         // Get all recipes for the user.
         List<Recipe> allRecipes = recipeDao.getByPropertyEqual("user", finalUserId);
 
-        // Get the sort by parameter.
-        String sortBy = req.getParameter("sortBy");
-        logger.debug("The sort by is: " + sortBy);
+        // Instantiate a list for the search results.
+        List<Recipe> searchResults = new ArrayList<>();
 
-        // If the user has not selected a sort, default to sorting by recipe name.
-        // Otherwise, sort by the user's selection.
-        if (sortBy == null || sortBy.equals("") || sortBy.equals("recipeName")) {
-            allRecipes.sort((r1, r2) -> r1.getRecipeName().compareTo(r2.getRecipeName()));
-        } else if (sortBy.equals("cookbookName")) {
-            allRecipes.sort((r1, r2) -> r1.getCookbooks().getTitle().compareTo(r2.getCookbooks().getTitle()));
-        } else if (sortBy.equals("cookbookAuthor")) {
-            allRecipes.sort((r1, r2) -> r1.getCookbooks().getAuthor().compareTo(r2.getCookbooks().getAuthor()));
+        // Search through list of recipes for the search term.
+        // Reference: https://stackoverflow.com/questions/67284725/how-to-search-multiple-field-in-list-using-java
+        for (Recipe recipe : allRecipes) {
+            if (recipe.getRecipeName().contains(search)) {
+                   searchResults.add(recipe);
+            } else if (recipe.getCookbooks().getTitle().contains(search)) {
+                // If the cookbook name contains the search term, add it to the list.
+                searchResults.add(recipe);
+            } else if (recipe.getDescription().contains(search)) {
+                // If the recipe description contains the search term, add it to the list.
+                searchResults.add(recipe);
+            } else if (recipe.getCookbooks().getAuthor().contains(search)) {
+                // If the recipe ingredients contains the search term, add it to the list.
+                searchResults.add(recipe);
+            } else if (recipe.getCookbooks().getDescription().contains(search)) {
+                // If the recipe instructions contains the search term, add it to the list.
+                searchResults.add(recipe);
+            }
         }
 
-        // Set the sortBy back to the request for the jsp dropdown selected value.
-        req.setAttribute("sortBy", sortBy);
-
-        // Send all sorted recipes to the jsp.
-        req.setAttribute("recipes", allRecipes);
+        // Send all recipes to the jsp.
+        req.setAttribute("recipes", searchResults);
 
         // Return list of results as attributes to the results page.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/userHomepage.jsp");

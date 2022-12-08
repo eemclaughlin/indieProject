@@ -41,21 +41,22 @@
             <!-- Dropdown to allow user to sort the recipes -->
             <!-- Reference: https://stackoverflow.com/questions/6847089/how-to-reload-a-page-based-on-a-dropdown-box -->
             <div class="row">
-                <div class="d-flex col-4 my-3 mb-4">
+                <div class="d-flex col-12 col-md-4 my-3-md my-1 mb-4">
                     <label for="sortByList" class="form-label d-flex col-2 me-2 align-items-end justify-content-end">Sort By</label>
-                    <select id="sortByList" name="sortByItem" class="form-select col-10" onchange="window.location = 'userHomepage?sortBy=' + this.options[this.selectedIndex].value;">
+                    <select id="sortByList" name="sortByItem" class="form-select col col-md-10" onchange="window.location = 'userHomepage?sortBy=' + this.options[this.selectedIndex].value;">
                         <option value="recipeName" <c:if test="${sortBy == 'recipeName'}"> onclick="window.location = 'userHomepage?sortBy=' + this.value;" selected</c:if>>Recipe Name</option>
                         <option value="cookbookName" <c:if test="${sortBy == 'cookbookName'}"> onclick="window.location = 'userHomepage?sortBy=' + this.value;" selected</c:if>>Cookbook Name</option>
                         <option value="cookbookAuthor" <c:if test="${sortBy == 'cookbookAuthor'}"> onclick="window.location = 'userHomepage?sortBy=' + this.value;" selected</c:if>>Cookbook Author</option>
                     </select>
                 </div>
 
-                <div class="col-1 d-flex my-3 mb-4">
+                <div class="d-xs-none col-md-1 d-flex my-3-md my-1 mb-4">
                 </div>
 
-                <div class="col d-flex my-3 mb-4">
+                <!-- Search bar to allow user to search -->
+                <div class="col d-flex my-3-md my-1 mb-4">
                     <label for="search" class="form-label d-flex col-2 me-2 align-items-end justify-content-end">Search</label>
-                    <!-- search for a recipe once enter is pressed -->
+                    <!-- Search for a recipe once enter is pressed -->
                     <input type="text" class="form-control" name="search"
                            aria-describedby="searchHelp" id="search" placeholder="Search for a Recipe"
                            onkeyup="if (event.keyCode === 13) {window.location = 'searchRecipe?search=' + this.value;}">
