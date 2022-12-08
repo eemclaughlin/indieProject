@@ -1,7 +1,6 @@
 package com.ericmclaughlin.controller;
 
 import com.ericmclaughlin.entity.Cookbook;
-import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
 import com.ericmclaughlin.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

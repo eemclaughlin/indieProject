@@ -50,10 +50,10 @@
             <c:if test="${cookbooks.size() != 0}">
                 <c:forEach var="cookbook" items="${cookbooks}">
                     <div class="row py-2 my-2 border border-secondary">
-                        <div class="col-md-2">
+                        <div class="col-md-2 bg-light">
                             <img alt="Cookbook Cover" src="${cookbook.smallImageLink}">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 bg-light">
                             <h3>${cookbook.title}</h3>
                             <p>
                                 <strong>Author: </strong>${cookbook.author}<br>
@@ -63,7 +63,7 @@
                                 <a class="btn btn-dark btn-sm" href="detailCookbook?cookbookId=${cookbook.cookbookId}">View details</a>
                             </p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 bg-light">
                             <h2>
                                 Notes
                             </h2>

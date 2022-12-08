@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,8 +50,21 @@ public class ListRecipes extends HttpServlet {
         // Get all recipes for the user.
         List<Recipe> allRecipes = recipeDao.getByPropertyEqual("user", finalUserId);
 
-        // Sort the recipes by name.
-        allRecipes.sort((r1, r2) -> r1.getRecipeName().compareTo(r2.getRecipeName()));
+        // Get the sort by parameter.
+        String sortBy = req.getParameter("sortBy");
+        logger.debug("The sort by is: " + sortBy);
+
+        // If the user has not selected a sort, default to sorting by recipe name.
+        if (sortBy == null || sortBy.equals("") || sortBy.equals("recipeName")) {
+            allRecipes.sort((r1, r2) -> r1.getRecipeName().compareTo(r2.getRecipeName()));
+        } else if (sortBy.equals("cookbookName")) {
+            allRecipes.sort((r1, r2) -> r1.getCookbooks().getTitle().compareTo(r2.getCookbooks().getTitle()));
+        } else if (sortBy.equals("cookbookAuthor")) {
+            allRecipes.sort((r1, r2) -> r1.getCookbooks().getAuthor().compareTo(r2.getCookbooks().getAuthor()));
+        }
+
+        // Set the sortBy back to the request for the jsp dropdown selected.
+        req.setAttribute("sortBy", sortBy);
 
         // Send all recipes to the jsp.
         req.setAttribute("recipes", allRecipes);
