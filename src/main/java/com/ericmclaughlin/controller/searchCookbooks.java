@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,8 +22,8 @@ import java.util.List;
  * @author eemclaughlin
  * @version 2.0 11-19-22
  */
-@WebServlet(urlPatterns = {"/listCookbooks"})
-public class ListCookbooks extends HttpServlet {
+@WebServlet(urlPatterns = {"/searchCookbook"})
+public class searchCookbooks extends HttpServlet {
 
     // Create a logger for this class
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -47,28 +48,32 @@ public class ListCookbooks extends HttpServlet {
         logger.debug("The user's username is: " + loggedInUser.getUserName());
         logger.debug("The user's id is: " + finalUserId);
 
+        // Get the search parameter.
+        String search = req.getParameter("search").toUpperCase();
+        logger.debug("The search term is: " + search);
+
         // Get all cookbooks for the user.
         List<Cookbook> allCookbooks = cookbookDao.getByPropertyEqual("user", finalUserId);
 
-        // Get the sort by parameter.
-        String sortBy = req.getParameter("sortBy");
-        logger.debug("The sort by is: " + sortBy);
+        // Instantiate a list for the search results.
+        List<Cookbook> searchResults = new ArrayList<>();
 
-        // If the user has not selected a sort, default to sorting by cookbook name.
-        // Otherwise, sort by the user's selection.
-        if (sortBy == null || sortBy.equals("") || sortBy.equals("cookbookName")) {
-            allCookbooks.sort((c1, c2) -> c1.getTitle().compareTo(c2.getTitle()));
-        } else if (sortBy.equals("cookbookAuthor")) {
-            allCookbooks.sort((c1, c2) -> c1.getAuthor().compareTo(c2.getAuthor()));
-        } else if (sortBy.equals("cookbookPublisher")) {
-            allCookbooks.sort((c1, c2) -> c1.getPublisher().compareTo(c2.getPublisher()));
+        // Search through list of cookbooks for the search term and add to list
+        // Reference: https://stackoverflow.com/questions/67284725/how-to-search-multiple-field-in-list-using-java
+        for (Cookbook cookbook : allCookbooks) {
+            if (cookbook.getTitle().toUpperCase().contains(search)) {
+                searchResults.add(cookbook);
+            } else if (cookbook.getAuthor().toUpperCase().contains(search)) {
+                searchResults.add(cookbook);
+            } else if (cookbook.getPublisher().toUpperCase().contains(search)) {
+                searchResults.add(cookbook);
+            } else if (cookbook.getNotes().toUpperCase().contains(search)) {
+                searchResults.add(cookbook);
+            }
         }
 
-        // Set the sortBy back to the request for the jsp dropdown selected value.
-        req.setAttribute("sortBy", sortBy);
-
         // Send all cookbooks to the jsp.
-        req.setAttribute("cookbooks", allCookbooks);
+        req.setAttribute("cookbooks", searchResults);
 
         // Return list of results as attributes to the results page.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/listCookbooks.jsp");

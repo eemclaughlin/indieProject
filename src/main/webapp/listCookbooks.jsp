@@ -38,6 +38,31 @@
                 </div>
             </div>
 
+            <!-- Dropdown to allow user to sort the cookbooks -->
+            <!-- Reference: https://stackoverflow.com/questions/6847089/how-to-reload-a-page-based-on-a-dropdown-box -->
+            <div class="row">
+                <div class="d-flex col-12 col-md-4 my-3-md my-1 mb-4">
+                    <label for="sortByList" class="form-label d-flex col-2 me-2 align-items-end justify-content-end">Sort By</label>
+                    <select id="sortByList" name="sortByItem" class="form-select col col-md-10" onchange="window.location = 'listCookbooks?sortBy=' + this.options[this.selectedIndex].value;">
+                        <option value="cookbookName" <c:if test="${sortBy == 'recipeName'}"> onclick="window.location = 'listCookbooks?sortBy=' + this.value;" selected</c:if>>Cookbook Name</option>
+                        <option value="cookbookAuthor" <c:if test="${sortBy == 'cookbookName'}"> onclick="window.location = 'listCookbooks?sortBy=' + this.value;" selected</c:if>>Cookbook Author</option>
+                        <option value="cookbookPublisher" <c:if test="${sortBy == 'cookbookAuthor'}"> onclick="window.location = 'listCookbooks?sortBy=' + this.value;" selected</c:if>>Cookbook Publisher</option>
+                    </select>
+                </div>
+
+                <div class="d-xs-none col-md-1 d-flex my-3-md my-1 mb-4">
+                </div>
+
+                <!-- Search bar to allow user to search -->
+                <div class="col d-flex my-3-md my-1 mb-4">
+                    <label for="search" class="form-label d-flex col-2 me-2 align-items-end justify-content-end">Search</label>
+                    <!-- Search for a cookbook once enter is pressed -->
+                    <input type="text" class="form-control" name="search"
+                           aria-describedby="searchHelp" id="search" placeholder="Search for a Recipe"
+                           onkeyup="if (event.keyCode === 13) {window.location = 'searchCookbook?search=' + this.value;}">
+                </div>
+            </div>
+
             <!-- If there are no cookbooks, display a message -->
             <c:if test="${cookbooks.size() == 0}">
                 <div class="row">
@@ -49,7 +74,7 @@
             <!-- Bring in each cookbook and display it in a row -->
             <c:if test="${cookbooks.size() != 0}">
                 <c:forEach var="cookbook" items="${cookbooks}">
-                    <div class="row py-2 my-2 border border-secondary">
+                    <div class="row my-2 border border-secondary">
                         <div class="col-md-2 bg-light">
                             <img alt="Cookbook Cover" src="${cookbook.smallImageLink}">
                         </div>

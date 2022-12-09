@@ -75,7 +75,6 @@
             <c:if test="${recipes.size() != 0}">
                 <c:forEach var="recipe" items="${recipes}">
                     <div class="row my-2 border border-secondary">
-
                         <div class="col-md-6 bg-light">
                             <h3><a class="link-dark" href="editRecipe?recipeId=${recipe.recipeId}">${recipe.recipeName}</a></h3>
                             <p>

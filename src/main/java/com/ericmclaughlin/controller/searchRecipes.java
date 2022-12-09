@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple servlet to list all of a user's recipes.
+ * A simple servlet to list all of a user's recipes based on the search term given.
  * @author eemclaughlin
- * @version 2.0 11-19-22
+ * @version 2.0 12-07-22
  */
 @WebServlet(urlPatterns = {"/searchRecipe"})
 public class searchRecipes extends HttpServlet {
@@ -29,7 +29,7 @@ public class searchRecipes extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     /**
-     * doGet method that gets all recipes for a user and sends them to the jsp.
+     * doGet method that gets all recipes for a user and sends them to the jsp after filtering.
      * @param req
      * @param resp
      * @throws ServletException
@@ -49,7 +49,7 @@ public class searchRecipes extends HttpServlet {
         logger.debug("The user's id is: " + finalUserId);
 
         // Get the search parameter.
-        String search = req.getParameter("search");
+        String search = req.getParameter("search").toUpperCase();
         logger.debug("The search term is: " + search);
 
         // Get all recipes for the user.
@@ -58,30 +58,30 @@ public class searchRecipes extends HttpServlet {
         // Instantiate a list for the search results.
         List<Recipe> searchResults = new ArrayList<>();
 
-        // Search through list of recipes for the search term.
+        // Search through list of recipes for the search term and add to new list
         // Reference: https://stackoverflow.com/questions/67284725/how-to-search-multiple-field-in-list-using-java
         for (Recipe recipe : allRecipes) {
-            if (recipe.getRecipeName().contains(search)) {
+            if (recipe.getRecipeName().toUpperCase().contains(search)) {
                    searchResults.add(recipe);
-            } else if (recipe.getCookbooks().getTitle().contains(search)) {
+            } else if (recipe.getCookbooks().getTitle().toUpperCase().contains(search)) {
                 // If the cookbook name contains the search term, add it to the list.
                 searchResults.add(recipe);
-            } else if (recipe.getDescription().contains(search)) {
+            } else if (recipe.getDescription().toUpperCase().contains(search)) {
                 // If the recipe description contains the search term, add it to the list.
                 searchResults.add(recipe);
-            } else if (recipe.getCookbooks().getAuthor().contains(search)) {
+            } else if (recipe.getCookbooks().getAuthor().toUpperCase().contains(search)) {
                 // If the recipe ingredients contains the search term, add it to the list.
                 searchResults.add(recipe);
-            } else if (recipe.getCookbooks().getDescription().contains(search)) {
+            } else if (recipe.getCookbooks().getDescription().toUpperCase().contains(search)) {
                 // If the recipe instructions contains the search term, add it to the list.
                 searchResults.add(recipe);
             }
         }
 
-        // Send all recipes to the jsp.
+        // Send all found searched for recipes to the jsp.
         req.setAttribute("recipes", searchResults);
 
-        // Return list of results as attributes to the results page.
+        // Return to the results page.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/userHomepage.jsp");
         dispatcher.forward(req, resp);
     }
