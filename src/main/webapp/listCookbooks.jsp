@@ -75,7 +75,7 @@
             <c:if test="${cookbooks.size() != 0}">
                 <c:forEach var="cookbook" items="${cookbooks}">
                     <div class="row my-2 border border-secondary">
-                        <div class="col-md-2 bg-light">
+                        <div class="col-md-2 bg-light d-flex align-items-center">
                             <img alt="Cookbook Cover" src="${cookbook.smallImageLink}">
                         </div>
                         <div class="col-md-4 bg-light">
