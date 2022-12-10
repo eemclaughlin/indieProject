@@ -18,9 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet that works with the jsps to edit a recipe
+ * Servlet that works with the editRecipe jsp to edit a recipe
  * @author eemclaughlin
- * @version 2.0 11-28-22
+ * @version 3.0 12-10-22
  */
 @WebServlet(urlPatterns = {"/editRecipe"})
 public class EditRecipe extends HttpServlet {
@@ -32,10 +32,9 @@ public class EditRecipe extends HttpServlet {
     int recipeId;
 
     /**
-     * doGet method for getting the recipe id from the homepage, getting the recipe by id,
-     * and then prepopulating the edit recipe page with that recipe's data.
+     * doGet method to get the recipe id from the homepage, get the recipe by id,
+     * and then prepopulate the editRecipe page with that recipe's data.
      * This also gets the list of cookbooks and populates the dropdown.
-     *
      * @param req
      * @param resp
      * @throws ServletException
@@ -43,9 +42,8 @@ public class EditRecipe extends HttpServlet {
      */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // Call on the Dao for all the aspects
+        // Call on the Daos
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
-        //GenericDao userDao = new GenericDao(User.class);
         GenericDao recipeDao = new GenericDao(Recipe.class);
 
         try {
@@ -83,7 +81,7 @@ public class EditRecipe extends HttpServlet {
             dispatcher.forward(req, resp);
 
         } catch (Exception e) {
-            logger.error("There was an error getting the recipe id from the session: " + e);
+            logger.error("There was an error with getting the old recipe data: " + e);
             //Redirect to the error page.
             resp.sendRedirect("error.jsp");
             throw new ServletException(e);
@@ -91,7 +89,7 @@ public class EditRecipe extends HttpServlet {
     }
 
     /**
-     * doPost method for adding a the edited recipe information back to the database.
+     * doPost method for adding the edited recipe information back to the database.
      * @param req
      * @param resp
      * @throws ServletException
@@ -100,7 +98,7 @@ public class EditRecipe extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // Call on the Daos for Recipes, Users, and for Cookbooks.
+        // Call on the Daos for Recipes and for Cookbooks.
         GenericDao recipeDao = new GenericDao(Recipe.class);
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
 

@@ -1,6 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
+  Date: 12-10-22
+  Version: 3.0
   Page used to confirm user is logged out and offer links to log back in.
 --%>
 <%@include file="/includes/taglib.jsp"%>

@@ -12,17 +12,17 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>${title}</title>
 
-    <!-- Latest compiled and minified CSS -->
+    <!-- CSS and Bootstrap/BootSwatch -->
     <link rel="stylesheet" href="css/united.bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Latest compiled and minified JavaScript -->
+    <!-- JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
 
-    <!-- The next two items are to support jQuery datatables. -->
+    <!-- jQuery Datatables Support -->
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 </head>

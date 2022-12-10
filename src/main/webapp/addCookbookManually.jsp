@@ -1,6 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
+  Date: 12-10-22
+  Version: 3.0
   Page used to allow user to enter info about a cookbook manually.
 --%>
 <%@include file="/includes/taglib.jsp"%>
@@ -26,6 +27,7 @@
                 </h1>
             </div>
 
+            <!-- Form for user to manually enter cookbook information -->
             <div class="row">
                 <div class="col-lg-5">
                     <form role="form" action="addCookbookManually">
@@ -107,8 +109,10 @@
                                       rows="4"></textarea>
                         </div>
 
+                        <!-- Button to return to cookbook list -->
                         <a class="btn btn-warning btn-large text-dark ms-3 me-1" href="listCookbooks"><strong>Return To List</strong></a>
 
+                        <!-- Button to submit form -->
                         <button type="submit" name="submit" value="addCookbookManually"
                                 class="btn btn-warning text-dark mx-3 my-2"><strong>Add Cookbook</strong>
                         </button>

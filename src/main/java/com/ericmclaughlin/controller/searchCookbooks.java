@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple servlet to list all cookbooks that a user has.
+ * A servlet to process a search term that the user provides and return results.
  * @author eemclaughlin
- * @version 2.0 11-19-22
+ * @version 3.0 12-10-22
  */
 @WebServlet(urlPatterns = {"/searchCookbook"})
 public class searchCookbooks extends HttpServlet {
@@ -29,7 +29,8 @@ public class searchCookbooks extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     /**
-     * doGet method that gets all cookbooks for a user and sends them to the jsp.
+     * doGet method to get all cookbooks for a user, based on a search term, and
+     * display the results.
      * @param req
      * @param resp
      * @throws ServletException
@@ -72,10 +73,10 @@ public class searchCookbooks extends HttpServlet {
             }
         }
 
-        // Send all cookbooks to the jsp.
+        // Set results to be available to the jsp.
         req.setAttribute("cookbooks", searchResults);
 
-        // Return list of results as attributes to the results page.
+        // Return to results page.
         RequestDispatcher dispatcher = req.getRequestDispatcher("/listCookbooks.jsp");
         dispatcher.forward(req, resp);
     }

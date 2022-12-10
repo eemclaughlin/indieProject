@@ -97,10 +97,10 @@
 ### Week 15
 - [x] Continue to refine layout, CSS and HTML.
 - [x] Continue with bug and qol fixes. (See below for some noted bugs).
-- [ ] Breakup classes into more methods.
+- [x] Breakup classes into more methods.
 - [x] Implement sorting capabilities on listCookbooks/Recipes
 - [x] Implement a way to search through recipes and cookbooks.
-- [ ] Final pass on cleaning up code, stacktraces, and printlns.
+- [x] Final pass on cleaning up code, stacktraces, and printlns.
 - [x] Finalize on all the design documents and update.
 - [ ] Finalize generation of the JavaDocs.
 - [ ] Finalize project and prep for demonstrations.
@@ -130,6 +130,7 @@
 - [x] Center picture of cookbook, on listRecipes.
 - [x] On AddCookbookByISBN, Notes aren't being added with the cookbook info.
 - [x] On DeleteCookbook, fix phrasing to be more relevant.
+- [x] On addCookbook, only last author is array is used. Fix for multiple authors.
 
 # Stretch Goals
 ### Things I would like to get added given more time.
@@ -141,5 +142,6 @@
 - [ ] Add a ratings option to the recipes.
 - [ ] Allow user to add recipe pictures.
 - [ ] Implement a change profile options.
+- [ ] On delete cookbook, add extra confirmation step.
 --
 #### [Back to main README](../README.md)

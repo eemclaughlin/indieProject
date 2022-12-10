@@ -2,7 +2,6 @@ package com.ericmclaughlin.controller;
 
 import com.ericmclaughlin.api.ItemsItem;
 import com.ericmclaughlin.entity.Cookbook;
-import com.ericmclaughlin.entity.Recipe;
 import com.ericmclaughlin.entity.User;
 import com.ericmclaughlin.persistence.BookApiDao;
 import com.ericmclaughlin.persistence.GenericDao;
@@ -10,11 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +21,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet that works with the jsps to add a cookbook to the database.
  * @author eemclaughlin
- * @version 2.0 11-19-22
+ * @version 3.0 12-10-22
  */
 @WebServlet("/addCookbook")
 public class AddCookbook extends HttpServlet {
@@ -53,8 +48,8 @@ public class AddCookbook extends HttpServlet {
         String isbn = req.getParameter("isbn");
         String cookbookNotes = req.getParameter("cookbookNotes");
 
-        logger.debug("The user entered ISBN: " + isbn);
         // Remove the dashes from the ISBN.
+        logger.debug("The user entered ISBN: " + isbn);
         isbn = removeDashes(isbn);
         logger.debug("The isbn without dashes is: " + isbn);
 
@@ -81,7 +76,6 @@ public class AddCookbook extends HttpServlet {
 
         // Get data from the Google Books API and populate into variables.
         for (ItemsItem item : dao.getResponseInfo(isbn).getItems()) {
-
             title = item.getVolumeInfo().getTitle();
             publisher = item.getVolumeInfo().getPublisher();
             publishedDate = item.getVolumeInfo().getPublishedDate() + "-01";
@@ -91,9 +85,21 @@ public class AddCookbook extends HttpServlet {
             smallImageLink = item.getVolumeInfo().getImageLinks().getSmallThumbnail();
             mediumImageLink = item.getVolumeInfo().getImageLinks().getThumbnail();
 
-            // For each author in array at second half of "for"...
+            // For each author in array, add to author string.
             for(String arrayAuthor : item.getVolumeInfo().getAuthors()) {
-                author = arrayAuthor;
+                // If there is only one author, set the author variable to that.
+                if (item.getVolumeInfo().getAuthors().size() == 1) {
+                    author = arrayAuthor;
+                // Else if there are multiple authors, put them in a string.
+                } else {
+                    // If the author variable is null, set it to the first author.
+                    if (author == null) {
+                        author = arrayAuthor;
+                    // Else if the author variable is not null, add the next author to the string.
+                    } else {
+                        author = author + ", " + arrayAuthor;
+                    }
+                }
             }
 
             // Get ISBN 10 and 13 from the data returned from Google Books
@@ -106,7 +112,7 @@ public class AddCookbook extends HttpServlet {
             }
         }
 
-        // Creates a map and adds the cookbook information to it (except for ID)
+        // Create a map and adds the cookbook information to it (except for ID)
         HashMap<String, String> newCookbookParts = new HashMap();
         newCookbookParts.put("cbTitle", title);
         newCookbookParts.put("cbAuthor", author);
@@ -136,7 +142,8 @@ public class AddCookbook extends HttpServlet {
         logger.debug("The new cookbook is: " + cookbook);
         logger.debug("The new cookbook ID is: " + cookbookId);
 
-        // The cookbook id is added to the hash map and all is added to the session and is used by the jsp for output.
+        // The cookbook id is added to the hash map and all is added to the session and
+        // is used by the jsp for output.
         newCookbookParts.put("cbId", String.valueOf((cookbookId)));
         req.setAttribute("newCookbookParts", newCookbookParts);
 
@@ -154,7 +161,6 @@ public class AddCookbook extends HttpServlet {
     private String removeDashes(String isbn) {
         // Remove dashes from ISBN number.
         isbn = isbn.replace("-", "");
-
         return isbn;
     }
 }

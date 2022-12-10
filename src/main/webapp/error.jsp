@@ -1,7 +1,8 @@
 <%--
   User: eemclaughlin
   Date: 12-04-2022
-  Page for when an error occurs
+  Version: 3.0
+  General error page
 --%>
 <%@include file="/includes/taglib.jsp"%>
 <c:set var="title" value="Error" />
@@ -40,6 +41,7 @@
                 </h1>
             </div>
 
+            <!-- Error Message and links to locations, if user is logged in still -->
             <div class="row">
                 <c:if test="${userName == null}">
                     <h2>You are logged out</h2>

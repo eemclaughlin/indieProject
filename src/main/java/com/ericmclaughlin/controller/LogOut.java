@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Servlet to log the user out of the application.
  * @author eemclaughlin
- * @version 2.0 11-28-22
+ * @version 3.0 12-10-22
  */
 @WebServlet(urlPatterns = {"/logout"})
 /**

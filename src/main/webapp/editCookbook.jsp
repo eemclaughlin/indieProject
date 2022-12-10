@@ -1,6 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
+  Date: 12-10-22
+  Version: 3.0
   Page used to allow user to edit info about a cookbook.
 --%>
 <%@include file="/includes/taglib.jsp"%>
@@ -26,6 +27,7 @@
                 </h1>
             </div>
 
+            <!-- Form that is pre-populated with a cookbook's data for editing. -->
             <div class="row">
                 <div class="col-lg-5">
                     <form role="form" action="editCookbook" method="post">
@@ -114,8 +116,10 @@
                                       rows="4">${editCookbook.notes}</textarea>
                         </div>
 
+                        <!-- Button to let user back out and return to list -->
                         <a class="btn btn-warning btn-large text-dark ms-3 me-1" href="listCookbooks"><strong>Return To List</strong></a>
 
+                        <!-- Button to submit the edited cookbook info -->
                         <button type="submit" name="submit" value="editCookbook"
                                 class="btn btn-warning text-dark mx-3 my-2"><strong>Submit Change</strong>
                         </button>

@@ -1,7 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
-  Page used to allow user to edit a recipe.
+  Date: 12-10-22
+  Page to allow user to edit a recipe.
 --%>
 <%@include file="/includes/taglib.jsp"%>
 <c:set var="title" value="Edit Recipe" />
@@ -26,6 +26,7 @@
                 </h1>
             </div>
 
+            <!-- Form with recipe data populated in for user to edit -->
             <div class="row">
                 <div class="col-lg-5">
                     <form role="form" action="editRecipe" method="post">
@@ -68,8 +69,10 @@
                             </select>
                         </div>
 
+                        <!-- Allow user to back out and return to list -->
                         <a class="btn btn-warning btn-large text-dark ms-3 me-1" href="userHomepage"><strong>Return To List</strong></a>
 
+                        <!-- Submit the edits -->
                         <button type="submit" name="submit" value="editRecipe"
                                 class="btn btn-warning text-dark mx-3 my-2"><strong>Submit Change</strong>
                         </button>

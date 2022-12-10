@@ -1,6 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
+  Date: 12-10-22
+  Version: 3.0
   Main landing page for the site
 --%>
 <%@include file="/includes/taglib.jsp"%>
@@ -46,7 +47,7 @@
         <div class="card text-white bg-warning my-5 py-4 text-center">
             <div class="card-body"><p class="text-dark m-0"><strong>Never lose a recipe again!  Track your favorite recipes by cookbook and page number and you'll always know where it is.</strong></p></div>
         </div>
-        <!-- Content Row-->
+        <!-- Content Row/Cards -->
         <div class="row gx-4 gx-lg-5n ">
             <div class="col-md-4 mb-5">
                 <div class="card h-100">
@@ -75,7 +76,6 @@
         </div>
     </div>
 
-    <!-- END OF TEST CODE -->
     <div class ="row mb-5">
         <div class="col mb-2"></div>
     </div>

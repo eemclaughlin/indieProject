@@ -1,7 +1,8 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
-  Page used to output all the details of a single cookbook and ask for editing/deleting.
+  Date: 12-10-22
+  Version: 3.0
+  Page used to output all of the recipes.
 --%>
 <%@include file="/includes/taglib.jsp"%>
 <c:set var="title" value="Hompage/Recipes" />
@@ -79,7 +80,6 @@
                             <h3><a class="link-dark" href="editRecipe?recipeId=${recipe.recipeId}">${recipe.recipeName}</a></h3>
                             <p>
                                 <strong>Description: </strong>${recipe.description}
-
                             </p>
                             <p>
                                 <strong>Notes: </strong>${recipe.notes}
@@ -92,7 +92,6 @@
                             <p class="text-dark">
                                 <strong>Author: </strong>${recipe.cookbooks.author}<br/>
                                 <strong>Page Number: ${recipe.pageNumber}</strong>
-
                             </p>
                         </div>
                         <div class="d-none d-md-grid col-md-2 bg-warning d-flex justify-content-end align-items-center">

@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet that works with the jsps to edit a cookbook's info.
+ * Servlet that works with the editCookbook jsp to edit a cookbook's info.
  * @author eemclaughlin
- * @version 2.0 11-28-22
+ * @version 3.0 12-10-22
  */
 @WebServlet(urlPatterns = {"/editCookbook"})
 public class EditCookbook extends HttpServlet {
@@ -26,13 +26,12 @@ public class EditCookbook extends HttpServlet {
     // Create a logger for this class
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    // Global variable to hold the recipe id.
+    // Global variable to hold the cookbook id.
     int cookbookId;
 
     /**
-     * doGet method for getting the cookbook id from the cookbook list, getting the cookbook by id,
-     * and then prepopulating the edit cookbook page with that cookbooks's data.
-     *
+     * doGet method to get the cookbook id from the cookbook list, get the cookbook by
+     * said id, and then prepopulate the edit cookbook page with that cookbook's data.
      * @param req
      * @param resp
      * @throws ServletException
@@ -40,20 +39,13 @@ public class EditCookbook extends HttpServlet {
      */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // Call on the Dao for all the aspects
+        // Call on the Dao
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
 
         try {
-            try {
-                // Get the cookbook id from the request
-                cookbookId = Integer.parseInt(req.getParameter("cookbookId"));
-                logger.debug("The cookbook id is: " + cookbookId + "SPACE CHECK");
-            } catch (NumberFormatException e) {
-                logger.error("The cookbook id " + cookbookId + " is not a number.");
-                // Redirect to the error page.
-                resp.sendRedirect("error.jsp");
-                throw new ServletException(e);
-            }
+            // Get the cookbook id from the request
+            cookbookId = Integer.parseInt(req.getParameter("cookbookId"));
+            logger.debug("The cookbook id is: " + cookbookId);
 
             // Get the cookbook from the database.
             Cookbook editCookbook = (Cookbook) cookbookDao.getById(cookbookId);
@@ -67,7 +59,6 @@ public class EditCookbook extends HttpServlet {
             // Forward to the jsp.
             RequestDispatcher dispatcher = req.getRequestDispatcher("editCookbook.jsp");
             dispatcher.forward(req, resp);
-
         } catch (Exception e) {
             logger.error("There was an error editing the cookbook: " + e);
             //Redirect to the error page.
@@ -78,7 +69,6 @@ public class EditCookbook extends HttpServlet {
 
     /**
      * doPost method for adding the edited cookbook information back to the database.
-     *
      * @param req
      * @param resp
      * @throws ServletException
@@ -90,7 +80,7 @@ public class EditCookbook extends HttpServlet {
         // Variable declaration.
         int pageCount = 0;
 
-        // Call on the Daos
+        // Call on the Dao
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
 
         // Get the various changed parameters from the form.
@@ -112,7 +102,7 @@ public class EditCookbook extends HttpServlet {
                 + " " + language + " " + smallImageLink + " " + mediumImageLink + " "
                 + notes);
 
-        // Prep a couple variables for the database.
+        // Prep a couple variables for entry into the database.
         // If no date was entered, set it to null.
         if (publishedDate.equals("")) {
             publishedDate = null;
@@ -140,7 +130,7 @@ public class EditCookbook extends HttpServlet {
         Cookbook cookbook = (Cookbook) cookbookDao.getById(cookbookId);
         logger.debug("The cookbook in POST is: " + cookbook);
 
-// Set the new values to the cookbook object.
+        // Set the new values to the cookbook object.
         cookbook.setTitle(title);
         cookbook.setAuthor(author);
         cookbook.setPublisher(publisher);

@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple servlet to list all of a user's recipes based on the search term given.
+ * A servlet to search for recipes by search term and return the results.
  * @author eemclaughlin
- * @version 2.0 12-07-22
+ * @version 3.0 12-10-22
  */
 @WebServlet(urlPatterns = {"/searchRecipe"})
 public class searchRecipes extends HttpServlet {
@@ -29,7 +29,8 @@ public class searchRecipes extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     /**
-     * doGet method that gets all recipes for a user and sends them to the jsp after filtering.
+     * doGet method to get all recipes for a user, based on a search term and retunr the
+     * results to the user.
      * @param req
      * @param resp
      * @throws ServletException
@@ -78,7 +79,7 @@ public class searchRecipes extends HttpServlet {
             }
         }
 
-        // Send all found searched for recipes to the jsp.
+        // Send all relevant recipes up to be available to the jsp.
         req.setAttribute("recipes", searchResults);
 
         // Return to the results page.

@@ -1,6 +1,5 @@
 package com.ericmclaughlin.controller;
 
-
 import com.ericmclaughlin.entity.Cookbook;
 import com.ericmclaughlin.entity.User;
 import com.ericmclaughlin.persistence.GenericDao;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet that works with the jsps to add a cookbook to the database manually.
  * @author eemclaughlin
- * @version 2.0 11-19-22
+ * @version 3.0 12-10-22
  */
 @WebServlet("/addCookbookManually")
 public class AddCookbookManually extends HttpServlet {
@@ -29,9 +28,8 @@ public class AddCookbookManually extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     /**
-     * DoGet method that gets an ISBN and additional notes from a jsp.  It then searches
-     * Google Books for the book info related to the ISBN.  It then adds the info to the
-     * database and sends the user to the confirmation page.
+     * DoGet method that gets manually entered cookbook data from the jsp.  It then adds
+     * the info to the database and sends the user to a confirmation page.
      * @param req
      * @param resp
      * @throws ServletException
@@ -65,7 +63,7 @@ public class AddCookbookManually extends HttpServlet {
         String isbnTen = removeDashes(unfixedIsbnTen);
         String isbnThirteen = removeDashes(unfixedIsbnThirteen);
 
-        // Prep a couple variables for the database.
+        // Prep a couple variables so they are compatable with the database.
         // If no date was entered, set it to null.
         if (publishedDate.equals("")) {
             publishedDate = null;
@@ -84,7 +82,7 @@ public class AddCookbookManually extends HttpServlet {
             mediumImageLink = "images/NoCover.png";
         }
 
-        // Creates a map and adds the cookbook information to it.
+        // Create a map and add the cookbook information to it.
         // The map is added to the session and is used by the jsp for output.
         HashMap<String, String> newCookbookParts = new HashMap();
         newCookbookParts.put("cbTitle", title);
@@ -107,8 +105,10 @@ public class AddCookbookManually extends HttpServlet {
         logger.debug("The user's username is: " + loggedInUser.getUserName());
 
         // Create the cookbook object
-        Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate, description,
-                isbnTen, isbnThirteen, pageCount, language, smallImageLink, mediumImageLink, notes, loggedInUser);
+        Cookbook cookbook
+                = new Cookbook(title, author, publisher, publishedDate, description,
+                isbnTen, isbnThirteen, pageCount, language, smallImageLink, mediumImageLink,
+                notes, loggedInUser);
 
         // Add the cookbook to the database
         cookbookId = cookbookDao.insert(cookbook);
@@ -116,7 +116,8 @@ public class AddCookbookManually extends HttpServlet {
         logger.debug("The new cookbook is: " + cookbook);
         logger.debug("The new cookbook ID is: " + cookbookId);
 
-        // The cookbook id is added to the hash map and all is added to the session and is used by the jsp for output.
+        // The cookbook id is added to the hash map and all is added to the session and
+        // is used by the jsp for output.
         newCookbookParts.put("cbId", String.valueOf((cookbookId)));
         req.setAttribute("newCookbookParts", newCookbookParts);
 

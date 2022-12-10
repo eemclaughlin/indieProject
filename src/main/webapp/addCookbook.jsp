@@ -1,6 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
+  Date: 12-10-22
+  Version: 3.0
   Page used to allow user to enter info about a cookbook by entering an ISBN number.
 --%>
 <%@include file="/includes/taglib.jsp"%>
@@ -26,6 +27,7 @@
                 </h1>
             </div>
 
+            <!-- Form to allow user to enter an ISBN number and notes on a cookbook -->
             <div class="row">
                 <div class="col-lg-5">
                     <form role="form" action="addCookbook">
@@ -43,12 +45,15 @@
                                       rows="4"></textarea>
                         </div>
 
+                        <!-- Button to return to the cookbook list -->
                         <a class="btn btn-warning btn-large text-dark ms-3 me-1" href="listCookbooks"><strong>Return To List</strong></a>
 
+                        <!-- Button to submit the form -->
                         <button type="submit" name="submit" value="addCookbook"
                                 class="btn btn-warning text-dark mx-3 my-2"><strong>Add Cookbook</strong>
                         </button>
 
+                        <!-- Link for user to use if the ISBN data is not available -->
                         <div class="mt-3 mx-3">
                             <p><a href="addCookbookManually.jsp"><strong>No ISBN?  Add a Cookbook Manually.</strong></a></p>
                         </div>

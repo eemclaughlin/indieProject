@@ -1,6 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
+  Date: 12-10-22
+  Version: 3.0
   Page used to output all the details of a single cookbook and ask for editing/deleting.
 --%>
 <%@include file="/includes/taglib.jsp"%>
@@ -26,6 +27,7 @@
                 </h1>
             </div>
 
+            <!-- Table to output the details of the cookbook -->
             <div class="row py-2 my-2 border border-secondary">
                 <div>
                     <table class="col-3 table table-striped table-hover">
@@ -91,8 +93,10 @@
                 </div>
             </div>
 
+            <!-- Warning message to user about deleting. -->
             <p class="text-danger"><strong>Important!  Deleting a cookbook will also remove the recipes associated with it!</strong></p>
 
+            <!-- Buttons to return to list, edit the cookbook, or delete it -->
             <div class="row mb-4">
                 <div class="col-12 col-md-2 m-1">
                     <a class="btn btn-warning btn-large text-dark" href="listCookbooks"><strong>Return To List</strong></a>

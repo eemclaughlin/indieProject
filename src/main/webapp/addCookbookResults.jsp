@@ -1,7 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
-  Page used to output the details of a newly added cookbook (from Google Books).
+  Date: 12-10-22
+  Page used to output the details of a newly added cookbook.
 --%>
 <%@include file="/includes/taglib.jsp"%>
 <c:set var="title" value="Add Cookbook Results" />
@@ -26,6 +26,7 @@
                 </h1>
             </div>
 
+            <!-- Table to display the details of a cookbook -->
             <div class="row py-2 my-2 border border-secondary">
                 <table class="col-3 table table-striped table-hover">
                     <thead>
@@ -89,6 +90,7 @@
                 </table>
             </div>
 
+            <!-- Buttons to return to cookbook list, to edit the cookbook info, or to delete the cookbook -->
             <div class="row mb-4 ">
                 <div class="col-2">
                     <a class="btn btn-warning btn-large text-dark" href="listCookbooks"><strong>Return To List</strong></a>

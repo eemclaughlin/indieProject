@@ -15,14 +15,14 @@ import java.util.Properties;
 /**
  * Servlet for going through the login process with the user.
  * @author eemclaughlin
- * @version 2.0 11-28-22
+ * @version 3.0 12-10-22
  */
 @WebServlet(
         urlPatterns = {"/logIn"}
 )
 
-/** Begins the authentication process using AWS Cognito
- *
+/**
+ * Begins the authentication process using AWS Cognito
  */
 public class LogIn extends HttpServlet implements PropertiesLoader {
     Properties properties;

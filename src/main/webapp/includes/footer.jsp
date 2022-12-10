@@ -4,7 +4,6 @@
   Snippet to add the footer to all relevant pages
 --%>
 <footer class="text-center text-white bg-dark mt-3">
-    <!-- Grid container -->
     <div class="container py-3">
         <section>
             <p class="d-flex justify-content-center align-items-center">

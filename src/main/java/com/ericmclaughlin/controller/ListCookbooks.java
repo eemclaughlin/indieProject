@@ -17,9 +17,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * A simple servlet to list all cookbooks that a user has.
+ * A servlet to list all cookbooks that a user has.
  * @author eemclaughlin
- * @version 2.0 11-19-22
+ * @version 3.0 12-10-22
  */
 @WebServlet(urlPatterns = {"/listCookbooks"})
 public class ListCookbooks extends HttpServlet {

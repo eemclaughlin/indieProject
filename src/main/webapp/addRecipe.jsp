@@ -1,6 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
+  Date: 12-10-22
+  Version: 3.0
   Page used to allow user to enter a new recipe.
 --%>
 <%@include file="/includes/taglib.jsp"%>
@@ -26,6 +27,7 @@
                 </h1>
             </div>
 
+            <!-- Form to enter a new recipe, with dropdown prepopulated with cookbooks -->
             <div class="row">
                 <div class="col-lg-5">
                     <form role="form" action="addRecipe" method="post">
@@ -54,6 +56,7 @@
                                       name="pageNumber" aria-describedby="pageNumberHelp"
                                       placeholder="Ex. 123" required>
                         </div>
+                        <!-- Cookbook dropdown with books populated in -->
                         <div class="form-group m-3">
                             <label for="cookbookList" class="form-label mt-2 mb-1">Select The Cookbook</label>
                             <select id="cookbookList" name="cookbook" class="form-select">
@@ -66,8 +69,10 @@
                             </select>
                         </div>
 
+                        <!-- Return to the recipe list -->
                         <a class="btn btn-warning btn-large text-dark ms-3 me-1" href="userHomepage"><strong>Return To List</strong></a>
 
+                        <!-- Submit the new recipe -->
                         <button type="submit" name="submit" value="addRecipe"
                                 class="btn btn-warning text-dark mx-3 my-2"><strong>Add Recipe</strong>
                         </button>

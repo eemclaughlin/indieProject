@@ -1,6 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/24/22
+  Date: 12-10-22
+  Version: 3.0
   Page for users to see all the cookbooks that they have available.
 --%>
 <%@include file="/includes/taglib.jsp"%>

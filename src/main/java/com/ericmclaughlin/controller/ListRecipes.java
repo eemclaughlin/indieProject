@@ -17,9 +17,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * A simple servlet to list all of a user's recipes.
+ * A servlet to list all of a user's recipes.
  * @author eemclaughlin
- * @version 2.0 11-19-22
+ * @version 3.0 12-10-22
  */
 @WebServlet(urlPatterns = {"/userHomepage"})
 public class ListRecipes extends HttpServlet {

@@ -1,26 +1,22 @@
 package com.ericmclaughlin.controller;
 
 import com.ericmclaughlin.entity.Cookbook;
-import com.ericmclaughlin.entity.Recipe;
-import com.ericmclaughlin.entity.User;
 import com.ericmclaughlin.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Outputs all the details on a specific cookbook.
  * @author eemclaughlin
- * @version 2.0 11-28-22
+ * @version 3.0 12-10-22
  */
 @WebServlet(urlPatterns = {"/detailCookbook"})
 public class DetailCookbook extends HttpServlet {
@@ -28,9 +24,16 @@ public class DetailCookbook extends HttpServlet {
     // Create a logger for this class
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * doGet method for detailing out a cookbook to the user.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // Call on the Dao for all the aspects
+        // Call on the Dao
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
 
         try {

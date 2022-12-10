@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet used to add a recipe to the database.
  * @author eemclaughlin
- * @version 2.0 11-19-22
+ * @version 3.0 12-10-22
  */
 @WebServlet("/addRecipe")
 public class AddRecipe extends HttpServlet {
@@ -59,7 +58,7 @@ public class AddRecipe extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("addRecipe.jsp");
             dispatcher.forward(req, resp);
         } catch (Exception e) {
-            logger.error("Servlet error in Add Recipe doGet method: " + e);
+            logger.error("Servlet error in AddRecipe doGet method: " + e);
             resp.sendRedirect("error.jsp");
         }
     }

@@ -1,6 +1,7 @@
 <%--
   User: eemclaughlin
-  Date: 11/25/22
+  Date: 12-10-22
+  Version: 3.0
   Page used to output a confirmation that an item is deleted.
 --%>
 <%@include file="/includes/taglib.jsp"%>
@@ -26,8 +27,10 @@
                 </h1>
             </div>
 
+            <!-- Message to the user -->
             <h1 class="my-5">Your item was successfully removed!</h1>
 
+            <!-- Links for user to decide where to go -->
             <div class="row ms-4">
                 <table>
                     <tr>
