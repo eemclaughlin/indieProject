@@ -27,66 +27,68 @@
             </div>
 
             <div class="row py-2 my-2 border border-secondary">
-                <table class="col-3 table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">Label</th>
-                        <th scope="col">Value</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="table-secondary">
-                        <th scope="row">Image</th>
-                        <td><img id="cookbookCover" src="${detailCookbook.smallImageLink}" alt="Image of Cookbook"></td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">Title</th>
-                        <td>${detailCookbook.title}</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">Author</th>
-                        <td>${detailCookbook.author}</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">Publisher</th>
-                        <td>${detailCookbook.publisher}</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">Published Date</th>
-                        <td>${detailCookbook.publishedDate}</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">Description</th>
-                        <td>${detailCookbook.description}</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">ISBN-10</th>
-                        <td>${detailCookbook.isdnTen}</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">ISBN-13</th>
-                        <td>${detailCookbook.isdnThirteen}</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">Page Count</th>
+                <div>
+                    <table class="col-3 table table-striped table-hover">
+                        <thead>
+                        <tr class="table-secondary">
+                            <th scope="row"><u>Label</u></th>
+                            <th scope="col"><u>Value</u></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="table-secondary">
+                            <th scope="row">Image</th>
+                            <td><img id="cookbookCover" src="${detailCookbook.smallImageLink}" alt="Image of Cookbook"></td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">Title</th>
+                            <td>${detailCookbook.title}</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">Author</th>
+                            <td>${detailCookbook.author}</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">Publisher</th>
+                            <td>${detailCookbook.publisher}</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">Published Date</th>
+                            <td>${detailCookbook.publishedDate}</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">Description</th>
+                            <td>${detailCookbook.description}</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">ISBN-10</th>
+                            <td>${detailCookbook.isdnTen}</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">ISBN-13</th>
+                            <td>${detailCookbook.isdnThirteen}</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">Page Count</th>
 
-                        <c:if test="${detailCookbook.pageCount == null}">
-                            <td>N/A</td>
-                        </c:if>
-                        <c:if test="${detailCookbook.pageCount != null}">
-                            <td>${detailCookbook.pageCount}</td>
-                        </c:if>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">Language</th>
-                        <td>${detailCookbook.language}</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th scope="row">Notes</th>
-                        <td>${detailCookbook.notes}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                            <c:if test="${detailCookbook.pageCount == null}">
+                                <td>N/A</td>
+                            </c:if>
+                            <c:if test="${detailCookbook.pageCount != null}">
+                                <td>${detailCookbook.pageCount}</td>
+                            </c:if>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">Language</th>
+                            <td>${detailCookbook.language}</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th scope="row">Notes</th>
+                            <td>${detailCookbook.notes}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <p class="text-danger"><strong>Important!  Deleting a cookbook will also remove the recipes associated with it!</strong></p>
