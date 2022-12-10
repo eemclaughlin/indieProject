@@ -28,7 +28,7 @@
 
             <div class="row">
                 <div class="col-lg-5">
-                    <form role="form" action="addCookbookManually">
+                    <form role="form" action="addCookbookManually" method="post" enctype="multipart/form-data">
                         <div class="form-group mx-3 mb-3">
                             <label for="title" class="mb-1">Title</label>
                             <input type="text" class="form-control" id="title"
@@ -93,6 +93,11 @@
                                       name="notes" aria-describedby="notesHelp"
                                       placeholder="Personal notes about the cookbook"
                                       rows="4"></textarea>
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="cookbookPicture" class="form-label mb-1">Add Cookbook Picture</label>
+                            <input type="file" class="form-control" id="cookbookPicture"
+                                   name="cookbookPicture" aria-describedby="cookbookPictureHelp">
                         </div>
 
                         <a class="btn btn-warning btn-large text-dark ms-3 me-1" href="listCookbooks"><strong>Return To List</strong></a>

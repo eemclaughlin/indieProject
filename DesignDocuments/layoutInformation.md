@@ -1,6 +1,8 @@
 # App Design/Layout
 #### [Back to main README](../README.md)
 
+### Initial Layout Design Concepts
+
 ## Main Homepage
 #### Main user page listing recipes for browsing and searching.
 ![Main Homepage](LayoutPictures/Main%20Homepage.png)

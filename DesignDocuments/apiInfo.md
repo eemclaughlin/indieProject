@@ -31,7 +31,6 @@
 - String with URL encoding.  %28 %29 = () AND %2C = ,
   - https://www.googleapis.com/books/v1/volumes?fields=items/volumeInfo%28title%2Cauthors%2Cpublisher%2CpublishedDate%2Cdescription%2CindustryIdentifiers%2CpageCount%2Ccategories%2CmaturityRating%2CimageLinks%2Clanguage%29&q=isbn:9780672337956
 
-
 ### Images
 Good List of Search Commands.
 * ![Good List of Search Commands](LayoutPictures/GoodCommandSummaryScreenshot.PNG)

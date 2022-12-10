@@ -186,6 +186,7 @@
 - Made so listRecipes and listCookbooks pages are sorted alphabetically (0:30)
 - Work on sorting options and also searching ability and formatting list recipes pages (4:00)
 - Add sorting and search to listCookbooks pages (1:00)
+- Finalize....
 
 
 

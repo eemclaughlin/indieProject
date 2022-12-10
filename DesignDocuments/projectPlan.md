@@ -86,7 +86,6 @@
 
 ### Week 14
 - [x] Final pass on javadoc and comments.
-- [ ] Final pass on cleaning up code and printlns.
 - [x] Get everything working again in AWS.
 - [x] Continue converting jsps to new layouts.
 - [x] Create the landing page for the site (minus picture).
@@ -96,17 +95,21 @@
 - [x] Continue with bug and qol fixes. (See below for some noted bugs).
 
 ### Week 15
-- [ ] Continue to refine layout, CSS and HTML.
-- [ ] Continue with bug and qol fixes. (See below for some noted bugs).
+- [x] Continue to refine layout, CSS and HTML.
+- [x] Continue with bug and qol fixes. (See below for some noted bugs).
 - [ ] Breakup classes into more methods.
+- [x] Implement sorting capabilities on listCookbooks/Recipes
+- [x] Implement a way to search through recipes and cookbooks.
+- [ ] Final pass on cleaning up code, stacktraces, and printlns.
+- [x] Finalize on all the design documents and update.
+- [ ] Finalize generation of the JavaDocs.
 - [ ] Finalize project and prep for demonstrations.
 - [ ] Add project to AWS final time.
-- [ ] Work through the list of bugs and issues below.
-- [ ] Implement sorting capabilities on listCookbooks/Recipes
-- [ ] Implement a way to search through recipes and cookbooks.
-- [ ] Finalize on all the design documents and update.
+- [ ] Get another user to test.
 - [ ] Record presentation for reference in GitHub.
+  - [ ] Add link to Readme.md.
 - [ ] Record presentation for submission for class. (Due 12/13)
+  - [ ] Add link to Readme.md and to Slack.
 - [ ] Final Self-Evaluation (Due 12/15)
 
 ### Week 16
@@ -114,11 +117,9 @@
 
 ## Outstanding Bugs/Refinements (Weeks 14 to 16 Mostly)
 - [x] On editRecipe, fix dropdown to show current cookbook on arrival.
-- [ ] On addCookbookManually, add ability to add picture.
 - [x] Sort the cookbooks and recipes alphabetically on the list pages.
 - [x] Many pages, add back buttons.
 - [x] On listCookbooks and listRecipes, if there are no items, print that to user.
-- [ ] On detailsCookbook, fix why NoCover image causes table to shift over.
 - [x] Create a confirmation page for adding books from GoogleBooks.
 - [x] Create a confirmation page for deleting a book or recipe.
 - [x] On addCookbookSuccess Page, fix the delete/abort button and edit button.
@@ -135,6 +136,7 @@
 - [ ] Search Recipes By Tag
 - [ ] Add tags to a tags table
 - [ ] Associate tags with recipes via junction table.
+- [ ] On addCookbookManually, add ability to add picture.
 - [ ] Implement icons and images.
 - [ ] Add a ratings option to the recipes.
 - [ ] Allow user to add recipe pictures.

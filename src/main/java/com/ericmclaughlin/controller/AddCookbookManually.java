@@ -37,8 +37,17 @@ public class AddCookbookManually extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
+
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
+        Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
+        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+        InputStream fileContent = filePart.getInputStream();
+        // ... (do your job here)
+    }
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         // Call on the Dao for Cookbooks.
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
@@ -59,6 +68,15 @@ public class AddCookbookManually extends HttpServlet {
         String language = req.getParameter("language");
         String smallImageLink = "images/NoCover.png";
         String notes = req.getParameter("notes");
+
+        // Get the picture that was added to the form.
+        String cookbookPicture = req.getParameter("cookbookPicture");
+
+        // Save the picture to a folder on the server.
+        String cookbookPicturePath = "images/" + cookbookPicture;
+
+
+
 
         // Remove the dashes from the ISBN.
         String isbnTen = removeDashes(unfixedIsbnTen);

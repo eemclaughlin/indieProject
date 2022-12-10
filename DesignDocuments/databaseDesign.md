@@ -2,7 +2,7 @@
 #### [Back to main README](../README.md)
 
 ### Current Database ERD
-v2.0
+v3.0
 
 ![Database ERD](LayoutPictures/DatabaseERDv3.0.png)
 
@@ -10,8 +10,8 @@ v2.0
 * Database Name: RecipeTracker
 * One junction tables.  
   * One for tags which will have shared FK PK
-* I believe Users will be done using AWS but have included it for now.
-* Cookbooks may also change since it will use an API and I don't know how that works yet.
+* Users table works in conjunction with AWS.
+* Cookbooks table works in conjunction with Google Books API (but also manual additions)
 
 ### SQL Scripts
 * [SQL Full Refresh Script](SqlScripts/Databasev3.0FullRefresh.sql)) 

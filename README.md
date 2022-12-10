@@ -27,6 +27,15 @@ all over; just the book title and page number are sufficient.
 * An API, such as Google Books, will be used to pull info about the cookbooks for reference 
 and to help users find their books easier.
 
+## Demo Web Application
+* [RecipeWhere?](http://recipetracker-env.eba-vhjjf2ef.us-east-2.elasticbeanstalk.com/)
+* Note: This demo application uses a self-signed certificate.  You will need to pass through
+a security message and it may take a few extra seconds to process the login. 
+
+## Video Demonstations
+* [Short Video Demonstration of the Application (Pending)]()
+* [Detailed Video Demonstration with Code and Design Discussion (Pending)]()
+
 ## Design Related Information
 * [User Stories](DesignDocuments/userStories.md)
 * [Layout/Mockup Information](DesignDocuments/layoutInformation.md)
@@ -36,8 +45,11 @@ and to help users find their books easier.
 * [API Information](DesignDocuments/apiInfo.md)
 
 ## Other Stuff
-* [Time Log/Journal](journal.md) for Whole Enterprise Java Class.
+* [Time Log/Journal](journal.md) for the entire Enterprise Java course.
 
 ## Self-Evaluations
-* [Mid Term Evaluation](DesignDocuments/Self-Evaluations/selfEvaluationMidTerm-22-10-30.md)
-* [Final Evaluation (Pending)]()
+* [Mid-Term Evaluation](DesignDocuments/Self-Evaluations/selfEvaluationMidTerm-22-10-30.md)
+* [Final Evaluation (Pending)](DesignDocuments/Self-Evaluations/selfEvaluationFinal-22-12-11.md)
+
+## References
+* [JavaDoc Folder](JavaDoc)
