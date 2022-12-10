@@ -23,7 +23,7 @@ import java.util.List;
  * @version 3.0 12-10-22
  */
 @WebServlet(urlPatterns = {"/searchCookbook"})
-public class searchCookbooks extends HttpServlet {
+public class SearchCookbooks extends HttpServlet {
 
     // Create a logger for this class
     private final Logger logger = LogManager.getLogger(this.getClass());
