@@ -28,7 +28,7 @@
 
             <div class="row">
                 <div class="col-lg-5">
-                    <form role="form" action="addCookbookManually" method="post" enctype="multipart/form-data">
+                    <form role="form" action="addCookbookManually">
                         <div class="form-group mx-3 mb-3">
                             <label for="title" class="mb-1">Title</label>
                             <input type="text" class="form-control" id="title"
@@ -88,16 +88,23 @@
                                    placeholder="Enter 2 Letters for Language">
                         </div>
                         <div class="form-group m-3">
+                            <label for="smallImageLink">Web Link to Small Image</label>
+                            <input type="text" class="form-control" id="smallImageLink"
+                                   name="smallImageLink" aria-describedby="smallImageLinkHelp"
+                                   placeholder="Link to Small Image">
+                        </div>
+                        <div class="form-group m-3">
+                            <label for="mediumImageLink">Web Link to Medium Image</label>
+                            <input type="text" class="form-control" id="mediumImageLink"
+                                   name="mediumImageLink" aria-describedby="mediumImageLinkHelp"
+                                   placeholder="Link to Medium Image">
+                        </div>
+                        <div class="form-group m-3">
                             <label for="notes" class="mb-1">Notes</label>
                             <textarea type="text" class="form-control" id="notes"
                                       name="notes" aria-describedby="notesHelp"
                                       placeholder="Personal notes about the cookbook"
                                       rows="4"></textarea>
-                        </div>
-                        <div class="form-group m-3">
-                            <label for="cookbookPicture" class="form-label mb-1">Add Cookbook Picture</label>
-                            <input type="file" class="form-control" id="cookbookPicture"
-                                   name="cookbookPicture" aria-describedby="cookbookPictureHelp">
                         </div>
 
                         <a class="btn btn-warning btn-large text-dark ms-3 me-1" href="listCookbooks"><strong>Return To List</strong></a>

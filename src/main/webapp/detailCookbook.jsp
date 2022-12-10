@@ -37,7 +37,7 @@
                     <tbody>
                     <tr class="table-secondary">
                         <th scope="row">Image</th>
-                        <td><img src="${detailCookbook.smallImageLink}" alt="Image of Cookbook"></td>
+                        <td><img id="cookbookCover" src="${detailCookbook.smallImageLink}" alt="Image of Cookbook"></td>
                     </tr>
                     <tr class="table-secondary">
                         <th scope="row">Title</th>

@@ -37,17 +37,8 @@ public class AddCookbookManually extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
-        Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
-        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-        InputStream fileContent = filePart.getInputStream();
-        // ... (do your job here)
-    }
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         // Call on the Dao for Cookbooks.
         GenericDao cookbookDao = new GenericDao(Cookbook.class);
@@ -66,17 +57,9 @@ public class AddCookbookManually extends HttpServlet {
         String unfixedIsbnThirteen = req.getParameter("isbnThirteen");
         String pageCountText = req.getParameter("pageCount");
         String language = req.getParameter("language");
-        String smallImageLink = "images/NoCover.png";
+        String smallImageLink = req.getParameter("smallImageLink");
+        String mediumImageLink = req.getParameter("mediumImageLink");
         String notes = req.getParameter("notes");
-
-        // Get the picture that was added to the form.
-        String cookbookPicture = req.getParameter("cookbookPicture");
-
-        // Save the picture to a folder on the server.
-        String cookbookPicturePath = "images/" + cookbookPicture;
-
-
-
 
         // Remove the dashes from the ISBN.
         String isbnTen = removeDashes(unfixedIsbnTen);
@@ -92,6 +75,13 @@ public class AddCookbookManually extends HttpServlet {
             pageCount = 0;
         } else {
             pageCount = Integer.parseInt(pageCountText);
+        }
+        // If the image links are not entered, set them to the default image.
+        if (smallImageLink.equals("")) {
+            smallImageLink = "images/NoCover.png";
+        }
+        if (mediumImageLink.equals("")) {
+            mediumImageLink = "images/NoCover.png";
         }
 
         // Creates a map and adds the cookbook information to it.
@@ -118,7 +108,7 @@ public class AddCookbookManually extends HttpServlet {
 
         // Create the cookbook object
         Cookbook cookbook = new Cookbook(title, author, publisher, publishedDate, description,
-                isbnTen, isbnThirteen, pageCount, language, smallImageLink, null, notes, loggedInUser);
+                isbnTen, isbnThirteen, pageCount, language, smallImageLink, mediumImageLink, notes, loggedInUser);
 
         // Add the cookbook to the database
         cookbookId = cookbookDao.insert(cookbook);

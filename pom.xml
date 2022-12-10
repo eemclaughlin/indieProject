@@ -134,19 +134,6 @@
       <version>${jersey-version}</version>
     </dependency>
 
-    <!-- Dependancies for uploading a file -->
-    <dependency>
-      <groupId>commons-fileupload</groupId>
-      <artifactId>commons-fileupload</artifactId>
-      <version>1.4</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.11.0</version>
-    </dependency>
-    <!-- End API dependencies -->
-
     <!-- Next 3 are for Jackson and API interpretation -->
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
     <dependency>

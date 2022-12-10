@@ -123,7 +123,13 @@ public class EditCookbook extends HttpServlet {
         } else {
             pageCount = Integer.parseInt(pageCountText);
         }
-
+        // If the image links are not entered, set them to the default image.
+        if (smallImageLink.equals("")) {
+            smallImageLink = "images/NoCover.png";
+        }
+        if (mediumImageLink.equals("")) {
+            mediumImageLink = "images/NoCover.png";
+        }
 
         // Establish the session and retrieve user
         HttpSession session = req.getSession();
