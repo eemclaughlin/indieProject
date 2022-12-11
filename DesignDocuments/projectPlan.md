@@ -132,6 +132,7 @@
 - [x] On AddCookbookByISBN, Notes aren't being added with the cookbook info.
 - [x] On DeleteCookbook, fix phrasing to be more relevant.
 - [x] On addCookbook, only last author is array is used. Fix for multiple authors.
+- [ ] On addCookbook, if Google Books does not have entered isbn, it errors.
 
 # Stretch Goals
 ### Things I would like to get added given more time.
