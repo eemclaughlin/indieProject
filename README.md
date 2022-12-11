@@ -32,7 +32,7 @@ and to help users find their books easier.
 * Note: This application uses a self-signed certificate.  You will need to pass through
 a security message and it may take a few extra seconds to process the login. 
 
-## Video Demonstations
+## Video Demonstrations
 * [Short Video Demonstration of the Application](https://youtu.be/VVHRUVEYzn8)
 * [Detailed Video Demonstration with Code and Design Discussion](https://youtu.be/6LbX22G6ZIc)
   * Note: You might notice an error in the code at around 11:25 related to the sorting.  This has been corrected.

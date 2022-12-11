@@ -117,6 +117,7 @@
   - [x] Add link to Readme.md
   - [ ] Add link to Slack.
 - [ ] Final Self-Evaluation (Due 12/15).
+  - [ ] Post to GitHub.
 
 ## Outstanding Bugs/Refinements (Weeks 14 to 16 Mostly)
 - [x] On editRecipe, fix dropdown to show current cookbook on arrival.
