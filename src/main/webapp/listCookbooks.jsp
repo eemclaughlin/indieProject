@@ -45,9 +45,9 @@
                 <div class="d-flex col-12 col-md-4 my-3-md my-1 mb-4">
                     <label for="sortByList" class="form-label d-flex col-2 me-2 align-items-end justify-content-end">Sort By</label>
                     <select id="sortByList" name="sortByItem" class="form-select col col-md-10" onchange="window.location = 'listCookbooks?sortBy=' + this.options[this.selectedIndex].value;">
-                        <option value="cookbookName" <c:if test="${sortBy == 'recipeName'}"> onclick="window.location = 'listCookbooks?sortBy=' + this.value;" selected</c:if>>Cookbook Name</option>
-                        <option value="cookbookAuthor" <c:if test="${sortBy == 'cookbookName'}"> onclick="window.location = 'listCookbooks?sortBy=' + this.value;" selected</c:if>>Cookbook Author</option>
-                        <option value="cookbookPublisher" <c:if test="${sortBy == 'cookbookAuthor'}"> onclick="window.location = 'listCookbooks?sortBy=' + this.value;" selected</c:if>>Cookbook Publisher</option>
+                        <option value="cookbookName" <c:if test="${sortBy == 'cookbookName'}"> onclick="window.location = 'listCookbooks?sortBy=' + this.value;" selected</c:if>>Cookbook Name</option>
+                        <option value="cookbookAuthor" <c:if test="${sortBy == 'cookbookAuthor'}"> onclick="window.location = 'listCookbooks?sortBy=' + this.value;" selected</c:if>>Cookbook Author</option>
+                        <option value="cookbookPublisher" <c:if test="${sortBy == 'cookbookPublisher'}"> onclick="window.location = 'listCookbooks?sortBy=' + this.value;" selected</c:if>>Cookbook Publisher</option>
                     </select>
                 </div>
 
