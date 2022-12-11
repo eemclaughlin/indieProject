@@ -106,15 +106,15 @@
 - [x] Finalize project and prep for demonstrations.
 - [x] Add project to AWS final time.
 - [x] Get another user to test.
-  - [ ] Implement their suggestions.
+  - [x] Implement some suggestions.
+
+### Week 16
+- [x] Continue to implement feedback from my test user.
 - [ ] Record presentation for reference in GitHub.
   - [ ] Add link to Readme.md.
 - [ ] Record presentation for submission for class. (Due 12/13)
   - [ ] Add link to Readme.md and to Slack.
-- [ ] Final Self-Evaluation (Due 12/15)
-
-### Week 16
-- [ ] Class wrapup.
+- [ ] Final Self-Evaluation (Due 12/15).
 
 ## Outstanding Bugs/Refinements (Weeks 14 to 16 Mostly)
 - [x] On editRecipe, fix dropdown to show current cookbook on arrival.
@@ -132,7 +132,7 @@
 - [x] On AddCookbookByISBN, Notes aren't being added with the cookbook info.
 - [x] On DeleteCookbook, fix phrasing to be more relevant.
 - [x] On addCookbook, only last author is array is used. Fix for multiple authors.
-- [ ] On addCookbook, if Google Books does not have entered isbn, it errors.
+- [x] On addCookbook, if Google Books does not have entered isbn, give user options.
 
 # Stretch Goals
 ### Things I would like to get added given more time.
