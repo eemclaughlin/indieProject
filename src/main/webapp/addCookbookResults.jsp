@@ -93,7 +93,7 @@
             <!-- Buttons to return to cookbook list, to edit the cookbook info, or to delete the cookbook -->
             <div class="row mb-4 ">
                 <div class="col-2">
-                    <a class="btn btn-warning btn-large text-dark" href="listCookbooks"><strong>Finish Add</strong></a>
+                    <a class="btn btn-warning btn-large text-dark" href="listCookbooks"><strong>Complete Add</strong></a>
                 </div>
                 <div class="col-2">
                     <a class="btn btn-warning btn-large text-dark" href="editCookbook?cookbookId=${newCookbookParts['cbId']}"><strong>Edit Information</strong></a>
