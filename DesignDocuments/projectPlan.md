@@ -110,6 +110,7 @@
 
 ### Week 16
 - [x] Continue to implement feedback from my test user.
+- [x] Upload final project to AWS one more time.
 - [ ] Record presentation for reference in GitHub.
   - [ ] Add link to Readme.md.
 - [ ] Record presentation for submission for class. (Due 12/13)
