@@ -27,14 +27,14 @@ all over; just the book title and page number are sufficient.
 * An API, such as Google Books, will be used to pull info about the cookbooks for reference 
 and to help users find their books easier.
 
-## Demo Web Application
+## Web Application
 * [RecipeWhere?](http://recipetracker-env.eba-vhjjf2ef.us-east-2.elasticbeanstalk.com/)
-* Note: This demo application uses a self-signed certificate.  You will need to pass through
+* Note: This application uses a self-signed certificate.  You will need to pass through
 a security message and it may take a few extra seconds to process the login. 
 
 ## Video Demonstations
-* [Short Video Demonstration of the Application (Pending)]()
-* [Detailed Video Demonstration with Code and Design Discussion (Pending)]()
+* [Short Video Demonstration of the Application](https://youtu.be/VVHRUVEYzn8)
+* [Detailed Video Demonstration with Code and Design Discussion]()
 
 ## Design Related Information
 * [User Stories](DesignDocuments/userStories.md)
