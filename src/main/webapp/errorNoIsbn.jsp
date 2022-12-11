@@ -14,22 +14,8 @@
 <div class="row">
 <div class="col-12">
 
-    <!-- Custom navbar with only one option to log back in -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-        <!-- Main Title Button on NavBar -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="navbar-toggler-icon"></span>
-        </button> <a class="navbar-brand ms-3" href="index.jsp">RecipeWhere?</a>
-
-        <!-- Additional Left Side Buttons on NavBar -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="navbar-nav d-flex ms-auto pe-3">
-                <li class="nav-item active">
-                    <a class="nav-link" href="logIn">Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Brings in the NavBar -->
+    <%@include file="/includes/navbar.jsp"%>
 
     <div class="container align-items-center">
         <div class="col-12">
@@ -37,11 +23,11 @@
             <!-- Page Header -->
             <div class="page-header my-3 py-2">
                 <h1>
-                    Error: <small>ISBN Not Found</small>
+                    Search Issue: <small>ISBN Not Found</small>
                 </h1>
             </div>
 
-            <!-- Error Message and links to locations, if user is logged in still -->
+            <!-- Status message and links for user to proceed how they like. -->
             <div class="row">
                 <p>The entered ISBN was not found. You may need to enter the book manually or try again</p>
                     <table>
