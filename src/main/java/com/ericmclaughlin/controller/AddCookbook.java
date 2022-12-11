@@ -74,40 +74,51 @@ public class AddCookbook extends HttpServlet {
         // the Google Books API.
         String notes = cookbookNotes;
 
-        // Get data from the Google Books API and populate into variables.
-        for (ItemsItem item : dao.getResponseInfo(isbn).getItems()) {
-            title = item.getVolumeInfo().getTitle();
-            publisher = item.getVolumeInfo().getPublisher();
-            publishedDate = item.getVolumeInfo().getPublishedDate() + "-01";
-            description = item.getVolumeInfo().getDescription();
-            pageCount = item.getVolumeInfo().getPageCount();
-            language = item.getVolumeInfo().getLanguage();
-            smallImageLink = item.getVolumeInfo().getImageLinks().getSmallThumbnail();
-            mediumImageLink = item.getVolumeInfo().getImageLinks().getThumbnail();
+        // Log of Google Books results based on the ISBN from user.
+        logger.debug(dao.getResponseInfo(isbn).getItems());
 
-            // For each author in array, add to author string.
-            for(String arrayAuthor : item.getVolumeInfo().getAuthors()) {
-                // If there is only one author, set the author variable to that.
-                if (item.getVolumeInfo().getAuthors().size() == 1) {
-                    author = arrayAuthor;
-                // Else if there are multiple authors, put them in a string.
-                } else {
-                    // If the author variable is null, set it to the first author.
-                    if (author == null) {
+        // If Google Books returns null, then redirect the user to the options page.
+        if (dao.getResponseInfo(isbn).getItems() == null) {
+            logger.debug("The Google Books API returned null for the ISBN: " + isbn);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/errorNoIsbn.jsp");
+            dispatcher.forward(req, resp);
+        } else {
+            // Otherwise, get data from the Google Books API and populate into variables.
+            for (ItemsItem item : dao.getResponseInfo(isbn).getItems()) {
+
+                title = item.getVolumeInfo().getTitle();
+                publisher = item.getVolumeInfo().getPublisher();
+                publishedDate = item.getVolumeInfo().getPublishedDate() + "-01";
+                description = item.getVolumeInfo().getDescription();
+                pageCount = item.getVolumeInfo().getPageCount();
+                language = item.getVolumeInfo().getLanguage();
+                smallImageLink = item.getVolumeInfo().getImageLinks().getSmallThumbnail();
+                mediumImageLink = item.getVolumeInfo().getImageLinks().getThumbnail();
+
+                // For each author in array, add to author string.
+                for (String arrayAuthor : item.getVolumeInfo().getAuthors()) {
+                    // If there is only one author, set the author variable to that.
+                    if (item.getVolumeInfo().getAuthors().size() == 1) {
                         author = arrayAuthor;
-                    // Else if the author variable is not null, add the next author to the string.
+                        // Else if there are multiple authors, put them in a string.
                     } else {
-                        author = author + ", " + arrayAuthor;
+                        // If the author variable is null, set it to the first author.
+                        if (author == null) {
+                            author = arrayAuthor;
+                            // Else if the author variable is not null, add the next author to the string.
+                        } else {
+                            author = author + ", " + arrayAuthor;
+                        }
                     }
                 }
-            }
 
-            // Get ISBN 10 and 13 from the data returned from Google Books
-            for (int i = 0; i < item.getVolumeInfo().getIndustryIdentifiers().size(); i++) {
-                if (item.getVolumeInfo().getIndustryIdentifiers().get(i).getType().equals("ISBN_10")) {
-                    isdnTen = item.getVolumeInfo().getIndustryIdentifiers().get(i).getIdentifier();
-                } else if (item.getVolumeInfo().getIndustryIdentifiers().get(i).getType().equals("ISBN_13")) {
-                    isdnThirteen = item.getVolumeInfo().getIndustryIdentifiers().get(i).getIdentifier();
+                // Get ISBN 10 and 13 from the data returned from Google Books
+                for (int i = 0; i < item.getVolumeInfo().getIndustryIdentifiers().size(); i++) {
+                    if (item.getVolumeInfo().getIndustryIdentifiers().get(i).getType().equals("ISBN_10")) {
+                        isdnTen = item.getVolumeInfo().getIndustryIdentifiers().get(i).getIdentifier();
+                    } else if (item.getVolumeInfo().getIndustryIdentifiers().get(i).getType().equals("ISBN_13")) {
+                        isdnThirteen = item.getVolumeInfo().getIndustryIdentifiers().get(i).getIdentifier();
+                    }
                 }
             }
         }
