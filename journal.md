@@ -178,7 +178,7 @@
 - Review of Craig's code and also creation of the report (2:00)
 - Many QOL changes and bug resolutions (3:00)
 
-### Week 15 (14:45)
+### Week 15 (15:15)
 - Added back buttons and some HTML tweaks (1:30)
 - Created and error page and added redirects on pages (1:00)
 - Created a general properties file and integrated that (0:30)
@@ -186,7 +186,7 @@
 - Made so listRecipes and listCookbooks pages are sorted alphabetically (0:30)
 - Work on sorting options and also searching ability and formatting list recipes pages (4:00)
 - Add sorting and search to listCookbooks pages (1:00)
-- Work towards finalizing project. (5:30)
+- Work towards finalizing project. (6:00)
   - Cleaned up code and added comments and javadocs
   - Added ability to add weblinks to cookbooks.
   - Fixed some bugs and formatting

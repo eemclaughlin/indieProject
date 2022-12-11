@@ -105,7 +105,8 @@
 - [x] Finalize generation of the JavaDocs.
 - [x] Finalize project and prep for demonstrations.
 - [x] Add project to AWS final time.
-- [ ] Get another user to test.
+- [x] Get another user to test.
+  - [ ] Implement their suggestions.
 - [ ] Record presentation for reference in GitHub.
   - [ ] Add link to Readme.md.
 - [ ] Record presentation for submission for class. (Due 12/13)
