@@ -50,7 +50,7 @@ a security message and it may take a few extra seconds to process the login.
 
 ## Self-Evaluations
 * [Mid-Term Evaluation](DesignDocuments/Self-Evaluations/selfEvaluationMidTerm-22-10-30.md)
-* [Final Evaluation (Pending)](DesignDocuments/Self-Evaluations/selfEvaluationFinal-22-12-11.md)
+* [Final Evaluation](DesignDocuments/Self-Evaluations/selfEvaluationFinal-22-12-11.md)
 
 ## References
 * [JavaDoc Folder](JavaDoc)

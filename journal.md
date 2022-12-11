@@ -193,6 +193,14 @@
   - Generated doc HTML
   - Moved to AWS and had an outside user test and give feedback.
 
+### Week 16 (5:30)
+- Created an isbn error page and put some finishing touches on project (1:15)
+- Prepped for the shorter demo video (0:45)
+- Recorded and posted shorter video (0:30)
+- Main video demonstration review and prep (2:00)
+- Record and post main video (0:30)
+- Fix issue with sorting spoted in video and upload new AWS (0:30)
+
 
 
 

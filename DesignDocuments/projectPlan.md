@@ -90,7 +90,7 @@
 - [x] Continue converting jsps to new layouts.
 - [x] Create the landing page for the site (minus picture).
 - [x] Find a main picture, edit, and add it to homepage
-- [ ] Implement/finalize suggested changes from Paula and from peer.
+- [x] Implement/finalize suggested changes from Paula and from peer.
 - [x] Removed the TOBEDELETED folder and its contents.
 - [x] Continue with bug and qol fixes. (See below for some noted bugs).
 
@@ -111,10 +111,11 @@
 ### Week 16
 - [x] Continue to implement feedback from my test user.
 - [x] Upload final project to AWS one more time.
-- [ ] Record presentation for reference in GitHub.
-  - [ ] Add link to Readme.md.
-- [ ] Record presentation for submission for class. (Due 12/13)
-  - [ ] Add link to Readme.md and to Slack.
+- [x] Record presentation for reference in GitHub.
+  - [x] Add link to Readme.md.
+- [x] Record presentation for submission for class. (Due 12/13)
+  - [x] Add link to Readme.md
+  - [ ] Add link to Slack.
 - [ ] Final Self-Evaluation (Due 12/15).
 
 ## Outstanding Bugs/Refinements (Weeks 14 to 16 Mostly)
