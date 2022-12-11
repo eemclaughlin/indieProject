@@ -102,9 +102,9 @@
 - [x] Implement a way to search through recipes and cookbooks.
 - [x] Final pass on cleaning up code, stacktraces, and printlns.
 - [x] Finalize on all the design documents and update.
-- [ ] Finalize generation of the JavaDocs.
-- [ ] Finalize project and prep for demonstrations.
-- [ ] Add project to AWS final time.
+- [x] Finalize generation of the JavaDocs.
+- [x] Finalize project and prep for demonstrations.
+- [x] Add project to AWS final time.
 - [ ] Get another user to test.
 - [ ] Record presentation for reference in GitHub.
   - [ ] Add link to Readme.md.

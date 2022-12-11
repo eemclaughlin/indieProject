@@ -23,7 +23,7 @@
             <!-- Page Header -->
             <div class="page-header my-3 py-2">
                 <h1>
-                    Cookbook Details: <small>A detailed view of a cookbook</small>
+                    Cookbook Details: <small>Extra information</small>
                 </h1>
             </div>
 

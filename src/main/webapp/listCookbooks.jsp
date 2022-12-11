@@ -23,7 +23,7 @@
             <!-- Page Header -->
             <div class="page-header my-3 py-2">
                 <h1>
-                    Cookbooks: <small>A listing of all your cookbooks.</small>
+                    Cookbooks: <small>All your cookbooks.</small>
                 </h1>
             </div>
 
@@ -59,7 +59,7 @@
                     <label for="search" class="form-label d-flex col-2 me-2 align-items-end justify-content-end">Search</label>
                     <!-- Search for a cookbook once enter is pressed -->
                     <input type="text" class="form-control" name="search"
-                           aria-describedby="searchHelp" id="search" placeholder="Search for a Recipe"
+                           aria-describedby="searchHelp" id="search" placeholder="Search for a Cookbook"
                            onkeyup="if (event.keyCode === 13) {window.location = 'searchCookbook?search=' + this.value;}">
                 </div>
             </div>
