@@ -115,7 +115,7 @@
   - [x] Add link to Readme.md.
 - [x] Record presentation for submission for class. (Due 12/13)
   - [x] Add link to Readme.md
-  - [ ] Add link to Slack.
+  - [x] Add link to Slack.
 - [x] Final Self-Evaluation (Due 12/15).
   - [x] Post to GitHub.
 
