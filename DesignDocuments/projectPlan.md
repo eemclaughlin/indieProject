@@ -116,8 +116,8 @@
 - [x] Record presentation for submission for class. (Due 12/13)
   - [x] Add link to Readme.md
   - [ ] Add link to Slack.
-- [ ] Final Self-Evaluation (Due 12/15).
-  - [ ] Post to GitHub.
+- [x] Final Self-Evaluation (Due 12/15).
+  - [x] Post to GitHub.
 
 ## Outstanding Bugs/Refinements (Weeks 14 to 16 Mostly)
 - [x] On editRecipe, fix dropdown to show current cookbook on arrival.
